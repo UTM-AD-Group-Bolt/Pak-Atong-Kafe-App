@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  Widget textformField(){
+  Widget _textformField(){
     return Padding(
       padding: EdgeInsets.only(right: 10),
       child: TextFormField(
@@ -19,10 +19,11 @@ class HomePage extends StatelessWidget {
 
         ),
 
-      ),)
+      ),
+    );
   }
 
-  Widget _allCategories(){
+  Widget _allCategories({required String image, required String title}){
     return Container(
       height: 130,
       margin: EdgeInsets.symmetric(horizontal: 10),
@@ -43,15 +44,87 @@ class HomePage extends StatelessWidget {
           ),
           Text(title,style: TextStyle(fontSize: 18, color: Colors.white),)
         ],
-      )
-    )
+      ),
+    );
   }
 
-  Widget _bottomCategories(){
+  Widget _bottomCategories({required String image, required String title, required double price}){
     return Container(
       decoration: BoxDecoration(
         color: Color(0xff3c3f40),
         borderRadius: BorderRadius.circular(20.0)
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              child: Center(
+                child: CircleAvatar(
+                  backgroundImage: AssetImage(image),
+                  radius: 60,
+                  backgroundColor: Colors.transparent,
+                )
+              ),
+            ),
+            Container(
+              height: 50,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(title,
+                          style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold
+                          ),
+                      ),
+
+                      Text(
+                        '\$ $price',
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.star,
+                        size: 14,
+                        color: Colors.white,
+                      ),
+                      Icon(
+                        Icons.star,
+                        size: 14,
+                        color: Colors.white,
+                      ),
+                      Icon(
+                        Icons.star,
+                        size: 14,
+                        color: Colors.white,
+                      ),
+                      Icon(
+                        Icons.star,
+                        size: 14,
+                        color: Colors.grey,
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -61,7 +134,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xff2b2b2b),
       appBar: AppBar(
-        elevation: 0, 0,
+        elevation: 0,
         backgroundColor: Color(0xff2b2b2b),
         leading: Icon(Icons.sort, size: 30,),
         actions: [
@@ -75,7 +148,7 @@ class HomePage extends StatelessWidget {
             ),
           )
         ],
-      )
+      ),
       body: Container(
     margin: EdgeInsets.only(left: 14,),
     child: ListView(
@@ -113,71 +186,67 @@ class HomePage extends StatelessWidget {
     ),
     ]
     ),
-    ],
-    textformField(),
+    )],
+
+    _textformField(),
     SingleChildScrollView(
     scrollDirection: Axis.horizontal,
     child: Row(
     children: [
 
       _allCategories(
-    image: 'images/393546 1.png',
-    title: 'All'
+    image: 'Ayam-Goreng.png',
+    title: 'Ayam Goreng',
     ),
 
     _allCategories(
-    image: 'images/3911100_6d2d1938-ae16-4e28-8828-18446210ed33_682_682 1.png',
-    title: 'All'
+    image: 'Ayam-Kari.png',
+    title: 'Ayam Kari',
     ),
 
     _allCategories(
-    image: 'images/cendawang celup tepung 1.png',
-    title: 'All'
+    image: 'Ayam-Kunyit.png',
+    title: 'Ayam Kunyit'
     ),
 
     _allCategories(
-    image: 'images/D1Xnva-UYAEwqCb-1 1.png',
-    title: 'All'
+    image: 'Cendawan-Goreng.png',
+    title: 'Cendawan Goreng'
     ),
 
     _allCategories(
-    image: 'images/Daging-masak-kicap 1.png',
-    title: 'All'
+    image: 'Daging-Kicap.png',
+    title: 'Daging Kicap'
     ),
 
     _allCategories(
-    image: 'images/Local_Street_Style_(4857314400) 1.png',
-    title: 'All'
+    image: 'Kuey-Teow.png',
+    title: 'Kuey Teow'
     ),
 
     _allCategories(
-    image: 'images/maxresdefault (1) 1.png',
-    title: 'All'
+    image: 'Mee-Goreng.png',
+    title: 'Mee Goreng'
     ),
 
     _allCategories(
-    image: 'images/maxresdefault (2) 1.png',
-    title: 'All'
+    image: 'Nasi-Goreng.png',
+    title: 'Nasi Goreng'
     ),
 
     _allCategories(
-    image: 'images/P1000151-2 1.png',
-    title: 'All'
+    image: 'Sambal-Goreng-Tempe.png',
+    title: 'Sambal Goreng Tempe'
     ),
 
     _allCategories(
-    image: 'images/photo 1.png',
-    title: 'All'
+    image: 'Sayur-Taugeh.png',
+    title: 'Sayur Taugeh'
     ),
 
     _allCategories(
-    image: 'profileicon.jpg',
-    title: 'All'
-    ),
-
-    _allCategories(
-    image: 'Resepi-Sambal-Goreng-Tempe 1.png',
-    title: 'All'
+    image: 'Tom-Yam.png',
+    title: 'Tom Yam'
     ),
 
     ],
@@ -191,13 +260,79 @@ class HomePage extends StatelessWidget {
     mainAxisSpacing: 40,
     crossAxisSpacing: 30,
     scrollDirection: Axis.horizontal,
-    children: [],
+    children: [
+      _bottomCategories(
+          image: 'images/Ayam-Goreng.png',
+          title: 'Ayam Goreng',
+          price: 2
+      ),
 
+      _bottomCategories(
+          image: 'images/Ayam-Kari.png',
+          title: 'Ayam Kari',
+          price: 2
+      ),
 
-    ),
-    ),
+      _bottomCategories(
+          image: 'images/Ayam-Kunyit.png',
+          title: 'Ayam Kunyit',
+          price: 2
+      ),
 
+      _bottomCategories(
+          image: 'images/Cendawan-Goreng.png',
+          title: 'Cendawan Goreng',
+          price: 2
+      ),
+
+      _bottomCategories(
+          image: 'images/Daging-Kicap.png',
+          title: 'Daging Kicap',
+          price: 2
+      ),
+
+      _bottomCategories(
+          image: 'images/Kuey-Teow.png',
+          title: 'Kuey Teow',
+          price: 2
+      ),
+
+      _bottomCategories(
+          image: 'images/Mee-Goreng.png',
+          title: 'Mee Goreng',
+          price: 2
+      ),
+
+      _bottomCategories(
+          image: 'images/Nasi-Goreng.png',
+          title: 'Nasi Goreng',
+          price: 2
+      ),
+
+      _bottomCategories(
+          image: 'images/Sambal-Goreng-Tempe.png',
+          title: 'Sambal Goreng Tempe',
+          price: 2
+      ),
+
+      _bottomCategories(
+          image: 'images/Sayur-Taugeh.png',
+          title: 'Sayur Taugeh',
+          price: 2
+      ),
+
+      _bottomCategories(
+          image: 'images/Tom-Yam.png',
+          title: 'Tom Yam',
+          price: 2
+      ),
     ],
+
+
+    ),
+    ),
+    ),
+    )],
     ),
     ),
     );

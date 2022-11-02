@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+
 class HomePage extends StatelessWidget {
   Widget _textformField(){
+
     return Padding(
       padding: EdgeInsets.only(right: 10),
       child: TextFormField(
@@ -15,10 +17,8 @@ class HomePage extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.0),
             borderSide: BorderSide.none,
 
-          )
-
+          ),
         ),
-
       ),
     );
   }
@@ -119,10 +119,10 @@ class HomePage extends StatelessWidget {
                         color: Colors.grey,
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -189,23 +189,25 @@ class HomePage extends StatelessWidget {
     )],
 
     _textformField(),
+
+
     SingleChildScrollView(
     scrollDirection: Axis.horizontal,
     child: Row(
     children: [
 
       _allCategories(
-    image: 'Ayam-Goreng.png',
+    image: 'images/Ayam-Goreng.png',
     title: 'Ayam Goreng',
     ),
 
     _allCategories(
-    image: 'Ayam-Kari.png',
+    image: 'images/Ayam-Kari.png',
     title: 'Ayam Kari',
     ),
 
     _allCategories(
-    image: 'Ayam-Kunyit.png',
+    image: 'images/Ayam-Kunyit.png',
     title: 'Ayam Kunyit'
     ),
 

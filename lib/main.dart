@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'HomePage.dart';
 
-void main() => runApp(MaterialApp(
-  home: Text('Pak Atong Cafe'),
+void main() {
+  runApp(HomePage());
+}
 
-));

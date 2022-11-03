@@ -129,9 +129,6 @@ class HomePage extends StatelessWidget {
                         size: 14,
                         color: Colors.grey,
                       ),
-
-
-
                     ],
                   )
                 ],
@@ -237,41 +234,35 @@ class HomePage extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       children: [
                         _bottomCategories(
-                            image: 'images/Ayam-Goreng.png',
-                            title: 'Ayam Goreng',
-                            price: 2,
+                          image: 'images/Ayam-Goreng.png',
+                          title: 'Ayam Goreng',
+                          price: 2,
                         ),
-
                         _bottomCategories(
                           image: 'images/Ayam-Kari.png',
                           title: 'Ayam Kari',
                           price: 2,
                         ),
-
                         _bottomCategories(
                           image: 'images/Ayam-Kunyit.png',
                           title: 'Ayam Kunyit',
                           price: 2,
                         ),
-
                         _bottomCategories(
                           image: 'images/Cendawan-Goreng.png',
                           title: 'Cendawan Goreng',
                           price: 2,
                         ),
-
                         _bottomCategories(
                           image: 'images/Cendawan-Goreng.png',
                           title: 'Cendawan Goreng',
                           price: 2,
                         ),
-
                         _bottomCategories(
                           image: 'images/Cendawan-Goreng.png',
                           title: 'Cendawan Goreng',
                           price: 2,
                         ),
-
                       ],
                     ),
                   )

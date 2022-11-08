@@ -53,8 +53,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _bottomCategories(
-      {required String image, required String title, required double price}) {
+  Widget _bottomCategories({required String image, required String title, required double price}) {
     return Container(
       decoration: BoxDecoration(
         color: Color(0xff3c3f40),
@@ -231,7 +230,7 @@ class HomePage extends StatelessWidget {
                       childAspectRatio: 1.3,
                       mainAxisSpacing: 40,
                       crossAxisSpacing: 30,
-                      scrollDirection: Axis.horizontal,
+                      scrollDirection: Axis.vertical,
                       children: [
                         _bottomCategories(
                           image: 'images/Ayam-Goreng.png',
@@ -254,13 +253,38 @@ class HomePage extends StatelessWidget {
                           price: 2,
                         ),
                         _bottomCategories(
-                          image: 'images/Cendawan-Goreng.png',
-                          title: 'Cendawan Goreng',
+                          image: 'images/Daging-Kicap.png',
+                          title: 'Daging Kicap',
                           price: 2,
                         ),
                         _bottomCategories(
-                          image: 'images/Cendawan-Goreng.png',
-                          title: 'Cendawan Goreng',
+                          image: 'images/Kuey-Teow.png',
+                          title: 'Kuey Teow',
+                          price: 2,
+                        ),
+                        _bottomCategories(
+                          image: 'images/Mee-Goreng.png',
+                          title: 'Mee Goreng',
+                          price: 2,
+                        ),
+                        _bottomCategories(
+                          image: 'images/Nasi-Goreng.png',
+                          title: 'Nasi Goreng',
+                          price: 2,
+                        ),
+                        _bottomCategories(
+                          image: 'images/Sambal-Goreng-Tempe.png',
+                          title: 'Sambal Goreng Tempe',
+                          price: 2,
+                        ),
+                        _bottomCategories(
+                          image: 'images/Sayur-Taugeh.png',
+                          title: 'Sayur Taugeh',
+                          price: 2,
+                        ),
+                        _bottomCategories(
+                          image: 'images/Tom-Yam.png',
+                          title: 'Tom Yam',
                           price: 2,
                         ),
                       ],

@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
         children: [
           Container(
             height: 70,
-            width: 70,
+            width: 120,
             decoration: BoxDecoration(
               color: Colors.grey,
               image: DecorationImage(
@@ -115,10 +115,12 @@ class HomePage extends StatelessWidget {
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                             ),
+
                           ),
                         ),
                       ],
                     ),
+
                   ],
                 ),
               ),
@@ -132,6 +134,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xff2b2b2b),
       appBar: AppBar(
         elevation: 0.0,
@@ -183,18 +186,19 @@ class HomePage extends StatelessWidget {
                         SizedBox(
                           height: 4,
                         ),
-                        Text(
-                          "Favourites",
-                          style: TextStyle(
-                            fontSize: 23,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+
                       ],
                     ),
                   ),
                   _textformField(),
+                  Text(
+                    "Favorites",
+                    style: TextStyle(
+                      fontSize: 23,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -213,8 +217,16 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                   ),
+                  Text(
+                    "Menu",
+                    style: TextStyle(
+                      fontSize: 23,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   Container(
-                    height: 490,
+                    height: 250,
                     child: GridView.count(
                       crossAxisCount: 2,
                       childAspectRatio: 1,

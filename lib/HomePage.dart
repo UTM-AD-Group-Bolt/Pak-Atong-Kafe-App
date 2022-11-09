@@ -54,7 +54,7 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _bottomCategories({required String image, required String title, required double price}) {
-    if (title == "") return new Container(); //Ros: Returns an empty container if there is no title
+    if (title == "") return new Container(); //Ros: Returns an empty container if there are no titles
     return Container(
       decoration: BoxDecoration(
         color: Color(0xff3c3f40),

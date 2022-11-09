@@ -54,71 +54,77 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _bottomCategories({required String image, required String title, required double price}) {
+    if (title == "") return new Container(); //Ros: Returns an empty container if there are no titles
     return Container(
       decoration: BoxDecoration(
-
-        borderRadius: BorderRadius.circular(20.0),
+        color: Color(0xff3c3f40),
+        borderRadius: BorderRadius.circular(10.0),
       ),
       child: Padding(
-        padding: EdgeInsets.all(2.0),
+        padding: EdgeInsets.symmetric(horizontal: 10),
         child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-
-              Center(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15.0),
-                  child: Container(
-                    height: 150,
-                    width: 260,
-                    child: Image(
-                      image: AssetImage(image)
+            AspectRatio(
+              aspectRatio: 4/3,
+              child: Expanded(
+                child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(image),
+                      ),
+                      borderRadius: BorderRadius.circular(10.0),
                     ),
-
-                  ),
-
-                  
-
                 ),
               ),
-
-            Container(
-              height: 10,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: Column(
+            ),
+            Flexible(
+              child: Container(
+                height: 50,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          title,
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-
+                        Expanded(
+                          child: Text(
+                            title,
+                            softWrap: false,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
-                        Text(
-                          'RM $price',
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: Colors.white,
-                            fontStyle: FontStyle.italic,
+                        Flexible(
+                          child: Text(
+                            'RM ${price.toStringAsFixed(2)}',
+                            softWrap: false,
+                            maxLines: 1,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
 
                           ),
                         ),
                       ],
                     ),
-                  ),
 
-                ],
+                  ],
+                ),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -158,7 +164,7 @@ class HomePage extends StatelessWidget {
         child: ListView(
           children: [
             Container(
-              height: 700,
+              height: 800,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -223,9 +229,9 @@ class HomePage extends StatelessWidget {
                     height: 250,
                     child: GridView.count(
                       crossAxisCount: 2,
-                      childAspectRatio: 1.3,
-                      mainAxisSpacing: 30,
-                      crossAxisSpacing: 5,
+                      childAspectRatio: 1,
+                      mainAxisSpacing: 20,
+                      crossAxisSpacing: 20,
                       scrollDirection: Axis.vertical,
                       children: [
                         _bottomCategories(
@@ -282,6 +288,16 @@ class HomePage extends StatelessWidget {
                           image: 'images/Tom-Yam.png',
                           title: 'Tom Yam',
                           price: 2,
+                        ),
+                        _bottomCategories( //filler items
+                          image: '',
+                          title: '',
+                          price: 0,
+                        ),
+                        _bottomCategories( //filler items
+                          image: '',
+                          title: '',
+                          price: 0,
                         ),
                       ],
                     ),

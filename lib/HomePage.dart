@@ -56,11 +56,11 @@ class HomePage extends StatelessWidget {
   Widget _bottomCategories({required String image, required String title, required double price}) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xff3c3f40),
+
         borderRadius: BorderRadius.circular(20.0),
       ),
       child: Padding(
-        padding: EdgeInsets.all(4.0),
+        padding: EdgeInsets.all(2.0),
         child: Column(
 
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -71,8 +71,8 @@ class HomePage extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15.0),
                   child: Container(
-                    height: 80,
-                    width: 130,
+                    height: 150,
+                    width: 260,
                     child: Image(
                       image: AssetImage(image)
                     ),
@@ -85,7 +85,7 @@ class HomePage extends StatelessWidget {
               ),
 
             Container(
-              height: 20,
+              height: 10,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,17 +97,19 @@ class HomePage extends StatelessWidget {
                         Text(
                           title,
                           style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey,
+                            fontSize: 16,
+                            color: Colors.white,
                             fontWeight: FontWeight.bold,
+
                           ),
                         ),
                         Text(
                           'RM $price',
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: 13,
                             color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
+
                           ),
                         ),
                       ],
@@ -184,7 +186,7 @@ class HomePage extends StatelessWidget {
                   ),
                   _textformField(),
                   Text(
-                    "Favourites",
+                    "Favorites",
                     style: TextStyle(
                       fontSize: 23,
                       color: Colors.white,
@@ -209,13 +211,21 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                   ),
+                  Text(
+                    "Menu",
+                    style: TextStyle(
+                      fontSize: 23,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   Container(
                     height: 250,
                     child: GridView.count(
                       crossAxisCount: 2,
                       childAspectRatio: 1.3,
-                      mainAxisSpacing: 20,
-                      crossAxisSpacing: 30,
+                      mainAxisSpacing: 30,
+                      crossAxisSpacing: 5,
                       scrollDirection: Axis.vertical,
                       children: [
                         _bottomCategories(

@@ -8,11 +8,19 @@ class FavoriteList extends StatefulWidget {
 }
 
 class _FavoriteListState extends State<FavoriteList> {
-
   List<Favorite> favorites = [
-    Favorite(foodName: 'Ayam Goreng', foodDesc: 'Ayam goreng rangup'),
-    Favorite(foodName: 'Ayam Kari', foodDesc: 'Kari ayam kegemaran ramai'),
-    Favorite(foodName: 'Sayur Campur', foodDesc: 'Kombinasi tiga jenis sayur')
+    Favorite(
+        foodName: 'Ayam Goreng',
+        foodDesc: 'Ayam goreng rangup',
+        foodImage: 'images/Ayam-Goreng.png'),
+    Favorite(
+        foodName: 'Ayam Kari',
+        foodDesc: 'Kari ayam kegemaran ramai',
+        foodImage: 'images/Ayam-Kari.png'),
+    Favorite(
+        foodName: 'Sayur Campur',
+        foodDesc: 'Kombinasi tiga jenis sayur',
+        foodImage: 'images/Sayur-Taugeh.png')
   ];
 
   @override
@@ -25,14 +33,15 @@ class _FavoriteListState extends State<FavoriteList> {
         backgroundColor: Color(0xff2b2b2b),
       ),
       body: Column(
-        children: favorites.map((favorite) => FavoriteCard(
-            favorite: favorite,
-            delete: () {
-              setState(() {
-                favorites.remove(favorite);
-              });
-            }
-        )).toList(),
+        children: favorites
+            .map((favorite) => FavoriteCard(
+                favorite: favorite,
+                delete: () {
+                  setState(() {
+                    favorites.remove(favorite);
+                  });
+                }))
+            .toList(),
       ),
     );
   }

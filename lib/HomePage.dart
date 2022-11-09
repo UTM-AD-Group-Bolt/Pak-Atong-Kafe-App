@@ -54,85 +54,75 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _bottomCategories({required String image, required String title, required double price}) {
+    if (title == "") return new Container(); //Ros: Returns an empty container if there is no title
     return Container(
       decoration: BoxDecoration(
         color: Color(0xff3c3f40),
-        borderRadius: BorderRadius.circular(20.0),
+        borderRadius: BorderRadius.circular(10.0),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15),
+        padding: EdgeInsets.symmetric(horizontal: 10),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              child: Center(
-                child: CircleAvatar(
-                  backgroundImage: AssetImage(image),
-                  radius: 60,
-                  backgroundColor: Colors.transparent,
+            AspectRatio(
+              aspectRatio: 4/3,
+              child: Expanded(
+                child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey,
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(image),
+                      ),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
                 ),
               ),
             ),
-            Container(
-              height: 50,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        title,
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+            Flexible(
+              child: Container(
+                height: 50,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            title,
+                            softWrap: false,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
-                      ),
-                      Text(
-                        '\$ $price',
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                        Flexible(
+                          child: Text(
+                            'RM ${price.toStringAsFixed(2)}',
+                            softWrap: false,
+                            maxLines: 1,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.star,
-                        size: 14,
-                        color: Colors.white,
-                      ),
-                      Icon(
-                        Icons.star,
-                        size: 14,
-                        color: Colors.white,
-                      ),
-                      Icon(
-                        Icons.star,
-                        size: 14,
-                        color: Colors.white,
-                      ),
-                      Icon(
-                        Icons.star,
-                        size: 14,
-                        color: Colors.white,
-                      ),
-                      Icon(
-                        Icons.star,
-                        size: 14,
-                        color: Colors.grey,
-                      ),
-                    ],
-                  )
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -171,7 +161,7 @@ class HomePage extends StatelessWidget {
         child: ListView(
           children: [
             Container(
-              height: 820,
+              height: 800,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -227,9 +217,9 @@ class HomePage extends StatelessWidget {
                     height: 490,
                     child: GridView.count(
                       crossAxisCount: 2,
-                      childAspectRatio: 1.3,
-                      mainAxisSpacing: 40,
-                      crossAxisSpacing: 30,
+                      childAspectRatio: 1,
+                      mainAxisSpacing: 20,
+                      crossAxisSpacing: 20,
                       scrollDirection: Axis.vertical,
                       children: [
                         _bottomCategories(
@@ -286,6 +276,16 @@ class HomePage extends StatelessWidget {
                           image: 'images/Tom-Yam.png',
                           title: 'Tom Yam',
                           price: 2,
+                        ),
+                        _bottomCategories( //filler items
+                          image: '',
+                          title: '',
+                          price: 0,
+                        ),
+                        _bottomCategories( //filler items
+                          image: '',
+                          title: '',
+                          price: 0,
                         ),
                       ],
                     ),

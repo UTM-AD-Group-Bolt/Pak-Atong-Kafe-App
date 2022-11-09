@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
         children: [
           Container(
             height: 70,
-            width: 70,
+            width: 120,
             decoration: BoxDecoration(
               color: Colors.grey,
               image: DecorationImage(
@@ -60,76 +60,60 @@ class HomePage extends StatelessWidget {
         borderRadius: BorderRadius.circular(20.0),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15),
+        padding: EdgeInsets.all(4.0),
         child: Column(
+
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              child: Center(
-                child: CircleAvatar(
-                  backgroundImage: AssetImage(image),
-                  radius: 60,
-                  backgroundColor: Colors.transparent,
+
+              Center(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15.0),
+                  child: Container(
+                    height: 80,
+                    width: 130,
+                    child: Image(
+                      image: AssetImage(image)
+                    ),
+
+                  ),
+
+                  
+
                 ),
               ),
-            ),
+
             Container(
-              height: 50,
+              height: 20,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        title,
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          title,
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      Text(
-                        '\$ $price',
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                        Text(
+                          'RM $price',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.star,
-                        size: 14,
-                        color: Colors.white,
-                      ),
-                      Icon(
-                        Icons.star,
-                        size: 14,
-                        color: Colors.white,
-                      ),
-                      Icon(
-                        Icons.star,
-                        size: 14,
-                        color: Colors.white,
-                      ),
-                      Icon(
-                        Icons.star,
-                        size: 14,
-                        color: Colors.white,
-                      ),
-                      Icon(
-                        Icons.star,
-                        size: 14,
-                        color: Colors.grey,
-                      ),
-                    ],
-                  )
+
                 ],
               ),
             )
@@ -142,6 +126,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xff2b2b2b),
       appBar: AppBar(
         elevation: 0.0,
@@ -171,7 +156,7 @@ class HomePage extends StatelessWidget {
         child: ListView(
           children: [
             Container(
-              height: 820,
+              height: 700,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -193,18 +178,19 @@ class HomePage extends StatelessWidget {
                         SizedBox(
                           height: 4,
                         ),
-                        Text(
-                          "Favourites",
-                          style: TextStyle(
-                            fontSize: 23,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+
                       ],
                     ),
                   ),
                   _textformField(),
+                  Text(
+                    "Favourites",
+                    style: TextStyle(
+                      fontSize: 23,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -224,11 +210,11 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    height: 490,
+                    height: 250,
                     child: GridView.count(
                       crossAxisCount: 2,
                       childAspectRatio: 1.3,
-                      mainAxisSpacing: 40,
+                      mainAxisSpacing: 20,
                       crossAxisSpacing: 30,
                       scrollDirection: Axis.vertical,
                       children: [

@@ -16,10 +16,12 @@ class FavoriteCard extends StatelessWidget {
 
           padding: const EdgeInsets.all(12.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.start,
+
 
             children: <Widget>[
               Container(
+
                 alignment: Alignment.topLeft,
                 color: Colors.amber[600],
                 width: 30.0,

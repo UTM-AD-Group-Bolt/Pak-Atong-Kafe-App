@@ -10,12 +10,12 @@ class FavoriteCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        margin: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
-        child: Padding(
-
-
+      margin: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
+      child: Padding(
           padding: const EdgeInsets.all(12.0),
-          child: Row(
+
+          /* child: Row(
+
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,25 +43,27 @@ class FavoriteCard extends StatelessWidget {
                 ],
               ),
               Column(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Directionality(
+                    Directionality(
                       textDirection: TextDirection.rtl,
-                      child: TextButton.icon(
-                        style: ButtonStyle(
-                          foregroundColor:
-                          MaterialStateProperty.all(Colors.red[200]),
-                        ),
-                        onPressed: delete,
-                        label: Text('Unfavorite'),
-                        icon: Icon(Icons.heart_broken),
-                      ),
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: TextButton.icon(
+                          style: ButtonStyle(
+                            foregroundColor:
+                            MaterialStateProperty.all(Colors.red[200]),
+                          ),
+                          onPressed: delete,
+                          label: Text('Unfavorite'),
+                          icon: Icon(Icons.heart_broken),
+                        ),),
+
                     ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Directionality(
+
+
+
+                    Directionality(
                       textDirection: TextDirection.rtl,
                       child: TextButton.icon(
                         style: ButtonStyle(
@@ -73,13 +75,76 @@ class FavoriteCard extends StatelessWidget {
                         icon: Icon(Icons.shopping_cart),
                       ),
                     ),
-                  )
+
                 ],
 
 
               ),
             ],
-          ),
-        ));
+          ), */
+
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image(
+                    image: AssetImage(favorite.foodImage),
+                  ),
+                  Text(
+                    favorite.foodName,
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 6.0),
+                  Text(
+                    favorite.foodDesc,
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.grey[800],
+                    ),
+                  ),
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton.icon(
+                        style: ButtonStyle(
+                          foregroundColor:
+                          MaterialStateProperty.all(Colors.red[200]),
+                        ),
+                        onPressed: delete,
+                        label: Text('Unfavorite'),
+                        icon: Icon(Icons.heart_broken),
+                      ),),
+
+                  ),
+
+                  Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: TextButton.icon(
+                      style: ButtonStyle(
+                        foregroundColor:
+                        MaterialStateProperty.all(Colors.amber[300]),
+                      ),
+                      onPressed: delete,
+                      label: Text('Order Again'),
+                      icon: Icon(Icons.shopping_cart),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          )),
+    );
   }
 }

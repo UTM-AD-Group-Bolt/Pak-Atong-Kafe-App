@@ -137,22 +137,39 @@ class HomePage extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xff2b2b2b),
       appBar: AppBar(
+        title: Text('Home'),
+        centerTitle: true,
         elevation: 0.0,
         backgroundColor: Color(0xff2b2b2b),
         leading: Icon(
           Icons.sort,
           size: 30,
+          color: Colors.amber,
         ),
         actions: [
           Padding(
             padding: EdgeInsets.all(9.0),
             child: Center(
-              child: Container(
-                child: CircleAvatar(
-                  maxRadius: 20,
-                  backgroundImage: AssetImage('images/profileicon.jpg'),
-                ),
+              child: Row(
+                children: [
+                  Container(
+                    child: Icon(
+                      Icons.favorite,
+                      size: 30,
+                      color: Colors.pink,
+                    ),
+                  ),
+                  SizedBox(width: 10,),
+                  Container(
+                    child: Icon(
+                      Icons.shopping_cart,
+                      size: 30,
+                      color: Colors.amber,
+                    ),
+                  ),
+                ],
               ),
+
             ),
           )
         ],
@@ -191,7 +208,7 @@ class HomePage extends StatelessWidget {
                   ),
                   _textformField(),
                   Text(
-                    "Favorites",
+                    "Your Favorites",
                     style: TextStyle(
                       fontSize: 23,
                       color: Colors.white,

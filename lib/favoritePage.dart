@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'favorite.dart';
 import 'favorite_card.dart';
 
-class FavoriteList extends StatefulWidget {
+class FavoritePage extends StatefulWidget {
   @override
-  _FavoriteListState createState() => _FavoriteListState();
+  _FavoritePageState createState() => _FavoritePageState();
 }
 
-class _FavoriteListState extends State<FavoriteList> {
+class _FavoritePageState extends State<FavoritePage> {
   List<Favorite> favorites = [
     Favorite(
         foodName: 'Ayam Goreng',
@@ -39,8 +39,7 @@ class _FavoriteListState extends State<FavoriteList> {
         backgroundColor: Color(0xff2b2b2b),
       ),
       body: Column(
-        children: favorites
-            .map((favorite) => FavoriteCard(
+        children: favorites.map((favorite) => FavoriteCard(
                 favorite: favorite,
                 delete: () {
                   setState(() {

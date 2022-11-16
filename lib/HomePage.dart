@@ -153,10 +153,18 @@ class HomePage extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
-                    child: Icon(
-                      Icons.favorite,
-                      size: 30,
-                      color: Colors.pink,
+                    child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+              ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/favorites');
+                      },
+                      child: Icon(
+                        Icons.favorite,
+                        size: 30,
+                        color: Colors.pink,
+                      ),
                     ),
                   ),
                   SizedBox(width: 10,),

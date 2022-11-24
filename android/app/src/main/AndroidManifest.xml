@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="bolt.com.myapp">
    <application
-        android:label="myapp"
+        android:label="Pak Atong"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

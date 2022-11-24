@@ -9,6 +9,7 @@ import 'package:myapp/pages/signInPage.dart';
 import 'package:myapp/pages/authenticate.dart';
 
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 // import 'ReviewPage.dart';
 // import 'FaqPage.dart';
@@ -19,13 +20,15 @@ import 'package:provider/provider.dart';
 // import 'PaymentSuccessPage.dart';
 // import 'ProfilePage.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(
     StreamProvider(
       create: (BuildContext context) {  },
       initialData: null,
       child: MaterialApp(
-        initialRoute: '/menudetails',
+        initialRoute: '/signin',
         routes: {
           '/': (context) => LoadingScreen(),
           '/home': (context) => HomePage(),

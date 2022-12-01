@@ -52,8 +52,6 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
-
   Widget _bottomCategories(
       {required String image, required String title, required double price}) {
     if (title == "")
@@ -107,7 +105,8 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Flexible( //
+                        Flexible(
+
                           child: Text(
                             'RM ${price.toStringAsFixed(2)}',
                             softWrap: false,
@@ -118,7 +117,6 @@ class HomePage extends StatelessWidget {
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                             ),
-//
                           ),
                         ),
                       ],

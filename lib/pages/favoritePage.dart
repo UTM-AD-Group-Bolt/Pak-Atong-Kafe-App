@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'favorite.dart';
-import 'models/favorite_card.dart';
-
+import '../models/favorite.dart';
+import '../models/favorite_card.dart';
 class FavoritePage extends StatefulWidget {
   @override
   _FavoritePageState createState() => _FavoritePageState();

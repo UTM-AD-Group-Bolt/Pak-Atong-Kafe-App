@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'HomePage.dart';
-import 'MenuDetailsPage.dart';
+import 'pages/MenuDetailsPage.dart';
 import 'favoritePage.dart';
 import 'favorite.dart';
-import 'favorite_card.dart';
+import 'models/favorite_card.dart';
 
 void main() {
   runApp(MyApp());

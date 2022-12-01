@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'favorite.dart';
-import 'favorite_card.dart';
+import 'models/favorite_card.dart';
 
 class FavoriteList extends StatefulWidget {
   @override

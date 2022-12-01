@@ -99,3 +99,19 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: DMSans
+      fonts:
+        - asset: assets/fonts/DMSans-Regular.ttf
+        - asset: assets/fonts/DMSans-Italic.ttf
+          style: italic
+        - asset: assets/fonts/DMSans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/DMSans-BoldItalic.ttf
+          style: italic
+          weight: 700
+        - asset: assets/fonts/DMSans-Medium.ttf
+          weight: 400
+        - asset: assets/fonts/DMSans-MediumItalic.ttf
+          style: italic
+          weight: 400

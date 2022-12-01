@@ -28,6 +28,13 @@ void main() async {
       create: (BuildContext context) {  },
       initialData: null,
       child: MaterialApp(
+        theme: ThemeData(
+          textSelectionTheme: TextSelectionThemeData(
+            cursorColor: Color(0xfff2ab37),
+            selectionColor: Color(0xff624840),
+            selectionHandleColor: Color(0xffcd5f2a),
+          ),
+        ),
         initialRoute: '/signin',
         routes: {
           '/': (context) => LoadingScreen(),

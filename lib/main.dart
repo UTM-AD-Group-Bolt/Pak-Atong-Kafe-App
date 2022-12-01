@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'HomePage.dart';
 import 'favoritePage.dart';
-import 'LoadingScreen.dart';
+import 'pages/LoadingScreen.dart';
 // import 'MenuDetailsPage.dart';
 // import 'ReviewPage.dart';
 // import 'FaqPage.dart';

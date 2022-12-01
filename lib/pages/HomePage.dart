@@ -104,7 +104,7 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Flexible(
+                        Flexible( //
                           child: Text(
                             'RM ${price.toStringAsFixed(2)}',
                             softWrap: false,

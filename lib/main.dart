@@ -10,7 +10,6 @@ import 'package:myapp/pages/authenticate.dart';
 
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
-//
 // import 'ReviewPage.dart';
 // import 'FaqPage.dart';
 // import 'CustomerSupportPage.dart';

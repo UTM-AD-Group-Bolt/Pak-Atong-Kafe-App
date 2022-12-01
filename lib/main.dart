@@ -6,7 +6,7 @@ import 'package:myapp/pages/MenuDetailsPage.dart';
 import 'package:myapp/pages/registerPage.dart';
 import 'package:myapp/pages/signInPage.dart';
 
-import 'package:myapp/pages/authenticate.dart';
+import 'package:myapp/models/authenticate.dart';
 
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';

@@ -40,6 +40,7 @@ class ForgotPassword extends StatelessWidget {
                             borderSide: BorderSide(color: Colors.white),
                           )
                       )
+
                   ),
                 ],
               ),

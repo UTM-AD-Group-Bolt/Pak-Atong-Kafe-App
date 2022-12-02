@@ -228,15 +228,16 @@ class HomePage extends StatelessWidget {
                     child: Row(
                       children: [
                         _allCategories(
-                            image: 'images/Ayam-Goreng.png',
+                            image: 'images/food/Ayam-Goreng.png',
                             title: 'Ayam Goreng'),
                         _allCategories(
-                            image: 'images/Ayam-Kari.png', title: 'Ayam Kari'),
+                            image: 'images/food/Ayam-Kari.png',
+                            title: 'Ayam Kari'),
                         _allCategories(
-                            image: 'images/Ayam-Kunyit.png',
+                            image: 'images/food/Ayam-Kunyit.png',
                             title: 'Ayam Kunyit'),
                         _allCategories(
-                            image: 'images/Cendawan-Goreng.png',
+                            image: 'images/food/Cendawan-Goreng.png',
                             title: 'Cendawan Goreng'),
                       ],
                     ),
@@ -259,57 +260,57 @@ class HomePage extends StatelessWidget {
                       scrollDirection: Axis.vertical,
                       children: [
                         _bottomCategories(
-                          image: 'images/Ayam-Goreng.png',
+                          image: 'images/food/Ayam-Goreng.png',
                           title: 'Ayam Goreng',
                           price: 2,
                         ),
                         _bottomCategories(
-                          image: 'images/Ayam-Kari.png',
+                          image: 'images/food/Ayam-Kari.png',
                           title: 'Ayam Kari',
                           price: 2,
                         ),
                         _bottomCategories(
-                          image: 'images/Ayam-Kunyit.png',
+                          image: 'images/food/Ayam-Kunyit.png',
                           title: 'Ayam Kunyit',
                           price: 2,
                         ),
                         _bottomCategories(
-                          image: 'images/Cendawan-Goreng.png',
+                          image: 'images/food/Cendawan-Goreng.png',
                           title: 'Cendawan Goreng',
                           price: 2,
                         ),
                         _bottomCategories(
-                          image: 'images/Daging-Kicap.png',
+                          image: 'images/food/Daging-Kicap.png',
                           title: 'Daging Kicap',
                           price: 2,
                         ),
                         _bottomCategories(
-                          image: 'images/Kuey-Teow.png',
+                          image: 'images/food/Kuey-Teow.png',
                           title: 'Kuey Teow',
                           price: 2,
                         ),
                         _bottomCategories(
-                          image: 'images/Mee-Goreng.png',
+                          image: 'images/food/Mee-Goreng.png',
                           title: 'Mee Goreng',
                           price: 2,
                         ),
                         _bottomCategories(
-                          image: 'images/Nasi-Goreng.png',
+                          image: 'images/food/Nasi-Goreng.png',
                           title: 'Nasi Goreng',
                           price: 2,
                         ),
                         _bottomCategories(
-                          image: 'images/Sambal-Goreng-Tempe.png',
+                          image: 'images/food/Sambal-Goreng-Tempe.png',
                           title: 'Sambal Goreng Tempe',
                           price: 2,
                         ),
                         _bottomCategories(
-                          image: 'images/Sayur-Taugeh.png',
+                          image: 'images/food/Sayur-Taugeh.png',
                           title: 'Sayur Taugeh',
                           price: 2,
                         ),
                         _bottomCategories(
-                          image: 'images/Tom-Yam.png',
+                          image: 'images/food/Tom-Yam.png',
                           title: 'Tom Yam',
                           price: 2,
                         ),

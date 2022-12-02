@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/favorite.dart';
 import '../models/favorite_card.dart';
+
 class FavoritePage extends StatefulWidget {
   @override
   _FavoritePageState createState() => _FavoritePageState();
@@ -11,15 +12,15 @@ class _FavoritePageState extends State<FavoritePage> {
     Favorite(
         foodName: 'Ayam Goreng',
         foodDesc: 'Ayam goreng rangup',
-        foodImage: 'images/Ayam-Goreng.png'),
+        foodImage: 'images/food/Ayam-Goreng.png'),
     Favorite(
         foodName: 'Ayam Kari',
         foodDesc: 'Kari ayam kegemaran ramai',
-        foodImage: 'images/Ayam-Kari.png'),
+        foodImage: 'images/food/Ayam-Kari.png'),
     Favorite(
         foodName: 'Sayur Campur',
         foodDesc: 'Kombinasi tiga jenis sayur',
-        foodImage: 'images/Sayur-Taugeh.png')
+        foodImage: 'images/food/Sayur-Taugeh.png')
   ];
 
   @override

@@ -1,21 +1,60 @@
 import 'package:flutter/material.dart';
-import 'HomePage.dart';
-import 'MenuDetailsPage.dart';
-import 'favoritePage.dart';
-import 'favorite.dart';
-import 'favorite_card.dart';
+import 'package:myapp/pages//HomePage.dart';
+import 'package:myapp/pages/favoritePage.dart';
+import 'package:myapp/pages/LoadingScreen.dart';
+import 'package:myapp/pages/MenuDetailsPage.dart';
+import 'package:myapp/pages/registerPage.dart';
+import 'package:myapp/pages/signInPage.dart';
 
-void main() {
-  runApp(MyApp());
+import 'package:myapp/pages/authenticate.dart';
+
+import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+// import 'ReviewPage.dart';
+// import 'FaqPage.dart';
+// import 'CustomerSupportPage.dart';
+// import 'OrderHistoryPage.dart';
+// import 'CheckoutPage.dart';
+// import 'PaymentMethodPage.dart';
+// import 'PaymentSuccessPage.dart';
+// import 'ProfilePage.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(
+    StreamProvider(
+      create: (BuildContext context) {  },
+      initialData: null,
+      child: MaterialApp(
+        theme: ThemeData(
+          textSelectionTheme: TextSelectionThemeData(
+            cursorColor: Color(0xfff2ab37),
+            selectionColor: Color(0xff624840),
+            selectionHandleColor: Color(0xffcd5f2a),
+          ),
+        ),
+        initialRoute: '/signin',
+        routes: {
+          '/': (context) => LoadingScreen(),
+          '/home': (context) => HomePage(),
+          '/favorites': (context) => FavoritePage(),
+          '/loading': (context) => LoadingScreen(),
+          '/menudetails': (context) => MenuDetailsPage(
+              1, 'images/Ayam-Goreng.png', 'Ayam Goreng', '5 min', 'Available'),
+
+          // '/review':  (context) => ReviewPage(),
+          // '/faq':  (context) => FaqPage(),
+          // '/customersupport':  (context) => CustomerSupportPage(),
+          // '/orderhistory':  (context) => OrderHistoryPage(),
+          '/signin':  (context) => SignInPage(),
+          '/register': (context) => RegisterPage(),
+          // '/checkout':  (context) => CheckoutPage(),
+          // '/paymentmethod':  (context) => PaymentMethodPage(),
+          // '/paymentsuccess':  (context) => PaymentSuccessPage(),
+          // '/profile':  (context) => ProfilePage(),
+        },
+      ),
+    ),
+  );
 }
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HomePage(),
-    );
-  }
-}
-
-/* hi*/

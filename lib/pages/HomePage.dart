@@ -52,9 +52,10 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
-  Widget _bottomCategories({required String image, required String title, required double price}) {
-    if (title == "") return new Container(); //Ros: Returns an empty container if there are no titles
+  Widget _bottomCategories(
+      {required String image, required String title, required double price}) {
+    if (title == "")
+      return new Container(); //Ros: Returns an empty container if there are no titles
     return Container(
       decoration: BoxDecoration(
         color: Color(0xff3c3f40),
@@ -67,17 +68,17 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             AspectRatio(
-              aspectRatio: 4/3,
+              aspectRatio: 4 / 3,
               child: Expanded(
                 child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage(image),
-                      ),
-                      borderRadius: BorderRadius.circular(10.0),
+                  decoration: BoxDecoration(
+                    color: Colors.grey,
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage(image),
                     ),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
                 ),
               ),
             ),
@@ -105,6 +106,7 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                         Flexible(
+
                           child: Text(
                             'RM ${price.toStringAsFixed(2)}',
                             softWrap: false,
@@ -115,12 +117,10 @@ class HomePage extends StatelessWidget {
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                             ),
-
                           ),
                         ),
                       ],
                     ),
-
                   ],
                 ),
               ),
@@ -134,25 +134,50 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xff2b2b2b),
       appBar: AppBar(
+        title: Text('Home'),
+        centerTitle: true,
         elevation: 0.0,
         backgroundColor: Color(0xff2b2b2b),
         leading: Icon(
           Icons.sort,
           size: 30,
+          color: Colors.amber,
         ),
         actions: [
           Padding(
             padding: EdgeInsets.all(9.0),
             child: Center(
-              child: Container(
-                child: CircleAvatar(
-                  maxRadius: 20,
-                  backgroundImage: AssetImage('images/profileicon.jpg'),
-                ),
+              child: Row(
+                children: [
+                  Container(
+                    child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
               ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/favorites');
+                      },
+                      child: Icon(
+                        Icons.favorite,
+                        size: 30,
+                        color: Colors.pink,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 10,),
+                  Container(
+                    child: Icon(
+                      Icons.shopping_cart,
+                      size: 30,
+                      color: Colors.amber,
+                    ),
+                  ),
+                ],
+              ),
+
             ),
           )
         ],
@@ -186,13 +211,12 @@ class HomePage extends StatelessWidget {
                         SizedBox(
                           height: 4,
                         ),
-
                       ],
                     ),
                   ),
                   _textformField(),
                   Text(
-                    "Favorites",
+                    "Your Favorites",
                     style: TextStyle(
                       fontSize: 23,
                       color: Colors.white,
@@ -289,12 +313,14 @@ class HomePage extends StatelessWidget {
                           title: 'Tom Yam',
                           price: 2,
                         ),
-                        _bottomCategories( //filler items
+                        _bottomCategories(
+                          //filler items
                           image: '',
                           title: '',
                           price: 0,
                         ),
-                        _bottomCategories( //filler items
+                        _bottomCategories(
+                          //filler items
                           image: '',
                           title: '',
                           price: 0,

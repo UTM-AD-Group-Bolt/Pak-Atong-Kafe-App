@@ -14,6 +14,7 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
 
   final AuthService _auth = AuthService();
+  Color z = Colors.white;
 
   Color x = Palette.white;
   Color y = Colors.white;

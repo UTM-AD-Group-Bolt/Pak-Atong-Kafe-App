@@ -3,7 +3,7 @@ import 'dart:math';
 
 class Palette {
   /// Used for font. Can be used as background color.
-  /// ![](https://raw.githubusercontent.com/UTM-AD-Group-Bolt/Pak-Atong-Kafe-App/main/images/iconapp.jpg)
+  /// ![](https://raw.githubusercontent.com/UTM-AD-Group-Bolt/Pak-Atong-Kafe-App/main/assets/palette/white.png)
   static const white = MaterialColor(0xfffaf5d8,
     {
       50:  Color(0xffffffff),
@@ -20,6 +20,7 @@ class Palette {
   );
 
   /// Used for tone or shading.
+  /// ![](https://raw.githubusercontent.com/UTM-AD-Group-Bolt/Pak-Atong-Kafe-App/main/assets/palette/beige.png)
   static const beige = MaterialColor(0xffd8ae8b,
     {
       50:  Color(0xfff5e9e0),
@@ -36,6 +37,7 @@ class Palette {
   );
 
   /// Used for tone or shading.
+  /// ![](https://raw.githubusercontent.com/UTM-AD-Group-Bolt/Pak-Atong-Kafe-App/main/assets/palette/brown.png)
   static const brown = MaterialColor(0xff624840,
     {
       50:  Color(0xff9e776b),
@@ -52,6 +54,7 @@ class Palette {
   );
 
   /// Used rarely! For added flair.
+  /// ![](https://raw.githubusercontent.com/UTM-AD-Group-Bolt/Pak-Atong-Kafe-App/main/assets/palette/orange.png)
   static const orange = MaterialColor(0xffcd5f2a,
     {
       50:  Color(0xffe39b78),
@@ -68,6 +71,7 @@ class Palette {
   );
 
   /// Used for buttons color.
+  /// ![](https://raw.githubusercontent.com/UTM-AD-Group-Bolt/Pak-Atong-Kafe-App/main/assets/palette/yellow.png)
   static const yellow = MaterialColor(0xfff2ab37,
     {
       50:  Color(0xfff8d6a0),
@@ -84,6 +88,7 @@ class Palette {
   );
 
   /// Used for background. Can be used as font color.
+  /// ![](https://raw.githubusercontent.com/UTM-AD-Group-Bolt/Pak-Atong-Kafe-App/main/assets/palette/black.png)
   static const black = MaterialColor(0xff26201d,
     {
       50:  Color(0xff685950),
@@ -95,7 +100,7 @@ class Palette {
       600: Color(0xff231d1b),
       700: Color(0xff171312),
       800: Color(0xff0b0909),
-      900: Color(0xff0b0909),
+      900: Color(0xff000000),
     },
   );
 

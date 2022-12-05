@@ -1,8 +1,10 @@
+import 'package:myapp/models/palette.dart';
 import 'package:myapp/models/social_media.dart';
 import 'package:myapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import '../models/social_media_button.dart';
+import 'package:flutter/material.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -12,6 +14,9 @@ class SignInPage extends StatefulWidget {
 class _SignInPageState extends State<SignInPage> {
 
   final AuthService _auth = AuthService();
+
+  Color x = Palette.white;
+  Color y = Colors.white;
 
   // text field state
   String email = '';

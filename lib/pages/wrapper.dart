@@ -1,4 +1,4 @@
-import 'package:myapp/models/myuser.dart';
+import 'package:myapp/models/user.dart';
 import 'package:myapp/pages/authenticate.dart';
 import 'package:myapp/pages/HomePage.dart';
 import 'package:flutter/material.dart';

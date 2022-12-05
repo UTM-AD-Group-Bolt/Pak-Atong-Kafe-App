@@ -107,7 +107,7 @@ class Palette {
   /// Change the alpha value of any color class.
   /// * 'colVal' is the color in Color(0xff000000) format
   /// * 'alpha' is the percentage of opacity in double format
-  static Color alpha(Color colVal, [double alpha = 100]) {
+  static Color alpha(Color? colVal, [double alpha = 100]) {
     // Parse the hexa RGB values
     String colStr = '#${colVal.toString().substring(10,16)}';
 

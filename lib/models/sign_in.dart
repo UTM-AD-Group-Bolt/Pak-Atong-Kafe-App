@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/services/auth.dart';
+import 'palette.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -6,14 +8,27 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  final AuthService _auth = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.brown[100],
+      backgroundColor: Palette.beige,
       appBar: AppBar(
-        backgroundColor: Colors.brown[400],
+        backgroundColor: Palette.brown,
         elevation: 0.0,
         title: Text('Sign in'),
+      ),
+      body: Container(
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+          child: ElevatedButton(
+            onPressed: () async {
+
+            },
+            child: Text("Continue as Guest"),
+          ),
+        ),
       ),
     );
   }

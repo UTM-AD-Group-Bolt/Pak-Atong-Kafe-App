@@ -3,9 +3,8 @@ import 'social_media.dart';
 
 class SocMedButton extends StatelessWidget {
   final SocialMedia socmed;
-  final Function() handler;
 
-  SocMedButton({required this.socmed, required this.handler});
+  SocMedButton({required this.socmed});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,6 @@ class SocMedButton extends StatelessWidget {
       child: Material(
         color: Color(0x00ff0000),
         child: InkWell(
-          onTap: handler,
           child: SizedBox(
             height: 60,
             width: 60,
@@ -45,7 +43,7 @@ class SocMedButton extends StatelessWidget {
                     return states.contains(MaterialState.pressed) ? Color(0x66cd5f2a) : null;
                 }),
               ),
-              onPressed: handler,
+              onPressed: socmed.login,
               child: Image.asset(socmed.icon),
             ),
           ),

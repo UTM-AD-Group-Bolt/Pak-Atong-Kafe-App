@@ -5,36 +5,45 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:myapp/models/social_media_button.dart';
 
-
 class SignInPage extends StatefulWidget {
   @override
   _SignInPageState createState() => _SignInPageState();
 }
 
 class _SignInPageState extends State<SignInPage> {
-
   final AuthService _auth = AuthService();
-
-  // text field state
   String email = '';
   String password = '';
+  bool _isPasswordHidden = true;
 
   List<SocialMedia> socmeds = [
     SocialMedia(
-        name: 'Google',
-        icon: 'images/socialMedia/google.png',
+      name: 'Google',
+      icon: 'images/socialMedia/google.png',
+      login: () async {
+        print("User logs into Google");
+      },
     ),
     SocialMedia(
-        name: 'Facebook',
-        icon: 'images/socialMedia/facebook.png',
+      name: 'Facebook',
+      icon: 'images/socialMedia/facebook.png',
+      login: () async {
+        print("User logs into Facebook");
+      },
     ),
     SocialMedia(
-        name: 'Twitter',
-        icon: 'images/socialMedia/twitter.png',
+      name: 'Twitter',
+      icon: 'images/socialMedia/twitter.png',
+      login: () async {
+        print("User logs into Twitter");
+      },
     ),
     SocialMedia(
-        name: 'Instagram',
-        icon: 'images/socialMedia/instagram.png',
+      name: 'Instagram',
+      icon: 'images/socialMedia/instagram.png',
+      login: () async {
+        print("User logs into Instagram");
+      },
     ),
   ];
 
@@ -134,6 +143,20 @@ class _SignInPageState extends State<SignInPage> {
                             size: 32.0,
                           ),
                         ),
+                        suffixIcon: GestureDetector(
+                          onTap: () {
+                            Feedback.forTap(context);
+                            setState(() { _isPasswordHidden = !_isPasswordHidden; }); //Toggles between true/false
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.only(right: 10.0),
+                            child: Icon(
+                              _isPasswordHidden ? Icons.visibility_off : Icons.visibility,
+                              color: Palette.beige,
+                              size: 32.0,
+                            ),
+                          ),
+                        ),
                         contentPadding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
                         hintStyle: TextStyle(
                           fontFamily: 'DMSans',
@@ -158,7 +181,7 @@ class _SignInPageState extends State<SignInPage> {
                       style: TextStyle(
                         color: Palette.white,
                       ),
-                      obscureText: true,
+                      obscureText: _isPasswordHidden,
                       onChanged: (val) {
                         setState(() => password = val);
                       },
@@ -232,8 +255,11 @@ class _SignInPageState extends State<SignInPage> {
                             ),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
+                                // play tap sound
+                                Feedback.forTap(context);
+
                                 // set up the buttons
-                                Widget cancelButton = SizedBox(
+                                Widget signUpButton = SizedBox(
                                   width: double.infinity,
                                   height: 50.0,
                                   child: TextButton(
@@ -250,10 +276,12 @@ class _SignInPageState extends State<SignInPage> {
                                         fontSize: 20,
                                       ),
                                     ),
-                                    onPressed:  () {},
+                                    onPressed:  () {
+                                      print("User moved to sign up page");
+                                      Navigator.of(context, rootNavigator: true).pop('dialog');
+                                    },
                                   ),
                                 );
-
                                 Widget continueButton = SizedBox(
                                   width: double.infinity,
                                   height: 50.0,
@@ -276,8 +304,8 @@ class _SignInPageState extends State<SignInPage> {
                                       if (result == null) {
                                         print("Error signing in!");
                                       } else {
-                                        print("User signed in succesfully!");
-                                        print(result);
+                                        print("User signed in succesfully! (Anonymous)");
+                                        Navigator.of(context, rootNavigator: true).pop('dialog');
                                       }
                                     }
                                   ),
@@ -311,7 +339,7 @@ class _SignInPageState extends State<SignInPage> {
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                                       children: [
-                                        cancelButton,
+                                        signUpButton,
                                         continueButton,
                                       ],
                                     ),
@@ -411,13 +439,7 @@ class _SignInPageState extends State<SignInPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: socmeds.map((socmed) => SocMedButton(
                     socmed: socmed,
-                    handler: () {
-                      if (socmed.name == "Google") print("User logs into Google");
-                      else if (socmed.name == "Facebook") print("User logs into Facebook");
-                      else if (socmed.name == "Twitter") print("User logs into Twitter");
-                      else if (socmed.name == "Instagram") print("User logs into Instagram");
-                    }))
-                    .toList(),
+                    )).toList(),
               ),
               SizedBox(height: 10.0),
               Center(

@@ -5,11 +5,12 @@ import 'package:myapp/pages/LoadingScreen.dart';
 import 'package:myapp/pages/MenuDetailsPage.dart';
 import 'package:myapp/pages/registerPage.dart';
 import 'package:myapp/pages/signInPage.dart';
-
+import 'package:myapp/pages/wrapper.dart';
 import 'package:myapp/pages/authenticate.dart';
-
+import 'package:myapp/services/auth.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:myapp/models/user.dart';
 // import 'ReviewPage.dart';
 // import 'FaqPage.dart';
 // import 'CustomerSupportPage.dart';
@@ -23,8 +24,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
-    StreamProvider(
-      create: (BuildContext context) {  },
+    StreamProvider<MyUser?>.value(
+      value: AuthService().user,
       initialData: null,
       child: MaterialApp(
         theme: ThemeData(
@@ -34,22 +35,20 @@ void main() async {
             selectionHandleColor: Color(0xffcd5f2a),
           ),
         ),
-        initialRoute: '/signin',
+        home: Wrapper(),
         routes: {
-          '/': (context) => LoadingScreen(),
+          '/signin':  (context) => SignInPage(),
+          '/register': (context) => RegisterPage(),
           '/home': (context) => HomePage(),
           '/favorites': (context) => FavoritePage(),
           '/loading': (context) => LoadingScreen(),
           '/menudetails': (context) => MenuDetailsPage(
               1, 'images/Ayam-Goreng.png', 'Ayam Goreng', '5 min', 'Available'),
 
-
           // '/review':  (context) => ReviewPage(),
           // '/faq':  (context) => FaqPage(),
           // '/customersupport':  (context) => CustomerSupportPage(),
           // '/orderhistory':  (context) => OrderHistoryPage(),
-          '/signin':  (context) => SignInPage(),
-          '/register': (context) => RegisterPage(),
           // '/checkout':  (context) => CheckoutPage(),
           // '/paymentmethod':  (context) => PaymentMethodPage(),
           // '/paymentsuccess':  (context) => PaymentSuccessPage(),

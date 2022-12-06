@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 class Palette {
   /// Used for font. Can be used as background color.
@@ -103,23 +102,4 @@ class Palette {
       900: Color(0xff000000),
     },
   );
-
-  /// Change the alpha value of any color class.
-  /// * 'colVal' is the color in Color(0xff000000) format
-  /// * 'alpha' is the percentage of opacity in double format
-  static Color alpha(Color? colVal, [double alpha = 100]) {
-    // Parse the hexa RGB values
-    String colStr = '#${colVal.toString().substring(10,16)}';
-
-    // Limit alpha to range 0-100
-    alpha = min(alpha, 100);
-    alpha = max(alpha, 0);
-
-    // Convert alpha from percentage to hexa value
-    alpha = (alpha*2.55).ceil().toDouble();
-
-    // Merge the alpha + color values and return as a new color class
-    //print (Color(int.parse(colStr.replaceFirst('#', '0x${alpha.toInt().toRadixString(16)}'))));
-    return Color(int.parse(colStr.replaceFirst('#', '0x${alpha.toInt().toRadixString(16)}')));
-  }
 }

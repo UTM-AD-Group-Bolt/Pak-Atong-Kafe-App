@@ -4,6 +4,6 @@ class MyUser {
   MyUser({this.uid});
 
   String toString(){
-    return "User's uid: " + this.uid.toString();
+    return "UID = " + this.uid.toString();
   }
 }

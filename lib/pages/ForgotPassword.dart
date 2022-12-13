@@ -7,7 +7,12 @@ class ForgotPassword extends StatelessWidget {
 
   BuildContext? get context => null;
 
+  get visible => null;
+
   @override
+
+  final _formkey = GlobalKey<FormState>();
+
   Widget build(BuildContext) {
     return Scaffold(
         backgroundColor: Colors.black,
@@ -62,7 +67,7 @@ class ForgotPassword extends StatelessWidget {
     );
   }
 
-  void Forgotpassss(String email) async {
+  void Forgotpass(String email) async {
     if (_formkey.currentState!.validate()) {
       await _auth
           .sendPasswordResetEmail(email: email)
@@ -73,14 +78,18 @@ class ForgotPassword extends StatelessWidget {
           .catchError((e) {});
     }
   }
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+LoginPage() {
 }
-
-
-
-
-
-
-
-
-
-

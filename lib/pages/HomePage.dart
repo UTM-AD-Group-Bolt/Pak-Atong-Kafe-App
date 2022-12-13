@@ -72,6 +72,7 @@ class HomePage extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
+                  fontFamily: "DMSans",
                   fontSize: 15,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -138,6 +139,7 @@ class HomePage extends StatelessWidget {
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
+                                fontFamily: "DMSans",
                                 fontSize: 15,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
@@ -152,6 +154,7 @@ class HomePage extends StatelessWidget {
                               maxLines: 1,
                               textAlign: TextAlign.center,
                               style: TextStyle(
+                                fontFamily: "DMSans",
                                 fontSize: 15,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
@@ -177,7 +180,12 @@ class HomePage extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       backgroundColor: Color(0xff2b2b2b),
       appBar: AppBar(
-        title: Text('Home'),
+        title: Text(
+          'Home',
+          style: TextStyle(
+            fontFamily: "DMSans",
+          ),
+        ),
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: Color(0xff2b2b2b),
@@ -248,6 +256,7 @@ class HomePage extends StatelessWidget {
                         Text(
                           "Pak Atong Kafe",
                           style: TextStyle(
+                            fontFamily: "DMSans",
                             fontSize: 32,
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -260,6 +269,7 @@ class HomePage extends StatelessWidget {
                   Text(
                     "Your Favorites",
                     style: TextStyle(
+                      fontFamily: "DMSans",
                       fontSize: 24,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -295,6 +305,7 @@ class HomePage extends StatelessWidget {
                   Text(
                     "Menu",
                     style: TextStyle(
+                      fontFamily: "DMSans",
                       fontSize: 23,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,

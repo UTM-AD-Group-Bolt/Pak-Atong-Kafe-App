@@ -42,8 +42,7 @@ void main() async {
           '/home': (context) => HomePage(),
           '/favorites': (context) => FavoritePage(),
           '/loading': (context) => LoadingScreen(),
-          '/menudetails': (context) => MenuDetailsPage(
-              1, 'images/Ayam-Goreng.png', 'Ayam Goreng', '5 min', 'Available'),
+          '/menudetails': (context) => MenuDetailsPage(),
 
           // '/review':  (context) => ReviewPage(),
           // '/faq':  (context) => FaqPage(),

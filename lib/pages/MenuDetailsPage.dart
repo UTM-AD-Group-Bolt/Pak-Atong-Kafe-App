@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
 
 class MenuDetailsPage extends StatefulWidget {
-  final int index;
-  final String image, name, time, availability;
-
-  MenuDetailsPage(this.index, this.image, this.name, this.time,
-      this.availability);
-
   @override
   State<MenuDetailsPage> createState() => _MenuDetailsPageState();
 }
 
 class _MenuDetailsPageState extends State<MenuDetailsPage> {
-  @override
-  void initState() {
-    super.initState();
-    print(
-        "index: ${widget.index}, image: ${widget.image}, name: ${widget
-            .name}, time: ${widget.time}, availability: ${widget
-            .availability}");
+  Map initData (Map data){
+    if (data['index'] == null) data['index'] = 0;
+    if (data['image'] == null) data['image'] = "images/broken_link.png";
+    if (data['name'] == null) data['name'] = "N/A";
+    if (data['description'] == null) data['description'] = "N/A";
+    if (data['deliveryFee'] == null) data['deliveryFee'] = "N/A";
+    if (data['time'] == null) data['time'] = "N/A";
+    if (data['availability'] == null) data['availability'] = "N/A";
+    return data;
   }
 
+  Map? data = {};
   @override
   Widget build(BuildContext context) {
+    data = ModalRoute.of(context)?.settings.arguments as Map<dynamic,dynamic>?;
+    if (data == null) data = initData(new Map());
+    else data = initData(data!);
+
     return Scaffold(
       backgroundColor: Color(0xff2b2b2b),
       body: Column(
@@ -51,7 +52,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
             ),
           ),
           Image.asset(
-            widget.image,
+            data!['image'],
             height: 250.0,
             width: 250.0,
             fit: BoxFit.contain,
@@ -82,7 +83,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
               ),
             ),
             Text(
-              widget.name,
+              data!['name'],
               style: TextStyle(
                 fontSize: 28.0,
                 color: Colors.white,
@@ -101,7 +102,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                       color: Colors.amber,
                     ),
                     Text(
-                      "Free",
+                      data!['deliveryFee'],
                       style: TextStyle(
                         fontSize: 16.0,
                         color: Colors.white,
@@ -118,7 +119,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                       color: Colors.amber,
                     ),
                     Text(
-                      widget.time,
+                      data!['time'],
                       style: TextStyle(
                         fontSize: 16.0,
                         color: Colors.white,
@@ -135,7 +136,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                       color: Colors.amber,
                     ),
                     Text(
-                      widget.availability,
+                      data!['availability'],
                       style: TextStyle(
                         fontSize: 16.0,
                         color: Colors.white,
@@ -159,7 +160,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
 
               SizedBox(height: 10.0),
               Text(
-                'Diperbuat daripada ayam',
+                data!['description'],
                 style: TextStyle(
                   fontSize: 15.0,
                   color: Colors.white,

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,7 @@ class ForgotPassword extends StatelessWidget {
   get visible => null;
 
   @override
-
+  final _auth = FirebaseAuth.instance;
   final _formkey = GlobalKey<FormState>();
 
   Widget build(BuildContext) {
@@ -62,7 +63,7 @@ class ForgotPassword extends StatelessWidget {
                       child: CircularProgressIndicator(
                       color: Colors.white,
                       ))),
-          ],
+            ],
         ),
     );
   }
@@ -72,7 +73,7 @@ class ForgotPassword extends StatelessWidget {
       await _auth
           .sendPasswordResetEmail(email: email)
           .then((uid) => {
-        Navigator.of(context).pushReplacement(
+        Navigator.of(context!).pushReplacement(
             MaterialPageRoute(builder: (context) => LoginPage()))
       })
           .catchError((e) {});

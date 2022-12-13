@@ -82,15 +82,5 @@ class ForgotPassword extends StatelessWidget {
 
   
 
-
-
-
-
-
-
-
-  
-
-
 LoginPage() {
 }

@@ -1,8 +1,9 @@
+import 'package:myapp/models/palette.dart';
 import 'package:myapp/models/social_media.dart';
 import 'package:myapp/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
-import '../models/social_media_button.dart';
+import 'package:myapp/models/social_media_button.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -10,29 +11,39 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-
   final AuthService _auth = AuthService();
-
-  // text field state
   String email = '';
   String password = '';
+  bool _isPasswordHidden = true;
 
   List<SocialMedia> socmeds = [
     SocialMedia(
-        name: 'Google',
-        icon: 'images/socialMedia/google.png',
+      name: 'Google',
+      icon: 'images/socialMedia/google.png',
+      login: () async {
+        print("User logs into Google");
+      },
     ),
     SocialMedia(
-        name: 'Facebook',
-        icon: 'images/socialMedia/facebook.png',
+      name: 'Facebook',
+      icon: 'images/socialMedia/facebook.png',
+      login: () async {
+        print("User logs into Facebook");
+      },
     ),
     SocialMedia(
-        name: 'Twitter',
-        icon: 'images/socialMedia/twitter.png',
+      name: 'Twitter',
+      icon: 'images/socialMedia/twitter.png',
+      login: () async {
+        print("User logs into Twitter");
+      },
     ),
     SocialMedia(
-        name: 'Instagram',
-        icon: 'images/socialMedia/instagram.png',
+      name: 'Instagram',
+      icon: 'images/socialMedia/instagram.png',
+      login: () async {
+        print("User logs into Instagram");
+      },
     ),
   ];
 
@@ -40,7 +51,7 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color(0xff26201d),
+      backgroundColor: Palette.black,
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
         child: Form(
@@ -58,10 +69,10 @@ class _SignInPageState extends State<SignInPage> {
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.0),
-                      color: Color(0xff26201d),
+                      color: Palette.black,
                       boxShadow: [
                         BoxShadow(
-                          color: Color(0xffd8ae8b),
+                          color: Palette.beige,
                           blurRadius: 5.0,
                           spreadRadius: 1.0,
                         )
@@ -70,7 +81,15 @@ class _SignInPageState extends State<SignInPage> {
                     child: TextFormField(
                       decoration: new InputDecoration(
                         hintText: 'Email or Phone Number',
-                        contentPadding: EdgeInsets.only(left: 30.0, right: 30.0, top: 20.0, bottom: 20.0),
+                        prefixIcon: Padding(
+                          padding: EdgeInsets.only(left: 5.0),
+                          child: Icon(
+                            Icons.account_circle_rounded,
+                            color: Palette.beige,
+                            size: 32.0,
+                          ),
+                        ),
+                        contentPadding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
                         hintStyle: TextStyle(
                           fontFamily: 'DMSans',
                           fontSize: 16.0,
@@ -80,20 +99,20 @@ class _SignInPageState extends State<SignInPage> {
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15.0),
                           borderSide: BorderSide(
-                            color: Color(0xfff2ab37),
+                            color: Palette.yellow,
                             width: 4.0,
                           ),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15.0),
                           borderSide: BorderSide(
-                            color: Color(0xffd8ae8b),
+                            color: Palette.beige,
                             width: 2.0,
                           ),
                         ),
                       ),
                       style: TextStyle(
-                        color: Color(0xfffaf5d8),
+                        color: Palette.white,
                       ),
                       onChanged: (val) {
                         setState(() => email = val);
@@ -104,10 +123,10 @@ class _SignInPageState extends State<SignInPage> {
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.0),
-                      color: Color(0xff26201d),
+                      color: Palette.black,
                       boxShadow: [
                         BoxShadow(
-                          color: Color(0xffd8ae8b),
+                          color: Palette.beige,
                           blurRadius: 5.0,
                           spreadRadius: 1.0,
                         )
@@ -116,7 +135,29 @@ class _SignInPageState extends State<SignInPage> {
                     child: TextFormField(
                       decoration: new InputDecoration(
                         hintText: 'Password',
-                        contentPadding: EdgeInsets.only(left: 30.0, right: 30.0, top: 20.0, bottom: 20.0),
+                        prefixIcon: Padding(
+                          padding: EdgeInsets.only(left: 5.0),
+                          child: Icon(
+                            Icons.key,
+                            color: Palette.beige,
+                            size: 32.0,
+                          ),
+                        ),
+                        suffixIcon: GestureDetector(
+                          onTap: () {
+                            Feedback.forTap(context);
+                            setState(() { _isPasswordHidden = !_isPasswordHidden; }); //Toggles between true/false
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.only(right: 10.0),
+                            child: Icon(
+                              _isPasswordHidden ? Icons.visibility_off : Icons.visibility,
+                              color: Palette.beige,
+                              size: 32.0,
+                            ),
+                          ),
+                        ),
+                        contentPadding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
                         hintStyle: TextStyle(
                           fontFamily: 'DMSans',
                           fontSize: 16.0,
@@ -125,22 +166,22 @@ class _SignInPageState extends State<SignInPage> {
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15.0),
                           borderSide: BorderSide(
-                            color: Color(0xfff2ab37),
+                            color: Palette.yellow,
                             width: 4.0,
                           ),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15.0),
                           borderSide: BorderSide(
-                            color: Color(0xffd8ae8b),
+                            color: Palette.beige,
                             width: 2.0,
                           ),
                         ),
                       ),
                       style: TextStyle(
-                        color: Color(0xfffaf5d8),
+                        color: Palette.white,
                       ),
-                      obscureText: true,
+                      obscureText: _isPasswordHidden,
                       onChanged: (val) {
                         setState(() => password = val);
                       },
@@ -154,7 +195,7 @@ class _SignInPageState extends State<SignInPage> {
                         gradient: LinearGradient(
                           begin: Alignment(-0.95, 0.0),
                           end: Alignment(1.0, 0.0),
-                          colors: [Color(0xffcd5f2a), Color(0xfff2ab37)],
+                          colors: [Palette.orange, Palette.yellow],
                           stops: [0.0, 1.0],
                         ),
                       ),
@@ -168,7 +209,7 @@ class _SignInPageState extends State<SignInPage> {
                                 )
                             ),
                             backgroundColor: MaterialStateProperty.resolveWith((states) {
-                              return Color(0x0000ff00);
+                              return Colors.transparent;
                             }),
                             elevation: MaterialStateProperty.resolveWith((states) {
                               return 0.0;
@@ -183,16 +224,16 @@ class _SignInPageState extends State<SignInPage> {
                               fontFamily: 'DMSans',
                               fontWeight: FontWeight.w700,
                               fontSize: 24.0,
-                              color: Color(0xfffaf5d8),
+                              color: Palette.white,
                             ),
                           ),
-                          onPressed: () async {
+                          onPressed: () {
                             print("email: " + email + " | password: " + password);
                           },
                         ),
                       )
                   ),
-                  SizedBox(height: 10.0),
+                  SizedBox(height: 20.0),
                   RichText(
                     text: TextSpan(
                       children: [
@@ -200,21 +241,118 @@ class _SignInPageState extends State<SignInPage> {
                           text: 'Don\'t have an account? ',
                           style: TextStyle(
                             fontFamily: 'DMSans',
-                            fontSize: 16.0,
-                            color: Color(0xfffaf5d8),
+                            fontSize: 20.0,
+                            color: Palette.white,
                           ),
                         ),
                         TextSpan(
-                            text: 'Sign up',
+                            text: 'Click here',
                             style: TextStyle(
                               decoration: TextDecoration.underline,
                               fontFamily: 'DMSans',
-                              fontSize: 16.0,
-                              color: Color(0xfff2ab37),
+                              fontSize: 20.0,
+                              color: Palette.yellow,
                             ),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                print('User moved to sign up page');
+                                // play tap sound
+                                Feedback.forTap(context);
+
+                                // set up the buttons
+                                Widget signUpButton = SizedBox(
+                                  width: double.infinity,
+                                  height: 50.0,
+                                  child: TextButton(
+                                    child: Text("Sign up"),
+                                    style: TextButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(15.0),
+                                      ),
+                                      foregroundColor: Palette.orange,
+                                      backgroundColor: Palette.beige[300],
+                                      textStyle: TextStyle(
+                                        fontFamily: 'DMSans',
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                    onPressed:  () {
+                                      print("User moved to sign up page");
+                                      Navigator.of(context, rootNavigator: true).pop('dialog');
+                                    },
+                                  ),
+                                );
+                                Widget continueButton = SizedBox(
+                                  width: double.infinity,
+                                  height: 50.0,
+                                  child: TextButton(
+                                    child: Text("Continue as Guest"),
+                                    style: TextButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(15.0),
+                                      ),
+                                      foregroundColor: Palette.orange,
+                                      backgroundColor: Palette.beige[300],
+                                      textStyle: TextStyle(
+                                        fontFamily: 'DMSans',
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                    onPressed:  () async {
+                                      dynamic result = await _auth.signInAnon();
+                                      if (result == null) {
+                                        print("Error signing in!");
+                                      } else {
+                                        print("User signed in succesfully! (Anonymous)");
+                                        Navigator.of(context, rootNavigator: true).pop('dialog');
+                                      }
+                                    }
+                                  ),
+                                );
+
+                                // set up the AlertDialog
+                                AlertDialog alert = AlertDialog(
+                                  icon: Padding(
+                                    padding: const EdgeInsets.all(0.0),
+                                    child: Icon(
+                                      Icons.person_add_alt_1,
+                                      color: Palette.brown,
+                                      size: 60.0,
+                                    ),
+                                  ),
+                                  insetPadding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 40.0),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  ),
+                                  backgroundColor: Palette.beige[100],
+                                  title: Text("Select action..."),
+                                  titleTextStyle: TextStyle(
+                                    fontFamily: 'DMSans',
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 28,
+                                    color: Palette.brown,
+                                  ),
+                                  content: SizedBox(
+                                    width: double.maxFinite,
+                                    height: 120.0,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      children: [
+                                        signUpButton,
+                                        continueButton,
+                                      ],
+                                    ),
+                                  ),
+                                );
+
+                                // show the dialog
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return alert;
+                                  },
+                                );
                               }
                         ),
                       ],
@@ -228,7 +366,7 @@ class _SignInPageState extends State<SignInPage> {
                     Expanded(
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Color(0x00ff0000),
+                          color: Colors.transparent,
                           boxShadow: [
                             BoxShadow(
                               color: Color(0xaad8ae8b),
@@ -240,34 +378,34 @@ class _SignInPageState extends State<SignInPage> {
                         child: Divider(
                           height: 1.0,
                           thickness: 2.0,
-                          color: Color(0xffd8ae8b),
+                          color: Palette.beige,
                         ),
                       ),
                     ),
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(100.0),
-                        color: Color(0xff26201d),
+                        color: Palette.black,
                         boxShadow: [
                           BoxShadow(
-                            color: Color(0xffd8ae8b),
+                            color: Palette.beige,
                             blurRadius: 5.0,
                             spreadRadius: 1.0,
                           )
                         ],
                       ),
                       child: CircleAvatar(
-                        radius: 25,
-                        backgroundColor: Color(0xffd8ae8b),
+                        radius: 20,
+                        backgroundColor: Palette.beige,
                         child: CircleAvatar(
-                          radius: 23,
-                          backgroundColor: Color(0xff26201d),
+                          radius: 18,
+                          backgroundColor: Palette.black,
                           child: Center(
                             child: Text(
                               "OR",
                               style: TextStyle(
                                 fontFamily: 'DMSans',
-                                fontSize: 20.0,
+                                fontSize: 15.0,
                                 color: Color(0xaafaf5d8),
                               ),
                             ),
@@ -278,7 +416,7 @@ class _SignInPageState extends State<SignInPage> {
                     Expanded(
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Color(0x00ff0000),
+                          color: Colors.transparent,
                           boxShadow: [
                             BoxShadow(
                               color: Color(0xaad8ae8b),
@@ -290,33 +428,27 @@ class _SignInPageState extends State<SignInPage> {
                         child: Divider(
                           height: 1.0,
                           thickness: 2.0,
-                          color: Color(0xffd8ae8b),
+                          color: Palette.beige,
                         ),
                       ),
                     ),
                   ]
               ),
-              SizedBox(height: 20.0),
+              SizedBox(height: 10.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: socmeds.map((socmed) => SocMedButton(
                     socmed: socmed,
-                    handler: () {
-                      if (socmed.name == "Google") print("User logs into Google");
-                      else if (socmed.name == "Facebook") print("User logs into Facebook");
-                      else if (socmed.name == "Twitter") print("User logs into Twitter");
-                      else if (socmed.name == "Instagram") print("User logs into Instagram");
-                    }))
-                    .toList(),
+                    )).toList(),
               ),
-              SizedBox(height: 20.0),
+              SizedBox(height: 10.0),
               Center(
                 child: Text(
                   "Copyright | Bolt (2022)",
                   style: TextStyle(
                     fontFamily: 'DMSans',
                     fontSize: 12.0,
-                  color: Color(0xfffaf5d8),
+                  color: Palette.white,
                 ),),
               ),
             ],

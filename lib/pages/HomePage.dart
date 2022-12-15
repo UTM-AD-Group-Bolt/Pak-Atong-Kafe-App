@@ -26,14 +26,14 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _allCategories({required String image, required String title, required BuildContext context}) {
+  Widget _allCategories({required String image, required String title, required String description, required BuildContext context}) {
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, '/menudetails',arguments: {
-          'index': 1,
+          'quantity': 0,
           'image': image,
           'name': title,
-          'description': 'Placeholder text Placeholder text Placeholder text',
+          'description': description,
           'deliveryFee': 'Free',
           'time': '5 min',
           'availability': 'Available',
@@ -85,15 +85,15 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _bottomCategories({required String image, required String title, required double price, required BuildContext context}) {
+  Widget _bottomCategories({required String image, required String title, required double price, required String description,  required BuildContext context}) {
     if (title == "") return new Container(); //Ros: Returns an empty container if there are no titles
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, '/menudetails',arguments: {
-          'index': 1,
+          'quantity': 0,
           'image': image,
           'name': title,
-          'description': 'Placeholder text Placeholder text Placeholder text',
+          'description': description,
           'deliveryFee': 'Free',
           'time': '5 min',
           'availability': 'Available',
@@ -282,21 +282,25 @@ class HomePage extends StatelessWidget {
                         _allCategories(
                           image: 'images/food/Ayam-Goreng.png',
                           title: 'Ayam Goreng',
+                            description: 'Diperbuat daripada ayam goreng',
                           context: context
                         ),
                         _allCategories(
                           image: 'images/food/Ayam-Kari.png',
                           title: 'Ayam Kari',
+                            description: 'Diperbuat daripada ayam kari',
                           context: context
                         ),
                         _allCategories(
                           image: 'images/food/Ayam-Kunyit.png',
                           title: 'Ayam Kunyit',
+                          description: 'Diperbuat daripada ayam kunyit',
                           context: context
                         ),
                         _allCategories(
                           image: 'images/food/Cendawan-Goreng.png',
                           title: 'Cendawan Goreng',
+                            description: 'Diperbuat daripada cendawan goreng',
                           context: context
                         ),
                       ],
@@ -326,66 +330,77 @@ class HomePage extends StatelessWidget {
                             image: 'images/food/Ayam-Goreng.png',
                             title: 'Ayam Goreng',
                             price: 2,
+                            description: 'Diperbuat daripada ayam goreng',
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Ayam-Kari.png',
                             title: 'Ayam Kari',
                             price: 2,
+                            description: 'Diperbuat daripada ayam kari',
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Ayam-Kunyit.png',
                             title: 'Ayam Kunyit',
                             price: 2,
+                            description: 'Diperbuat daripada ayam kunyit',
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Cendawan-Goreng.png',
                             title: 'Cendawan Goreng',
                             price: 2,
+                            description: 'Diperbuat daripada cendawan goreng',
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Daging-Kicap.png',
                             title: 'Daging Kicap',
                             price: 2,
+                            description: 'Diperbuat daripada daging kicap',
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Kuey-Teow.png',
                             title: 'Kuey Teow',
                             price: 2,
+                            description: 'Diperbuat daripada kuey teow',
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Mee-Goreng.png',
                             title: 'Mee Goreng',
                             price: 2,
+                            description: 'Diperbuat daripada mee goreng',
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Nasi-Goreng.png',
                             title: 'Nasi Goreng',
                             price: 2,
+                            description: 'Diperbuat daripada nasi goreng',
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Sambal-Goreng-Tempe.png',
                             title: 'Sambal Goreng Tempe',
                             price: 2,
+                            description: 'Diperbuat daripada sambal goreng tempe',
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Sayur-Taugeh.png',
                             title: 'Sayur Taugeh',
                             price: 2,
+                            description: 'Diperbuat daripada sayur taugeh',
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Tom-Yam.png',
                             title: 'Tom Yam',
                             price: 2,
+                            description: 'Diperbuat daripada tom yam',
                             context: context,
                           ),
                         ],

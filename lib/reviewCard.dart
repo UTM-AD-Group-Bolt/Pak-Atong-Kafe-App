@@ -1,10 +1,11 @@
-import 'Review.dart';
+import 'package:flutter/material.dart';
+import 'review.dart';
 
-class ReviewCard extends StatelessWidget {
-  final Review review;
+class reviewCard extends StatelessWidget {
+  final review Review;
   final Function() submit;
 
-  ReviewCard({required this.review, required this.submit});
+  reviewCard({required this.Review, required this.submit});
 
   @override
   Widget build(BuildContext context) {

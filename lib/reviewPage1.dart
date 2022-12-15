@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
-class ReviewPage1 extends StatefulWidget {
+class reviewPage1 extends StatefulWidget {
   @override
-  _ReviewPage1State createState() => _ReviewPage1State();
+  _reviewPage1State createState() => _reviewPage1State();
 }
 
-class _ReviewPage1State extends State <MyHomePage> {
+class _reviewPage1State extends State <reviewPage1> {
   void show(){
     showDialog(
-      context: context,
-      builder: (context) {
-        return RatingDialog(
-          icon: FlutterLogo(
-            size: 100,
-          )
-        );
-      }
+        context: context,
+        builder: (context) {
+          return RatingDialog(
+              icon: FlutterLogo(
+                size: 100,
+              )
+          );
+        }
     );
   }
 
@@ -33,14 +33,14 @@ class _ReviewPage1State extends State <MyHomePage> {
             child: Text (
               "Rate Your Food",
               style: TextStyle(
-                fontSize: 20,
-                color: Colors.white
+                  fontSize: 20,
+                  color: Colors.white
               ),
             ),
             onPressed: show,
-          )
-        )
-      )
-      );
+          ),
+        ),
+      ),
+    );
   }
 }

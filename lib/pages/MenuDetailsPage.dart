@@ -13,6 +13,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
     if (data['image'] == null) data['image'] = "images/broken_link.png";
     if (data['name'] == null) data['name'] = "N/A";
     if (data['description'] == null) data['description'] = "N/A";
+    if (data['price'] == null) data['price'] = 0.0;
     if (data['deliveryFee'] == null) data['deliveryFee'] = "N/A";
     if (data['time'] == null) data['time'] = "N/A";
     if (data['availability'] == null) data['availability'] = "N/A";
@@ -43,15 +44,25 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(
-                    Icons.arrow_back,
-                    size: 30,
-                    color: Palette.yellow,
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pop(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back,
+                      size: 30,
+                      color: Palette.yellow,
+                    ),
                   ),
-                  Icon(
-                    Icons.favorite,
-                    size: 30,
-                    color: Colors.pink,
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pushNamed(context, '/favorites');
+                    },
+                    child: Icon(
+                      Icons.favorite,
+                      size: 30,
+                      color: Colors.pink,
+                    ),
                   ),
                 ],
               ),
@@ -145,7 +156,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                       Column(
                         children: [
                           Icon(
-                            Icons.check,
+                            (data!['availability'] == "Available") ? Icons.check : Icons.close,
                             size: 30,
                             color: Palette.yellow,
                           ),

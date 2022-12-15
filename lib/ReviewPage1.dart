@@ -5,7 +5,7 @@ class ReviewPage1 extends StatefulWidget {
   _ReviewPage1State createState() => _ReviewPage1State();
 }
 
-class _ReviewPage1State extends State <MyHomePage> {
+class _ReviewPage1State extends State <ReviewPage1> {
   void show(){
     showDialog(
       context: context,
@@ -38,9 +38,9 @@ class _ReviewPage1State extends State <MyHomePage> {
               ),
             ),
             onPressed: show,
-          )
-        )
-      )
-      );
+          ),
+        ),
+      ),
+    );
   }
 }

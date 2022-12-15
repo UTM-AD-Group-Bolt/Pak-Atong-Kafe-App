@@ -29,10 +29,15 @@ class _FavoritePageState extends State<FavoritePage> {
       backgroundColor: Color(0xff2b2b2b),
       appBar: AppBar(
         elevation: 0.0,
-        leading: Icon(
-          Icons.arrow_back,
-          size: 30,
-          color: Colors.amber,
+        leading: GestureDetector(
+          onTap: (){
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back,
+            size: 30,
+            color: Colors.amber,
+          ),
         ),
         title: Text('Favorites'),
         centerTitle: true,

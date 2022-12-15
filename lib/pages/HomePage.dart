@@ -26,17 +26,17 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _allCategories({required String image, required String title, required BuildContext context}) {
+  Widget _allCategories({required String image, required String name, required String description, required double price, required String deliveryFee, required String time, required String availability, required BuildContext context}) {
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, '/menudetails',arguments: {
           'index': 1,
           'image': image,
-          'name': title,
-          'description': 'Placeholder text Placeholder text Placeholder text',
-          'deliveryFee': 'Free',
-          'time': '5 min',
-          'availability': 'Available',
+          'name': name,
+          'description': description,
+          'deliveryFee': deliveryFee,
+          'time': time,
+          'availability': availability,
         });
       },
       child: Container(
@@ -67,7 +67,7 @@ class HomePage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(top: 10.0),
               child: Text(
-                title,
+                name,
                 softWrap: false,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
@@ -85,18 +85,18 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _bottomCategories({required String image, required String title, required double price, required BuildContext context}) {
-    if (title == "") return new Container(); //Ros: Returns an empty container if there are no titles
+  Widget _bottomCategories({required String image, required String name, required String description, required double price, required String deliveryFee, required String time, required String availability, required BuildContext context}) {
+    if (name == "") return new Container(); //Ros: Returns an empty container if there are no titles
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, '/menudetails',arguments: {
           'index': 1,
           'image': image,
-          'name': title,
-          'description': 'Placeholder text Placeholder text Placeholder text',
-          'deliveryFee': 'Free',
-          'time': '5 min',
-          'availability': 'Available',
+          'name': name,
+          'description': description,
+          'deliveryFee': deliveryFee,
+          'time': time,
+          'availability': availability,
         });
       },
       child: Container(
@@ -134,7 +134,7 @@ class HomePage extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              title,
+                              name,
                               softWrap: false,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
@@ -281,22 +281,42 @@ class HomePage extends StatelessWidget {
                       children: [
                         _allCategories(
                           image: 'images/food/Ayam-Goreng.png',
-                          title: 'Ayam Goreng',
+                          name: 'Ayam Goreng',
+                          description: 'Masakan ayam goreng',
+                          price: 2,
+                          time: "5 min",
+                          deliveryFee: "Free",
+                          availability: "Available",
                           context: context
                         ),
                         _allCategories(
                           image: 'images/food/Ayam-Kari.png',
-                          title: 'Ayam Kari',
+                          name: 'Ayam Kari',
+                          description: 'Masakan ayam kari',
+                          price: 2,
+                          time: "5 min",
+                          deliveryFee: "Free",
+                          availability: "Available",
                           context: context
                         ),
                         _allCategories(
                           image: 'images/food/Ayam-Kunyit.png',
-                          title: 'Ayam Kunyit',
+                          name: 'Ayam Kunyit',
+                          description: 'Masakan ayam kunyit',
+                          price: 2,
+                          time: "5 min",
+                          deliveryFee: "Free",
+                          availability: "Not Available",
                           context: context
                         ),
                         _allCategories(
                           image: 'images/food/Cendawan-Goreng.png',
-                          title: 'Cendawan Goreng',
+                          name: 'Cendawan Goreng',
+                          description: 'Masakan cendawan goreng',
+                          price: 2,
+                          time: "5 min",
+                          deliveryFee: "Free",
+                          availability: "Available",
                           context: context
                         ),
                       ],
@@ -324,68 +344,112 @@ class HomePage extends StatelessWidget {
                         children: [
                           _bottomCategories(
                             image: 'images/food/Ayam-Goreng.png',
-                            title: 'Ayam Goreng',
+                            name: 'Ayam Goreng',
+                            description: 'Masakan ayam goreng',
                             price: 2,
+                            time: "5 min",
+                            deliveryFee: "Free",
+                            availability: "Available",
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Ayam-Kari.png',
-                            title: 'Ayam Kari',
+                            name: 'Ayam Kari',
+                            description: 'Masakan ayam kari',
                             price: 2,
+                            time: "5 min",
+                            deliveryFee: "Free",
+                            availability: "Available",
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Ayam-Kunyit.png',
-                            title: 'Ayam Kunyit',
+                            name: 'Ayam Kunyit',
+                            description: 'Masakan ayam kunyit',
                             price: 2,
+                            time: "5 min",
+                            deliveryFee: "Free",
+                            availability: "Not Available",
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Cendawan-Goreng.png',
-                            title: 'Cendawan Goreng',
+                            name: 'Cendawan Goreng',
+                            description: 'Masakan cendawan goreng',
                             price: 2,
+                            time: "5 min",
+                            deliveryFee: "Free",
+                            availability: "Available",
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Daging-Kicap.png',
-                            title: 'Daging Kicap',
+                            name: 'Daging Kicap',
+                            description: 'Masakan daging kicap',
                             price: 2,
+                            time: "5 min",
+                            deliveryFee: "Free",
+                            availability: "Available",
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Kuey-Teow.png',
-                            title: 'Kuey Teow',
+                            name: 'Kuey Teow',
+                            description: 'Masakan kuey teow',
                             price: 2,
+                            time: "5 min",
+                            deliveryFee: "Free",
+                            availability: "Available",
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Mee-Goreng.png',
-                            title: 'Mee Goreng',
+                            name: 'Mee Goreng',
+                            description: 'Masakan mee goreng',
                             price: 2,
+                            time: "5 min",
+                            deliveryFee: "Free",
+                            availability: "Available",
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Nasi-Goreng.png',
-                            title: 'Nasi Goreng',
+                            name: 'Nasi Goreng',
+                            description: 'Masakan nasi goreng',
                             price: 2,
+                            time: "5 min",
+                            deliveryFee: "Free",
+                            availability: "Available",
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Sambal-Goreng-Tempe.png',
-                            title: 'Sambal Goreng Tempe',
+                            name: 'Sambal Goreng Tempe',
+                            description: 'Masakan sambal goreng tempe',
                             price: 2,
+                            time: "5 min",
+                            deliveryFee: "Free",
+                            availability: "Available",
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Sayur-Taugeh.png',
-                            title: 'Sayur Taugeh',
+                            name: 'Sayur Taugeh',
+                            description: 'Masakan sayur taugeh',
                             price: 2,
+                            time: "5 min",
+                            deliveryFee: "Free",
+                            availability: "Available",
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Tom-Yam.png',
-                            title: 'Tom Yam',
+                            name: 'Tom Yam',
+                            description: 'Masakan tom yam',
                             price: 2,
+                            time: "5 min",
+                            deliveryFee: "Free",
+                            availability: "Available",
                             context: context,
                           ),
                         ],

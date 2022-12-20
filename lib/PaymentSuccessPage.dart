@@ -1,111 +1,187 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:paystack_manager/paystack_pay_manager.dart';
-/*Payment(
-  prefixIcon:
-  Icon(
-  Icons.done_outlined, )
-  color: Colors.green,
-  )
-  void _onPaymentSuccessful(Transaction transaction) {
-    print('Transaction succesful');
-    print(
-        "Transaction message ==> ${transaction.message}, Ref ${transaction.refrenceNumber}");
 
-  }*/
+class PaymentScreen extends StatelessWidget {
+  const PaymentScreen({Key? key}) : super(key: key);
 
-
-//class HomePage extends StatefulWidget {
-//HomePage({Key key}) : super(key: key);
-class PaymentSuccess extends statelessWidget {
-  @override
-  _PaymentSuccessState createState() => _PaymentSuccessState();
-}
-
-prefixIcon:
-Icon(
-Icons.done_outlined, )
-color: Colors.green,
-)
-void _onPaymentSuccessful(Transaction transaction) {
-  print('Transaction succesful');
-  print(
-      "Transaction message ==> ${transaction.message}, Ref ${transaction.refrenceNumber}");
-
-}
-
-class _PaymentSuccessState extends State<PaymentSuccessPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          ' Payment Integration',
-          style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Color(0xFF21181b),
+        body: Column(
+          children: [
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: Color(0xFFefaf43),
+                  ),
+                ),
+                Spacer(),
+                Text(
+                  "Payment",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                ),
+                Spacer(),
+                SizedBox(),
+              ],
+            ),
+            Divider(
+              color: Colors.grey,
+              endIndent: 10,
+              indent: 10,
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Stack(
+              children: [
+                Container(
+                  width: double.infinity,
+                  margin: EdgeInsets.only(left: 40,right: 40,top: 60),
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 60,
+                      ),
+                      Text(
+                        "Payment Success",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              "Bank",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              "Maybank  Berhad",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              "Pay",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              "Online Banking",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              "Amount",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              "RM 35.0",
+                              style: TextStyle(
+                                  fontSize: 15, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Center(
+                        child: Text(
+                          "Total Pay",
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Center(
+                        child: Text(
+                          "RM 35.0",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Center(
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.green,
+                    ),
+                    child: Icon(Icons.done,color: Colors.white,size: 60,),
+                  ),
+                ),
+
+              ],
+            ),
+            SizedBox(
+              height: 60,
+            ),
+            Text(
+              "Copyright | Bolts 2022",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400),
+            ),
+          ],
         ),
-        centerTitle: true,
-        elevation: 0,
-      ),
-      body: Center(
-        child: SingleChildScrollView(
-            child: MaterialButton(
-              onPressed: () => _checkPayment(),
-              child: Text('Proceed to Payment'),
-              color: Colors.green,
-            )),
       ),
     );
   }
-
-  void _checkPayment() {
-    try {
-      PaystackPayManager(context: context)
-        ..setSecretKey("YOUR-SECRET-KEY")
-      // ..setCompanyAssetImage(Image(image: NetworkImage("YOUR-IMAGE-URL")))
-        ..setAmount(100000)
-        ..setReference(DateTime.now().millisecondsSinceEpoch.toString())
-        ..setCurrency("NGN")
-        ..setEmail("ashrafurpakatong@gmail.com")
-        ..setFirstName("Ashrafur")
-        ..setLastName("Rahman")
-        ..setMetadata(
-          {
-            "custom_fields": [
-              {
-                "value": "PakAtongKafe",
-                "display_name": "Payment_to",
-                "variable_name": "Payment_to"
-              }
-            ]
-          },
-        )
-        ..onSuccesful(_onPaymentSuccessful)
-        ..onPending(_onPaymentPending)
-        ..onFailed(_onPaymentFailed)
-        ..onCancel(_onCancel)
-        ..initialize();
-    } catch (error) {
-      print('Payment Error ==> $error');
-    }
-  }
-
-  void _onPaymentSuccessful(Transaction transaction) {
-    print('Transaction succesful');
-    print(
-        "Transaction message ==> ${transaction.message}, Ref ${transaction.refrenceNumber}");
-  }
-
-  void _onPaymentPending(Transaction transaction) {
-    print('Transaction Pending');
-    print("Transaction Ref ${transaction.refrenceNumber}");
-  }
-
-  void _onPaymentFailed(Transaction transaction) {
-    print('Transaction Failed');
-    print("Transaction message ==> ${transaction.message}");
-  }
-
-  void _onCancel(Transaction transaction) {
-    print('Transaction Cancelled');
-  }
-}
 }

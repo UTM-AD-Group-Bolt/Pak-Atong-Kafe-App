@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/PaymentSuccessPage.dart';
 import 'package:myapp/pages//HomePage.dart';
 import 'package:myapp/pages/favoritePage.dart';
 import 'package:myapp/pages/LoadingScreen.dart';
@@ -27,27 +28,30 @@ void main() async {
       create: (BuildContext context) {  },
       initialData: null,
       child: MaterialApp(
-        initialRoute: '/signin',
-        routes: {
-          '/': (context) => LoadingScreen(),
-          '/home': (context) => HomePage(),
-          '/favorites': (context) => FavoritePage(),
-          '/loading': (context) => LoadingScreen(),
-          '/menudetails': (context) => MenuDetailsPage(
-              1, 'images/Ayam-Goreng.png', 'Ayam Goreng', '5 min', 'Available'),
+        debugShowCheckedModeBanner:false,
+        home: PaymentScreen(),
 
-
-          // '/review':  (context) => ReviewPage(),
-          // '/faq':  (context) => FaqPage(),
-          // '/customersupport':  (context) => CustomerSupportPage(),
-          // '/orderhistory':  (context) => OrderHistoryPage(),
-          '/signin':  (context) => SignInPage(),
-          '/register': (context) => RegisterPage(),
-          // '/checkout':  (context) => CheckoutPage(),
-          // '/paymentmethod':  (context) => PaymentMethodPage(),
-          // '/paymentsuccess':  (context) => PaymentSuccessPage(),
-          // '/profile':  (context) => ProfilePage(),
-        },
+        // initialRoute: '/signin',
+        // routes: {
+        //   '/': (context) => LoadingScreen(),
+        //   '/home': (context) => HomePage(),
+        //   '/favorites': (context) => FavoritePage(),
+        //   '/loading': (context) => LoadingScreen(),
+        //   '/menudetails': (context) => MenuDetailsPage(
+        //       1, 'images/Ayam-Goreng.png', 'Ayam Goreng', '5 min', 'Available'),
+        //
+        //
+        //   // '/review':  (context) => ReviewPage(),
+        //   // '/faq':  (context) => FaqPage(),
+        //   // '/customersupport':  (context) => CustomerSupportPage(),
+        //   // '/orderhistory':  (context) => OrderHistoryPage(),
+        //   '/signin':  (context) => SignInPage(),
+        //   '/register': (context) => RegisterPage(),
+        //   // '/checkout':  (context) => CheckoutPage(),
+        //   // '/paymentmethod':  (context) => PaymentMethodPage(),
+        //   // '/paymentsuccess':  (context) => PaymentSuccessPage(),
+        //   // '/profile':  (context) => ProfilePage(),
+        // },
       ),
     ),
   );

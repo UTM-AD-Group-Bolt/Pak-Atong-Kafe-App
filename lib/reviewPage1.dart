@@ -15,47 +15,27 @@ class _ReviewPageState extends State<ReviewPage> {
       width: 360,
       height: 640,
       color: const Color(0xff21181b),
-      padding: const EdgeInsets.only(top: 27, bottom: 37,),
+      padding: const EdgeInsets.only(top: 50, bottom: 37,),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            width: 335,
+            width: 65,
             height: 35,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Transform.rotate(
-                  angle: -3.14,
-                  child: Container(
-                    width: 24,
-                    height: 19.77,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: const Color(0xfff2ab37),
-                    ),
-                  ),
+                const Text(
+                  "Review",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(height: 325.48),
-                const SizedBox(
-                  width: 159,
-                  height: 25.28,
-                  child: Text(
-                    "Review",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      backgroundColor: Color(0xff2b2b2b),
-                      fontSize: 20,
-                      fontFamily: "DM Sans",
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 325.48),
                 Container(
                   width: 335,
                   height: 2,
@@ -83,18 +63,7 @@ class _ReviewPageState extends State<ReviewPage> {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Transform.rotate(
-                  angle: -3.14,
-                  child: Container(
-                    width: 24,
-                    height: 19.77,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: const Color(0xfff2ab37),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 676.23),
+                const SizedBox(height: 10),
                 Container(
                   width: 335,
                   height: 2,
@@ -134,12 +103,12 @@ class _ReviewPageState extends State<ReviewPage> {
                 ),
                 const SizedBox(height: 39),
                 const SizedBox(
-                  width: 162,
+                  width: 200,
                   child: Text(
                     "Please give your rate.",
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 16,
+                      fontSize: 14,
                     ),
                   ),
                 ),
@@ -157,14 +126,24 @@ class _ReviewPageState extends State<ReviewPage> {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TextFormField(
-                        decoration: const InputDecoration (
-                          hintText: "Write feedback",
+                    children: const [
+                      SizedBox(
+                        width: 162,
+                        child: Text(
+                          "Write feedback...",
+                          style: TextStyle(
+                            color: Color(0xff898989),
+                            fontSize: 14,
+                          ),
                         ),
-                      )
+                      ),
                     ],
                   ),
+                ),
+                const SizedBox(height: 39),
+                const SizedBox(
+                  width: 228,
+                  height: 48,
                 ),
                 const SizedBox(height: 39),
                 Container(
@@ -205,15 +184,7 @@ class _ReviewPageState extends State<ReviewPage> {
                     ],
                   ),
                 ),
-                const SizedBox (height:24),
-                Container (
-                  padding: const EdgeInsets.only (left: 150.0, top: 40.0),
-                  child: const ElevatedButton (
-                    onPressed: null,
-                    child: Text('Submit'),
-                  )
-                ),
-                const SizedBox(height: 39),
+                const SizedBox(height: 30),
                 const SizedBox(
                   width: 290,
                   child: Text(
@@ -221,7 +192,7 @@ class _ReviewPageState extends State<ReviewPage> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Color(0xfffaf5d8),
-                      fontSize: 16,
+                      fontSize: 14,
                     ),
                   ),
                 ),

@@ -277,8 +277,8 @@ class _SignInPageState extends State<SignInPage> {
                                       ),
                                     ),
                                     onPressed:  () {
-                                      print("User moved to sign up page");
                                       Navigator.of(context, rootNavigator: true).pop('dialog');
+                                      Navigator.pushNamed(context, '/register');
                                     },
                                   ),
                                 );
@@ -286,28 +286,28 @@ class _SignInPageState extends State<SignInPage> {
                                   width: double.infinity,
                                   height: 50.0,
                                   child: TextButton(
-                                    child: Text("Continue as Guest"),
-                                    style: TextButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(15.0),
+                                      child: Text("Continue as Guest"),
+                                      style: TextButton.styleFrom(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(15.0),
+                                        ),
+                                        foregroundColor: Palette.orange,
+                                        backgroundColor: Palette.beige[300],
+                                        textStyle: TextStyle(
+                                          fontFamily: 'DMSans',
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 20,
+                                        ),
                                       ),
-                                      foregroundColor: Palette.orange,
-                                      backgroundColor: Palette.beige[300],
-                                      textStyle: TextStyle(
-                                        fontFamily: 'DMSans',
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 20,
-                                      ),
-                                    ),
-                                    onPressed:  () async {
-                                      dynamic result = await _auth.signInAnon();
-                                      if (result == null) {
-                                        print("Error signing in!");
-                                      } else {
-                                        print("User signed in succesfully! (Anonymous)");
-                                        Navigator.of(context, rootNavigator: true).pop('dialog');
+                                      onPressed:  () async {
+                                        dynamic result = await _auth.signInAnon();
+                                        if (result == null) {
+                                          print("Error signing in!");
+                                        } else {
+                                          print("User signed in succesfully! (Anonymous)");
+                                          Navigator.of(context, rootNavigator: true).pop('dialog');
+                                        }
                                       }
-                                    }
                                   ),
                                 );
 

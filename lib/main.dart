@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/pages//HomePage.dart';
-import 'package:myapp/pages/favoritePage.dart';
+import 'package:myapp/pages/FavoritePage.dart';
 import 'package:myapp/pages/LoadingScreen.dart';
 import 'package:myapp/pages/MenuDetailsPage.dart';
-import 'package:myapp/pages/registerPage.dart';
-import 'package:myapp/pages/signInPage.dart';
-import 'package:myapp/pages/wrapper.dart';
-import 'package:myapp/pages/authenticate.dart';
+import 'package:myapp/pages/RegisterPage.dart';
+import 'package:myapp/pages/SignInPage.dart';
+import 'package:myapp/models/wrapper.dart';
+import 'package:myapp/models/authenticate.dart';
 import 'package:myapp/services/auth.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';

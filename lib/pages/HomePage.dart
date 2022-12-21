@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/pages/SideNavBarPage.dart';
 import 'package:myapp/services/auth.dart';
+import 'package:myapp/models/palette.dart';
 
 class HomePage extends StatelessWidget {
 
@@ -9,14 +11,29 @@ class HomePage extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(top:10.0, bottom:10.0, right: 20.0),
       child: TextFormField(
+        style: TextStyle(
+          fontFamily: "DMSans",
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+          color: Palette.white
+        ),
         decoration: InputDecoration(
-            fillColor: Color(0xff3a3e3e),
+            fillColor: Palette.black,
             filled: true,
-            hintText: "Search Food",
-            hintStyle: TextStyle(color: Colors.white),
-            prefixIcon: Icon(
-              Icons.search,
-              color: Colors.white,
+            hintText: "Search...",
+            hintStyle: TextStyle(
+              fontFamily: "DMSans",
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+              color: Palette.white
+            ),
+            prefixIcon: Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Icon(
+                Icons.search,
+                size: 32,
+                color: Palette.white,
+              ),
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.0),
@@ -45,7 +62,7 @@ class HomePage extends StatelessWidget {
         height: 120,
         width: 150,
         decoration: BoxDecoration(
-          color: Color(0xff3c3f40),
+          color: Palette.black,
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Column(
@@ -74,7 +91,7 @@ class HomePage extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: "DMSans",
                   fontSize: 15,
-                  color: Colors.white,
+                  color: Palette.white[300],
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -86,7 +103,6 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _bottomCategories({required String image, required String name, required String description, required double price, required String deliveryFee, required String time, required String availability, required BuildContext context}) {
-    if (name == "") return new Container(); //Ros: Returns an empty container if there are no titles
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, '/menudetails',arguments: {
@@ -101,7 +117,7 @@ class HomePage extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Color(0xff3c3f40),
+          color: Palette.black,
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Padding(
@@ -141,7 +157,7 @@ class HomePage extends StatelessWidget {
                               style: TextStyle(
                                 fontFamily: "DMSans",
                                 fontSize: 15,
-                                color: Colors.white,
+                                color: Palette.white[300],
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -156,7 +172,7 @@ class HomePage extends StatelessWidget {
                               style: TextStyle(
                                 fontFamily: "DMSans",
                                 fontSize: 15,
-                                color: Colors.white,
+                                color: Palette.white[300],
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -174,11 +190,14 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Color(0xff2b2b2b),
+      backgroundColor: Palette.black[700],
+      drawer: SideNavBar(),
       appBar: AppBar(
         title: Text(
           'Home',
@@ -188,12 +207,17 @@ class HomePage extends StatelessWidget {
         ),
         centerTitle: true,
         elevation: 0.0,
-        backgroundColor: Color(0xff2b2b2b),
-        leading: Icon(
-          Icons.sort,
-          size: 30,
-          color: Colors.amber,
-        ),
+        backgroundColor: Palette.black[700],
+        // I don't know why
+        // leading: Builder(
+        //   builder: (context) => IconButton(
+        //     icon: Icon(Icons.menu),
+        //     color: Palette.yellow,
+        //     onPressed: () {
+        //       _scaffoldKey.currentState!.openDrawer();
+        //     },
+        //   ),
+        // ),
         actions: [
           Padding(
             padding: EdgeInsets.all(9.0),
@@ -201,14 +225,18 @@ class HomePage extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.transparent,
+                    width: 50,
+                    child: IconButton(
+                      constraints: BoxConstraints(),
+                      padding: EdgeInsets.zero,
+                      style: IconButton.styleFrom(
+                        backgroundColor: Colors.transparent,
+                        elevation: 0.0,
                       ),
                       onPressed: () {
                         Navigator.pushNamed(context, '/favorites');
                       },
-                      child: Icon(
+                      icon: Icon(
                         Icons.favorite,
                         size: 30,
                         color: Colors.pink,
@@ -217,17 +245,20 @@ class HomePage extends StatelessWidget {
                   ),
                   SizedBox(width: 10.0),
                   Container(
-                    child: ElevatedButton(
+                    child: IconButton(
+                      constraints: BoxConstraints(),
+                      padding: EdgeInsets.only(right: 10),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.transparent,
+                        elevation: 0.0,
                       ),
                       onPressed: () async {
                         await _auth.signOut();
                       },
-                      child: Icon(
+                      icon: Icon(
                         Icons.shopping_cart,
                         size: 30,
-                        color: Colors.amber,
+                        color: Palette.yellow,
                       ),
                     ),
                   ),
@@ -248,30 +279,39 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  _textformField(),
                   Container(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
+                          "Welcome to",
+                          style: TextStyle(
+                            fontFamily: "DMSans",
+                            fontSize: 22,
+                            color: Palette.white[300],
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
                           "Pak Atong Kafe",
                           style: TextStyle(
                             fontFamily: "DMSans",
                             fontSize: 32,
-                            color: Colors.white,
+                            color: Palette.orange,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ],
                     ),
                   ),
-                  _textformField(),
                   Text(
                     "Your Favorites",
                     style: TextStyle(
                       fontFamily: "DMSans",
                       fontSize: 24,
-                      color: Colors.white,
+                      color: Palette.white[300],
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -327,7 +367,7 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: "DMSans",
                       fontSize: 23,
-                      color: Colors.white,
+                      color: Palette.white[300],
                       fontWeight: FontWeight.bold,
                     ),
                   ),

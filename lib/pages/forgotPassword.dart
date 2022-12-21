@@ -15,7 +15,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   @override
   void dispose() {
     _emailController.dispose();
-    // super.dispose();
+     super.dispose();
   }
 
   Future passwordReset() async {

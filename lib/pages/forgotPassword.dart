@@ -1,17 +1,18 @@
 
-import 'package:myapp/services/auth.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 
 class ForgotPassword extends StatefulWidget {
-  const ForgotPassword({key? key}) : super(key: key);
+  const ForgotPassword({key}) : super(key: key);
 
   @override
-  State<forgotPassword> createState() => _forgotPasswordState();
+  State<ForgotPassword> createState() => _ForgotPasswordState();
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
-  final emailController = TextEditingController();
+  final _emailController = TextEditingController();
 
   @override
   void dispose() {
@@ -22,7 +23,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   Future passwordReset() async {
     try {
       await FirebaseAuth.instance
-          .sendPasswordResetEmail(email: emailController.text.trim());
+          .sendPasswordResetEmail(email: _emailController.text.trim());
       showDialog(
         context: context,
         builder: (context) {
@@ -71,7 +72,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             child: TextField(
               controller: _emailController,
               decoration: InputDecoration(
-                enabledBorder: OutlineInputBordet(
+                enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black),
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -80,7 +81,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 hintText: 'Email',
-                fillcolor: Colors.grey[200],
+                fillColor: Colors.grey[200],
                 filled: true,
               ),
             ),

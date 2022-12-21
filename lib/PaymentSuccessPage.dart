@@ -81,7 +81,7 @@ class PaymentScreen extends StatelessWidget {
                                   fontSize: 15, fontWeight: FontWeight.bold),
                             ),
                           ),
-                        ],
+                        ],//end
                       ),
                       SizedBox(
                         height: 20,

@@ -10,6 +10,7 @@ class CartController extends GetxController {
   CartController() {
     loadCartFromApi();
   }
+
   loadCartFromApi() async {
     loading(true);
     var productsList = await cartRepository.loadCartFromApi();

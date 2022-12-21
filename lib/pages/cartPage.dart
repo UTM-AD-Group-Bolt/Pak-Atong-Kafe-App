@@ -27,10 +27,10 @@ class _cartPageState extends State<cartPage> {
           }
           return Stack(
             children: [
-              _buildAbove(),
+
               Container(),
               Positioned(
-              bottom: 0,
+              bottom: 50,
               left: 0,
               right: 0,
                 child: ListView.builder(
@@ -115,6 +115,7 @@ class _cartPageState extends State<cartPage> {
                 ),
 
               ),
+              _buildAbove(),
               _buildBottom(),
             ],
           );
@@ -125,20 +126,20 @@ class _cartPageState extends State<cartPage> {
 
   _buildAbove() {
     return Container(
-      height: MediaQuery.of(context).size.height / 3,
-
+      height: MediaQuery.of(context).size.height / 4,
       padding: const EdgeInsets.only(
         left: 16.0,
         right: 16,
         top: 4.0,
       ),
       child: Container(
-        height: MediaQuery.of(context).size.height / 3,
+        height: MediaQuery.of(context).size.height / 6,
 
         child: Container(
           padding: EdgeInsets.all(16.0),
           color: Colors.white,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -148,6 +149,7 @@ class _cartPageState extends State<cartPage> {
                     "Subtotal",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
+                      color: Colors.grey
                     ),
                   ),
                   Column(
@@ -158,26 +160,98 @@ class _cartPageState extends State<cartPage> {
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18.0,
+                          color: Colors.grey
                         ),
                       ),
-                      Text(
-                        "Subtotal does not include shipping",
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 12.0,
-                        ),
-                      ),
+
                     ],
                   ),
+
                 ],
               ),
-              SizedBox(height: 56),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  Text(
+                    "Tax & Fees",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        "Not Applicable",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey,
+                          fontSize: 18.0,
+                        ),
+                      ),
 
+                    ],
+                  ),
 
                 ],
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "Delivery",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        "RM2.00",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey,
+                          fontSize: 18.0,
+                        ),
+                      ),
+
+                    ],
+                  ),
+
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "Total",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        "\$${cartController.subtotal+2}",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 26.0,
+                        ),
+                      ),
+
+                    ],
+                  ),
+
+                ],
+              ),
+
 
             ],
           ),
@@ -187,25 +261,71 @@ class _cartPageState extends State<cartPage> {
   }
 
   _buildBottom() {
+
+    // return Container(
+    //   // autogroup9mazc2W (Nvm1CwpWwkT1W154pe9maz)
+    //   margin:  EdgeInsets.fromLTRB(5, 0, 5, 0),
+    //   width:  double.infinity,
+    //   height:  47,
+    //   decoration:  BoxDecoration (
+    //     color:  Color(0xfff2ab37),
+    //     borderRadius:  BorderRadius.circular(7),
+    //     boxShadow:  [
+    //       BoxShadow(
+    //         color:  Color(0x26000000),
+    //         offset:  Offset(2, 2),
+    //         blurRadius:  0,
+    //       ),
+    //     ],
+    //   ),
+    //   child:
+    //   Center(
+    //     child:
+    //     Center(
+    //       child:
+    //       Text(
+    //         'Check Out',
+    //         textAlign:  TextAlign.center,
+    //         style:  TextStyle(
+    //           fontFamily: 'DM Sans',
+    //           fontSize:  19,
+    //           fontWeight:  FontWeight.w700,
+    //           height:  1.3025,
+    //           color:  Color(0xffffffff),
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    // );
+
     return Expanded(
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.symmetric(
-            horizontal: 32,
-            vertical: 16.0,
-          ),
-          backgroundColor: Colors.orange,
-          foregroundColor: Colors.white,
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8.0),
-            side: BorderSide(
-              color: Colors.black38,
+
+      child: Padding(
+        padding: const EdgeInsets.only(
+          bottom: 6.0,
+        ),
+        child: Align(
+          alignment: FractionalOffset.bottomCenter,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              padding: EdgeInsets.symmetric(
+                horizontal: 128,
+                vertical: 16.0,
+              ),
+              backgroundColor: Colors.orange,
+              foregroundColor: Colors.white,
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0),
+                side: BorderSide(
+                  color: Colors.black38,
+                ),
+              ),
             ),
+            onPressed: () {},
+            child: Text("Check out"),
           ),
         ),
-        onPressed: () {},
-        child: Text("Check out"),
       ),
     );
   }

@@ -48,7 +48,7 @@ class _ReviewPageState extends State<ReviewPage> {
                     "Review",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Colors.white,
+                      backgroundColor: Color(0xff2b2b2b),
                       fontSize: 20,
                       fontFamily: "DM Sans",
                       fontWeight: FontWeight.w700,
@@ -139,7 +139,7 @@ class _ReviewPageState extends State<ReviewPage> {
                     "Please give your rate.",
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 14,
+                      fontSize: 16,
                     ),
                   ),
                 ),
@@ -157,17 +157,12 @@ class _ReviewPageState extends State<ReviewPage> {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      SizedBox(
-                        width: 162,
-                        child: Text(
-                          "Write feedback...",
-                          style: TextStyle(
-                            color: Color(0xff898989),
-                            fontSize: 16,
-                          ),
+                    children: [
+                      TextFormField(
+                        decoration: const InputDecoration (
+                          hintText: "Write feedback",
                         ),
-                      ),
+                      )
                     ],
                   ),
                 ),
@@ -209,6 +204,14 @@ class _ReviewPageState extends State<ReviewPage> {
                       ),
                     ],
                   ),
+                ),
+                const SizedBox (height:24),
+                Container (
+                  padding: const EdgeInsets.only (left: 150.0, top: 40.0),
+                  child: const ElevatedButton (
+                    onPressed: null,
+                    child: Text('Submit'),
+                  )
                 ),
                 const SizedBox(height: 39),
                 const SizedBox(

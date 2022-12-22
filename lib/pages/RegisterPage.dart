@@ -151,7 +151,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   final AuthService _auth = AuthService();
 
-  // text field state
+  // text field states
   String firstname = '';
   String lastname = '';
   String email = '';

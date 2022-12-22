@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/PaymentSuccessPage.dart';
 import 'package:myapp/pages//HomePage.dart';
 import 'package:myapp/pages/FavoritePage.dart';
 import 'package:myapp/pages/LoadingScreen.dart';
@@ -11,6 +12,7 @@ import 'package:myapp/services/auth.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:myapp/models/user.dart';
+import 'package:myapp/pages/cartPage.dart';
 // import 'ReviewPage.dart';
 // import 'FaqPage.dart';
 // import 'CustomerSupportPage.dart';
@@ -43,6 +45,7 @@ void main() async {
           '/favorites': (context) => FavoritePage(),
           '/loading': (context) => LoadingScreen(),
           '/menudetails': (context) => MenuDetailsPage(),
+          '/cart':  (context) => cartPage(),
 
           // '/review':  (context) => ReviewPage(),
           // '/faq':  (context) => FaqPage(),

@@ -253,8 +253,7 @@ class _SignInPageState extends State<SignInPage> {
                               fontSize: 20.0,
                               color: Palette.yellow,
                             ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
+                            recognizer: TapGestureRecognizer()..onTap = () {
                                 // play tap sound
                                 Feedback.forTap(context);
 

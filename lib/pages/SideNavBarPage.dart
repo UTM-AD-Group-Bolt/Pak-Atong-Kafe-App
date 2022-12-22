@@ -31,7 +31,7 @@ class SideNavBar extends StatelessWidget {
   Function() alertBoxSignOut(BuildContext context){
     return (){
       // set up the buttons
-      Widget signUpButton = SizedBox(
+      Widget signOutButton = SizedBox(
         width: double.infinity,
         height: 50.0,
         child: TextButton(
@@ -54,7 +54,7 @@ class SideNavBar extends StatelessWidget {
           },
         ),
       );
-      Widget continueButton = SizedBox(
+      Widget cancelButton = SizedBox(
         width: double.infinity,
         height: 50.0,
         child: TextButton(
@@ -105,8 +105,8 @@ class SideNavBar extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              signUpButton,
-              continueButton,
+              signOutButton,
+              cancelButton,
             ],
           ),
         ),
@@ -123,11 +123,11 @@ class SideNavBar extends StatelessWidget {
   }
 
   final AuthService _auth = AuthService();
-  int numOrders = 10;
-  int numCart = 3;
+  int numOrders = 3;
+  int numCart = 0;
   String accountName = "Test Account";
   String accountAddress = "email@gmail.com";
-  bool isAnon = true;
+  bool isAnon = false;
 
   @override
   Widget build(BuildContext context) {

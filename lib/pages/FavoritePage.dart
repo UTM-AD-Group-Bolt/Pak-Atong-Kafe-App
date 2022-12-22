@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/models/palette.dart';
 import '../models/favorite.dart';
 import '../models/favorite_card.dart';
 
@@ -26,17 +27,25 @@ class _FavoritePageState extends State<FavoritePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff2b2b2b),
+      backgroundColor: Palette.black[600],
       appBar: AppBar(
         elevation: 0.0,
-        leading: Icon(
-          Icons.arrow_back,
-          size: 30,
-          color: Colors.amber,
+        leading: GestureDetector(
+          onTap: (){
+            // play tap sound
+            Feedback.forTap(context);
+
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back,
+            size: 30,
+            color: Palette.yellow,
+          ),
         ),
         title: Text('Favorites'),
         centerTitle: true,
-        backgroundColor: Color(0xff2b2b2b),
+        backgroundColor: Palette.black[600],
       ),
       body: Column(
         children: favorites.map((favorite) => FavoriteCard(

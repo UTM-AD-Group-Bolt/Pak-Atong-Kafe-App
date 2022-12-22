@@ -1,86 +1,100 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ForgotPassword extends StatelessWidget {
 
-  static String id = 'forgot password';
+class ForgotPassword extends StatefulWidget {
+  const ForgotPassword({key}) : super(key: key);
 
-  BuildContext? get context => null;
+  State<ForgotPassword> createState() => _ForgotPasswordState();
+}
 
-  get visible => null;
+class _ForgotPasswordState extends State<ForgotPassword> {
+  final _emailController = TextEditingController();
 
   @override
-  final _auth = FirebaseAuth.instance;
-  final _formkey = GlobalKey<FormState>();
-
-  Widget build(BuildContext) {
-    return Scaffold(
-        backgroundColor: Colors.black,
-        body: Form(
-            child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Email your Email',
-                      style: TextStyle(fontSize: 30, color: Colors.white),
-                    ),
-                    TextFormField(
-                        style: TextStyle(color: Colors.white),
-                        decoration: InputDecoration(
-                            labelText: 'Email',
-                            icon: Icon(
-                              Icons.import_contacts_sharp,
-                              color: Colors.white,
-                            ),
-                            errorStyle: TextStyle(color: Colors.white),
-                            labelStyle: TextStyle(color: Colors.white),
-                            hintStyle: TextStyle(color: Colors.white),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            errorBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            )
-                        )
-
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10,
-                  ),
-                Visibility(
-                  maintainSize: true,
-                   maintainAnimation: true,
-                   maintainState: true,
-                    visible: visible,
-                   child: Container(
-                      child: CircularProgressIndicator(
-                      color: Colors.white,
-                      ))),
-            ],
-        ),
-    );
+  void dispose() {
+    _emailController.dispose();
+    // super.dispose();
   }
 
-  void Forgotpass(String email) async {
-    if (_formkey.currentState!.validate()) {
-      await _auth
-          .sendPasswordResetEmail(email: email)
-          .then((uid) => {
-        Navigator.of(context!).pushReplacement(
-            MaterialPageRoute(builder: (context) => LoginPage()))
-      })
-          .catchError((e) {});
+  Future passwordReset() async {
+    try {
+      await FirebaseAuth.instance
+          .sendPasswordResetEmail(email: _emailController.text.trim());
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: Text('Password reset link sent! Check your email'),
+          );
+        },
+      );
+    } on FirebaseAuthException catch (e) {
+      print(e);
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: Text(e.message.toString()),
+          );
+        },
+      );
     }
   }
 
-  
 
-LoginPage() {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.amber[200],
+        elevation: 0,
+      ), //appbar
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: Text(
+                'Enter your email and we will send you a password reset link',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 20)
+            ),
+          ),
+          SizedBox(height:10),
+          //email text-field
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: TextField(
+              controller: _emailController,
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.amber),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                hintText: 'Email',
+                fillColor: Colors.grey[200],
+                filled: true,
+              ),
+            ),
+          ),
+          SizedBox(height:10),
+
+          MaterialButton(
+            onPressed: () {},
+            child: Text('Reset Password'),
+            color: Colors.amber[200],
+          ),
+        ],
+      ),
+
+    );
+
+  }
 }

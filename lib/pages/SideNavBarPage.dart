@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/models/palette.dart';
-import '../services/auth.dart';
+import 'package:myapp/services/auth.dart';
+import 'package:provider/provider.dart';
+import 'package:myapp/services/database.dart';
 
 class SideNavBar extends StatelessWidget {
   SideNavBar({Key? key}) : super(key: key);
@@ -50,7 +53,7 @@ class SideNavBar extends StatelessWidget {
           ),
           onPressed: () async {
             Navigator.of(context, rootNavigator: true).pop('dialog');
-            await _auth.signOut();
+            await _auth.signOut(context);
           },
         ),
       );

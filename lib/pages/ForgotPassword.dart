@@ -50,20 +50,21 @@ class ForgotPassword extends StatelessWidget {
                         )
 
                     ),
+                    SizedBox(height: 10,
+                    ),
+                    Visibility(
+                        maintainSize: true,
+                        maintainAnimation: true,
+                        maintainState: true,
+                        visible: visible,
+                        child: Container(
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                            ))),
                   ],
                 ),
-                SizedBox(height: 10,
-                  ),
-                Visibility(
-                  maintainSize: true,
-                   maintainAnimation: true,
-                   maintainState: true,
-                    visible: visible,
-                   child: Container(
-                      child: CircularProgressIndicator(
-                      color: Colors.white,
-                      ))),
-            ],
+
+            ),
         ),
     );
   }
@@ -73,14 +74,12 @@ class ForgotPassword extends StatelessWidget {
       await _auth
           .sendPasswordResetEmail(email: email)
           .then((uid) => {
-        Navigator.of(context!).pushReplacement(
-            MaterialPageRoute(builder: (context) => LoginPage()))
+        // Navigator.of(context!).pushReplacement(
+        //     MaterialPageRoute(builder: (context) =>
+        //         LoginPage()
+        //     )
+        // )
       })
           .catchError((e) {});
     }
-  }
-
-  
-
-LoginPage() {
-}
+  }}

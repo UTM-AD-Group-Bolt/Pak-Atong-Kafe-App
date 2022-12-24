@@ -40,9 +40,11 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
         ),
         centerTitle: true,
         backgroundColor: Color(0xff2b2b2b),
-        leading: Icon(
-          Icons.arrow_back,
-          size: 30,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context,true);
+          },
+          icon: Icon(Icons.arrow_back),
           color: Colors.amber,
         ),
         actions: [

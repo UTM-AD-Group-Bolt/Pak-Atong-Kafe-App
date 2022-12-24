@@ -13,7 +13,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:myapp/models/user.dart';
 import 'package:myapp/pages/cartPage.dart';
 // import 'ReviewPage.dart';
-// import 'FaqPage.dart';
+ import 'package:myapp/pages/faqPage.dart';
 // import 'CustomerSupportPage.dart';
 // import 'OrderHistoryPage.dart';
 // import 'CheckoutPage.dart';
@@ -47,7 +47,7 @@ void main() async {
           '/cart':  (context) => cartPage(),
 
           // '/review':  (context) => ReviewPage(),
-          // '/faq':  (context) => FaqPage(),
+          '/faq':  (context) => faqPage(),
           // '/customersupport':  (context) => CustomerSupportPage(),
           // '/orderhistory':  (context) => OrderHistoryPage(),
           // '/checkout':  (context) => CheckoutPage(),

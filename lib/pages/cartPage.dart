@@ -93,7 +93,13 @@ class _cartPageState extends State<cartPage> {
                             children: [
                               Container(
                                 color: Colors.grey[200],
-                                child: Icon(Icons.remove),
+                                child: IconButton(
+                                    icon: Icon(Icons.remove),
+                                        onPressed: () {
+                                      int.parse(cartController.cartItems[index]["quantity"]) - 1;
+
+          }
+                                ),
                               ),
                               Container(
                                 padding: EdgeInsets.all(8.0),
@@ -335,8 +341,16 @@ class _cartPageState extends State<cartPage> {
       backgroundColor: Color(0xff2b2b2b),
       elevation: 0,
       centerTitle: true,
+      leading: IconButton(
+        onPressed: () {
+          Navigator.pop(context,true);
+        },
+        icon: Icon(Icons.arrow_back),
+        color: Colors.amber,
+      ),
+
       title: Text(
-        'Menu',
+        'Cart',
         style: TextStyle(
           fontFamily: "DMSans",
         ),

@@ -9,7 +9,6 @@ import 'package:myapp/pages/wrapper.dart';
 import 'package:myapp/pages/authenticate.dart';
 import 'package:myapp/services/auth.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:myapp/models/user.dart';
 import 'package:myapp/pages/cartPage.dart';
 // import 'ReviewPage.dart';
@@ -20,6 +19,10 @@ import 'package:myapp/pages/cartPage.dart';
 // import 'PaymentMethodPage.dart';
 // import 'PaymentSuccessPage.dart';
 // import 'ProfilePage.dart';
+import 'package:myapp/testing2/catalog_screen.dart';
+import 'package:myapp/testing2/cart_screen.dart';
+
+import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,6 +49,8 @@ void main() async {
           '/menudetails': (context) => MenuDetailsPage(),
           '/cart':  (context) => cartPage(),
 
+          '/testcatalog':  (context) => TestCatalogScreen(),
+          '/testcart':  (context) => TestCartScreen(),
           // '/review':  (context) => ReviewPage(),
           '/faq':  (context) => faqPage(),
           // '/customersupport':  (context) => CustomerSupportPage(),

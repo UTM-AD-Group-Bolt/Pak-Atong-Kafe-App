@@ -222,7 +222,7 @@ class HomePage extends StatelessWidget {
                         backgroundColor: Colors.transparent,
                       ),
                       onPressed: () async {
-                        Navigator.pushNamed(context, '/faq');
+                        Navigator.pushNamed(context, '/testcart');
                       },
                       child: Icon(
                         Icons.shopping_cart,

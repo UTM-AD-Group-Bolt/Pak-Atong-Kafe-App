@@ -3,6 +3,7 @@ import 'package:myapp/pages//HomePage.dart';
 import 'package:myapp/pages/favoritePage.dart';
 import 'package:myapp/pages/LoadingScreen.dart';
 import 'package:myapp/pages/MenuDetailsPage.dart';
+import 'package:myapp/pages/forgotPassword.dart';
 import 'package:myapp/pages/registerPage.dart';
 import 'package:myapp/pages/signInPage.dart';
 
@@ -27,7 +28,7 @@ void main() async {
       create: (BuildContext context) {  },
       initialData: null,
       child: MaterialApp(
-        initialRoute: '/signin',
+        initialRoute: '/forgotpassword',
         routes: {
           '/': (context) => LoadingScreen(),
           '/home': (context) => HomePage(),
@@ -43,6 +44,7 @@ void main() async {
           // '/orderhistory':  (context) => OrderHistoryPage(),
           '/signin':  (context) => SignInPage(),
           '/register': (context) => RegisterPage(),
+          '/forgotpassword': (context) => ForgotPassword(),
           // '/checkout':  (context) => CheckoutPage(),
           // '/paymentmethod':  (context) => PaymentMethodPage(),
           // '/paymentsuccess':  (context) => PaymentSuccessPage(),

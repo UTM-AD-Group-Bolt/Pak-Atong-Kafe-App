@@ -80,22 +80,13 @@ class AuthService {
 
   // create user obj based on firebase user
   MyUser? _userFromCredUser(User? user) {
-    if (user != null){
-      dynamic data = FirebaseFirestore.instance.collection('account').doc(user.uid);
-      try {
-        print(data['firstname']);
-      } catch (e) {
-        print(e.toString());
-      }
-
-      return MyUser(uid: user.uid, firstname: "", lastname: "", email: user.email);
-    }
-    else return null;
+    if (user != null) return MyUser(isAnon: true, uid: user.uid, firstname: "N/A", lastname: "", email: "Loading...");
+    return null;
   }
 
   // auth change user stream
   Stream<MyUser?> get user {
-    return _auth.authStateChanges().map(_userFromCredUser);
+    return _auth.authStateChanges().asyncMap(_userFromCredUser);
   }
 
   // sign in anon
@@ -106,7 +97,7 @@ class AuthService {
 
       //create a new document for the user with the uid
       await DatabaseService(uid: user!.uid).updateMenuData(user!.uid, 'Placeholder', 0);
-      await DatabaseService(uid: user!.uid).updateAccountData(user!.uid, "", "", "Anonymous");
+      await DatabaseService(uid: user!.uid).updateAccountData(true, user!.uid, "", "", "");
 
       return _userFromCredUser(user);
     } catch (e) {
@@ -136,7 +127,7 @@ class AuthService {
 
       //create a new document for the user with the uid
       await DatabaseService(uid: user!.uid).updateMenuData(user!.uid, 'Placeholder', 0);
-      await DatabaseService(uid: user!.uid).updateAccountData(user!.uid, firstname, lastname, email);
+      await DatabaseService(uid: user!.uid).updateAccountData(false, user!.uid, firstname, lastname, email);
 
       return _userFromCredUser(user);
     } catch(e) {

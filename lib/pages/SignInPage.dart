@@ -359,9 +359,9 @@ class _SignInPageState extends State<SignInPage> {
                                           Navigator.of(context, rootNavigator: true).pop('dialog');
                                           dynamic result = await _auth.signInAnon(context);
                                           if (result == null) {
-                                            print("Error signing in!");
+                                            print("<SignInPage> Error signing in!");
                                           } else {
-                                            print("User signed in succesfully! (Anonymous)");
+                                            print("<SignInPage> User signed in succesfully! (Anonymous)");
                                           }
                                         }
                                     ),

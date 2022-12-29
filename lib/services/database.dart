@@ -5,8 +5,9 @@ class DatabaseService {
   DatabaseService({this.uid});
 
   final CollectionReference accountCollection = FirebaseFirestore.instance.collection("account");
-  Future updateAccountData(String userID, String firstname, String lastname, String email) async {
+  Future updateAccountData(bool isAnon, String userID, String firstname, String lastname, String email) async {
     return await accountCollection.doc(uid).set({
+      'isAnon': isAnon,
       'userID': userID,
       'firstname': firstname,
       'lastname': lastname,

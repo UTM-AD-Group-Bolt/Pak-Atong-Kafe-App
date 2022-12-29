@@ -1,13 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/models/palette.dart';
+import 'package:myapp/models/user.dart';
 import 'package:myapp/services/auth.dart';
 import 'package:provider/provider.dart';
 import 'package:myapp/services/database.dart';
 
-class SideNavBar extends StatelessWidget {
-  SideNavBar({Key? key}) : super(key: key);
+class SideNavBar extends StatefulWidget {
+  const SideNavBar({Key? key}) : super(key: key);
 
+  @override
+  State<SideNavBar> createState() => _SideNavBarState();
+}
+
+class _SideNavBarState extends State<SideNavBar> {
   Widget _sideNavListTile({required IconData? icon, required String title, required bool disabled, Function()? onTap, Widget? trailing}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 2.5),
@@ -125,15 +131,31 @@ class SideNavBar extends StatelessWidget {
     };
   }
 
-  final AuthService _auth = AuthService();
+  void getUser() async {
+    userObj = await AuthService().user.first;
+    userObj = await userObj!.fromFirebase();
+    setState(() {
+      if (isAnon = userObj!.isAnon!){
+        accountName = "Anonymous";
+        accountAddress = "(Features are limited)";
+      } else {
+        accountName = userObj!.firstname! + " " + userObj!.lastname!;
+        accountAddress = userObj!.email!;
+      }
+    });
+  }
+
+  AuthService _auth = AuthService();
+  MyUser? userObj = null;
   int numOrders = 3;
   int numCart = 0;
-  String accountName = "Test Account";
-  String accountAddress = "email@gmail.com";
-  bool isAnon = false;
+  String? accountName = "";
+  String? accountAddress = "";
+  bool? isAnon = true;
 
   @override
   Widget build(BuildContext context) {
+    if (userObj == null) getUser();
     return Drawer(
       backgroundColor: Palette.black[600],
       child: ListView(
@@ -162,8 +184,8 @@ class SideNavBar extends StatelessWidget {
                 SizedBox(height: 20),
                 ClipOval(
                   child: Image.network(
-                    (isAnon) ? "https://img.icons8.com/ios-glyphs/90/000000/user--v1.png" : "https://thispersondoesnotexist.com/image",
-                    color: (isAnon) ? Palette.white[300] : null,
+                    (isAnon!) ? "https://img.icons8.com/ios-glyphs/90/000000/user--v1.png" : "https://thispersondoesnotexist.com/image",
+                    color: (isAnon!) ? Palette.white[300] : null,
                     width: 125,
                     height: 125,
                     fit: BoxFit.cover,
@@ -171,7 +193,7 @@ class SideNavBar extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  (isAnon) ? 'Anonymous' : accountName,
+                  accountName!,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontFamily: 'DMSans',
@@ -181,7 +203,7 @@ class SideNavBar extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  (isAnon) ? '(Features are limited)' : accountAddress,
+                  accountAddress!,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontFamily: 'DMSans',
@@ -221,7 +243,7 @@ class SideNavBar extends StatelessWidget {
                 ),
               ),
             )
-            : null, //if (numOrders <= 0), then trailing = null
+                : null, //if (numOrders <= 0), then trailing = null
           ),
           _sideNavListTile(
             icon: Icons.shopping_cart,
@@ -253,7 +275,7 @@ class SideNavBar extends StatelessWidget {
           _sideNavListTile(
             icon: Icons.favorite,
             title: "Favorites",
-            disabled: isAnon,
+            disabled: isAnon!,
             onTap: (){
               Navigator.pop(context);
               Navigator.pushNamed(context, '/favorites');
@@ -262,7 +284,7 @@ class SideNavBar extends StatelessWidget {
           _sideNavListTile(
             icon: Icons.history,
             title: "Order History",
-            disabled: isAnon,
+            disabled: isAnon!,
             onTap: (){
               Navigator.pop(context);
               //Navigator.pushNamed(context, '/favorites');

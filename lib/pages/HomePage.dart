@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:myapp/pages/SideNavBarPage.dart';
 import 'package:myapp/services/auth.dart';
 import 'package:myapp/models/palette.dart';
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
-class HomePage extends StatelessWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
 
+class _HomePageState extends State<HomePage> {
   final AuthService _auth = AuthService();
 
   Widget _textformField() {
@@ -208,16 +213,17 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: Palette.black[700],
-        // I don't know why
-        // leading: Builder(
-        //   builder: (context) => IconButton(
-        //     icon: Icon(Icons.menu),
-        //     color: Palette.yellow,
-        //     onPressed: () {
-        //       _scaffoldKey.currentState!.openDrawer();
-        //     },
-        //   ),
-        // ),
+        leading: Builder(
+          builder: (context) {
+            return IconButton(
+              icon: Icon(
+                Icons.sort,
+                color: Palette.yellow,
+              ),
+              onPressed: () => Scaffold.of(context).openDrawer(),
+            );
+          },
+        ),
         actions: [
           Padding(
             padding: EdgeInsets.all(9.0),

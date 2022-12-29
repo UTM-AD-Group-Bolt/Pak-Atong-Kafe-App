@@ -7,12 +7,14 @@ import 'package:myapp/pages/MenuDetailsPage.dart';
 import 'package:myapp/pages/registerPage.dart';
 import 'package:myapp/pages/signInPage.dart';
 import 'package:myapp/pages/wrapper.dart';
-import 'package:myapp/pages/authenticate.dart';
+import 'package:myapp/models/authenticate.dart';
 import 'package:myapp/services/auth.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:myapp/models/user.dart';
 import 'package:myapp/pages/cartPage.dart';
+
+import 'models/palette.dart';
 // import 'ReviewPage.dart';
 // import 'FaqPage.dart';
 // import 'CustomerSupportPage.dart';
@@ -33,7 +35,7 @@ void main() async {
         theme: ThemeData(
           textSelectionTheme: TextSelectionThemeData(
             cursorColor: Color(0xfff2ab37),
-            selectionColor: Color(0xff624840),
+            selectionColor: Palette.brown,
             selectionHandleColor: Color(0xffcd5f2a),
           ),
         ),

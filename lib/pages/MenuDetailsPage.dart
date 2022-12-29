@@ -39,11 +39,15 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Color(0xff2b2b2b),
-        leading: Icon(
-          Icons.arrow_back,
-          size: 30,
-          color: Colors.amber,
+        backgroundColor: Palette.black[700],
+        elevation: 0.0,
+        leading: GestureDetector(
+          onTap: (){ Navigator.pop(context); },
+          child: Icon(
+            Icons.arrow_back,
+            size: 30,
+            color: Palette.yellow,
+          ),
         ),
         actions: [
           Padding(
@@ -52,14 +56,18 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
               child: Row(
                 children: [
                   Container(
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
+                    width: 50,
+                    child: IconButton(
+                      constraints: BoxConstraints(),
+                      padding: EdgeInsets.zero,
+                      style: IconButton.styleFrom(
                         backgroundColor: Colors.transparent,
+                        elevation: 0.0,
                       ),
                       onPressed: () {
                         Navigator.pushNamed(context, '/favorites');
                       },
-                      child: Icon(
+                      icon: Icon(
                         Icons.favorite,
                         size: 30,
                         color: Colors.pink,
@@ -68,27 +76,30 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                   ),
                   SizedBox(width: 10.0),
                   Container(
-                    child: ElevatedButton(
+                    child: IconButton(
+                      constraints: BoxConstraints(),
+                      padding: EdgeInsets.only(right: 10),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.transparent,
+                        elevation: 0.0,
                       ),
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/cart');
+                      onPressed: () async {
+
                       },
-                      child: Icon(
+                      icon: Icon(
                         Icons.shopping_cart,
                         size: 30,
-                        color: Colors.amber,
+                        color: Palette.yellow,
                       ),
                     ),
                   ),
                 ],
               ),
             ),
-          ),
+          )
         ],
       ),
-      backgroundColor: Color(0xff2b2b2b),
+      backgroundColor: Palette.black[700],
       body: Column(
         children: [
           SizedBox(
@@ -118,7 +129,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
               height: 455.0,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                color: Colors.grey[900],
+                color: Palette.black[600],
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(50.0),
                   topRight: Radius.circular(50.0),
@@ -131,7 +142,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                     width: 28.0,
                     margin: EdgeInsets.only(bottom: 28.0),
                     decoration: BoxDecoration(
-                      color: Colors.black87,
+                      color: Palette.black[700],
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                   ),
@@ -140,7 +151,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                     style: TextStyle(
                       fontFamily: "DMSans",
                       fontSize: 28.0,
-                      color: Colors.white,
+                      color: Palette.white[300],
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -160,7 +171,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                             style: TextStyle(
                               fontFamily: "DMSans",
                               fontSize: 16.0,
-                              color: Colors.white,
+                              color: Palette.white[300],
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -178,7 +189,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                             style: TextStyle(
                               fontFamily: "DMSans",
                               fontSize: 16.0,
-                              color: Colors.white,
+                              color: Palette.white[300],
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -196,7 +207,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                             style: TextStyle(
                               fontFamily: "DMSans",
                               fontSize: 16.0,
-                              color: Colors.white,
+                              color: Palette.white[300],
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -210,7 +221,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                     style: TextStyle(
                       fontFamily: "DMSans",
                       fontSize: 20.0,
-                      color: Colors.white,
+                      color: Palette.white[300],
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -220,7 +231,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                     style: TextStyle(
                       fontFamily: "DMSans",
                       fontSize: 15.0,
-                      color: Colors.white,
+                      color: Palette.white[300],
                       fontWeight: FontWeight.w300,
                     ),
                   ),

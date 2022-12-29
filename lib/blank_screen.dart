@@ -24,7 +24,7 @@ class BlankScreen extends StatelessWidget {
 
                   child:  TextFormField(
                    // //controller: passwordController,
-                    //  autocorrect: true,
+                    ////  autocorrect: true,
                     obscureText: false,
 
                     decoration: InputDecoration(

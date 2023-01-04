@@ -4,7 +4,7 @@ import 'package:myapp/testing2/product_model.dart';
 import 'package:get/get.dart';
 
 class CartProducts extends StatelessWidget {
-  final CartController controller = Get.find();
+  final CartController2 controller = Get.find();
 
   CartProducts({Key? key}) : super(key: key);
 
@@ -29,7 +29,7 @@ class CartProducts extends StatelessWidget {
 }
 
 class CartProductCard extends StatelessWidget {
-  final CartController controller;
+  final CartController2 controller;
   final Product product;
   final int quantity;
   final int index;

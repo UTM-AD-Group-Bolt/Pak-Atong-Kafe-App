@@ -1,19 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Product {
-  // Product's variables: name, price, imageUrl. All required.
   final String title;
   final double price;
   final String image;
-  final String description;
-  final int quantity;
+  // final String description;
+  // final int quantity;
 
   const Product({
     required this.title,
     required this.price,
     required this.image,
-    required this.description,
-    required this.quantity,
+    // required this.description,
+    // required this.quantity,
   });
 
   static Product fromSnapshot(DocumentSnapshot snap) {
@@ -21,8 +20,8 @@ class Product {
       title: snap['title'],
       price: snap['price'],
       image: snap['image'],
-      description: snap['description'],
-      quantity: snap['quantity'],
+      // description: snap['description'],
+      // quantity: snap['quantity'],
     );
     return product;
   }

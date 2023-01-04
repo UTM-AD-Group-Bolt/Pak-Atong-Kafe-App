@@ -52,16 +52,14 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.transparent,
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage(image),
-                  ),
-                  borderRadius: BorderRadius.circular(10.0),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage(image),
                 ),
+                borderRadius: BorderRadius.circular(10.0),
               ),
             ),
             Padding(
@@ -178,6 +176,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      extendBodyBehindAppBar: false,
       backgroundColor: Color(0xff2b2b2b),
       appBar: AppBar(
         title: Text(
@@ -222,7 +221,7 @@ class HomePage extends StatelessWidget {
                         backgroundColor: Colors.transparent,
                       ),
                       onPressed: () async {
-                        Navigator.pushNamed(context, '/testcart');
+                        Navigator.pushNamed(context, '/fetchingdatapage');
                       },
                       child: Icon(
                         Icons.shopping_cart,

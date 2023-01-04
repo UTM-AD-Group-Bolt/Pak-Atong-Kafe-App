@@ -3,7 +3,7 @@ import 'package:myapp/testing2/cart_controller.dart';
 import 'package:get/get.dart';
 
 class CartTotal extends StatelessWidget {
-  final CartController controller = Get.find();
+  final CartController2 controller = Get.find();
   CartTotal({Key? key}) : super(key: key);
 
   @override

@@ -24,7 +24,7 @@ class CatalogProducts extends StatelessWidget {
 }
 
 class CatalogProductCard extends StatelessWidget {
-  final cartController = Get.put(CartController());
+  final cartController = Get.put(CartController2());
   final ProductController productController = Get.find();
   final int index;
 

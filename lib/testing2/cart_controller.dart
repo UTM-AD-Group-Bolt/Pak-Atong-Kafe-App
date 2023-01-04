@@ -1,7 +1,7 @@
 import 'package:myapp/testing2/product_model.dart';
 import 'package:get/get.dart';
 
-class CartController extends GetxController {
+class CartController2 extends GetxController {
   // Add a dict to store the products in the cart.
   var _products = {}.obs;
 

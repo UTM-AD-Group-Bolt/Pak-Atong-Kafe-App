@@ -9,11 +9,14 @@ class TestCartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Your Cart")),
-      body: Column(
-        children: [
-          CartProducts(),
-          CartTotal(),
-        ],
+      body: SizedBox(
+        height: 900,
+        child: Column(
+          children: [
+            CartProducts(),
+            CartTotal(),
+          ],
+        ),
       ),
     );
   }

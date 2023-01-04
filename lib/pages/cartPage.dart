@@ -33,6 +33,7 @@ class _cartPageState extends State<cartPage> {
               bottom: 50,
               left: 0,
               right: 0,
+                top: 220,
                 child: ListView.builder(
                   shrinkWrap: true,
                   itemCount: cartController.cartItems.length,
@@ -92,8 +93,11 @@ class _cartPageState extends State<cartPage> {
                           Row(
                             children: [
                               Container(
+                                height: 32,
+                                width: 32,
                                 color: Colors.grey[200],
                                 child: IconButton(
+                                  iconSize: 16.0,
                                     icon: Icon(Icons.remove),
                                         onPressed: () {
                                       int.parse(cartController.cartItems[index]["quantity"]) - 1;
@@ -102,6 +106,8 @@ class _cartPageState extends State<cartPage> {
                                 ),
                               ),
                               Container(
+                                height: 32,
+                                width: 32,
                                 padding: EdgeInsets.all(8.0),
                                 child: Text(cartController.cartItems[index]
                                         ["quantity"]
@@ -268,47 +274,11 @@ class _cartPageState extends State<cartPage> {
 
   _buildBottom() {
 
-    // return Container(
-    //   // autogroup9mazc2W (Nvm1CwpWwkT1W154pe9maz)
-    //   margin:  EdgeInsets.fromLTRB(5, 0, 5, 0),
-    //   width:  double.infinity,
-    //   height:  47,
-    //   decoration:  BoxDecoration (
-    //     color:  Color(0xfff2ab37),
-    //     borderRadius:  BorderRadius.circular(7),
-    //     boxShadow:  [
-    //       BoxShadow(
-    //         color:  Color(0x26000000),
-    //         offset:  Offset(2, 2),
-    //         blurRadius:  0,
-    //       ),
-    //     ],
-    //   ),
-    //   child:
-    //   Center(
-    //     child:
-    //     Center(
-    //       child:
-    //       Text(
-    //         'Check Out',
-    //         textAlign:  TextAlign.center,
-    //         style:  TextStyle(
-    //           fontFamily: 'DM Sans',
-    //           fontSize:  19,
-    //           fontWeight:  FontWeight.w700,
-    //           height:  1.3025,
-    //           color:  Color(0xffffffff),
-    //         ),
-    //       ),
-    //     ),
-    //   ),
-    // );
-
     return Expanded(
 
       child: Padding(
         padding: const EdgeInsets.only(
-          bottom: 6.0,
+          bottom: 15.0,
         ),
         child: Align(
           alignment: FractionalOffset.bottomCenter,

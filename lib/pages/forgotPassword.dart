@@ -10,6 +10,8 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
+  String? _email;
+  final auth = FirebaseAuth.instance;
   final _emailController = TextEditingController();
 
   @override
@@ -47,6 +49,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
   @override
   Widget build(BuildContext context) {
+
+
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.amber,
@@ -87,7 +92,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
           SizedBox(height:20),
 
           MaterialButton(
-            onPressed: () {},
+            onPressed: () {
+
+              auth.sendPasswordResetEmail(email: _email!);
+            },
             child: Text('Reset Password'),
             color: Colors.amber,
           ),

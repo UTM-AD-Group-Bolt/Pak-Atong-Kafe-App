@@ -28,7 +28,7 @@ void main() async {
       create: (BuildContext context) {  },
       initialData: null,
       child: MaterialApp(
-        initialRoute: '/forgotpassword',
+        initialRoute: '/signin',
         routes: {
           '/': (context) => LoadingScreen(),
           '/home': (context) => HomePage(),

@@ -10,6 +10,77 @@ class cartPage extends StatefulWidget {
 }
 
 class _cartPageState extends State<cartPage> {
+  List<String> foodName = [
+    "Tom Yam",
+    "Sayur Taugeh",
+    "Sambal Goreng Tempe",
+    "Nasi Goreng",
+    "Mee Goreng",
+    "Kuey Teow",
+    "Daging Kicap",
+    "Cendawan Goreng",
+    "Ayam Kunyit",
+    "Ayam Kari",
+    "Ayam Goreng",
+  ];
+
+  List<String> foodImages = [
+    "images/food/Tom-Yam.png",
+    "images/food/Sayur-Taugeh.png",
+    "images/food/Sambal-Goreng-Tempe.png",
+    "images/food/Nasi-Goreng.png",
+    "images/food/Mee-Goreng.png",
+    "images/food/Kuey-Teow.png",
+    "images/food/Daging-Kicap.png",
+    "images/food/Cendawan-Goreng.png",
+    "images/food/Ayam-Kunyit.png",
+    "images/food/Ayam-Kari.png",
+    "images/food/Ayam-Goreng.png",
+  ];
+
+  List<String> foodDescription = [
+    "Diperbuat daripada tom yam",
+    "Diperbuat daripada sayur taugeh",
+    "Diperbuat daripada sambal goreng tempe",
+    "Diperbuat daripada nasi goreng",
+    "Diperbuat daripada mee goreng",
+    "Diperbuat daripada kuey teow",
+    "Diperbuat daripada daging kicap",
+    "Diperbuat daripada cendawan goreng",
+    "Diperbuat daripada ayam kunyit",
+    "Diperbuat daripada ayam kari",
+    "Diperbuat daripada ayam goreng",
+  ];
+
+  List<double> foodPrice = [
+    6.00,
+    1.50,
+    5.50,
+    4.00,
+    3.50,
+    2.50,
+    7.00,
+    4.50,
+    3.50,
+    3.00,
+    1.50,
+  ];
+
+  List<int> foodQuantity = [
+    2,
+    3,
+    1,
+    2,
+    1,
+    1,
+    2,
+    1,
+    2,
+    1,
+    2,
+  ];
+
+
   final CartController cartController = CartController();
 
   @override
@@ -51,8 +122,13 @@ class _cartPageState extends State<cartPage> {
                             width: 100,
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image: NetworkImage(cartController
-                                      .cartItems[index]["product"]["image"])),
+                                image: AssetImage(foodImages[index]),
+
+                                // image: AssetImage('images/food/Ayam-Goreng.png'),
+
+                                  // image: NetworkImage(cartController
+                                  //     .cartItems[index]["product"]["image"])
+                              ),
                             ),
                           ),
                           SizedBox(width: 16),
@@ -64,8 +140,10 @@ class _cartPageState extends State<cartPage> {
                                 children: [
 
                                   Text(
-                                    cartController.cartItems[index]["product"]
-                                        ["title"],
+                                    foodName[index],
+
+                                    // cartController.cartItems[index]["product"]
+                                    //     ["title"],
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
@@ -74,14 +152,18 @@ class _cartPageState extends State<cartPage> {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      cartController.cartItems[index]["product"]
-                                          ["description"],
+                                      foodDescription[index],
+
+                                      // cartController.cartItems[index]["product"]
+                                      //     ["description"],
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
                                     ),
                                   ),
                                   Text(
-                                    "\$${cartController.cartItems[index]["product"]["price"]}",
+                                    "\RM ${foodPrice[index].toStringAsFixed(2)}",
+
+                                    // "\$${cartController.cartItems[index]["product"]["price"]}",
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -109,9 +191,13 @@ class _cartPageState extends State<cartPage> {
                                 height: 32,
                                 width: 32,
                                 padding: EdgeInsets.all(8.0),
-                                child: Text(cartController.cartItems[index]
-                                        ["quantity"]
-                                    .toString()),
+                                child: Text(
+                                  foodQuantity[index].toString(),
+
+                                    // cartController.cartItems[index]
+                                    //     ["quantity"]
+                                    // .toString()
+                                ),
                               ),
                               Container(
                                 color: Colors.grey[200],
@@ -168,7 +254,9 @@ class _cartPageState extends State<cartPage> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        "\$${cartController.subtotal}",
+                        "\RM ${(foodPrice[0]+foodPrice[1]+foodPrice[2]).toStringAsFixed(2)}",
+
+                        // "\$${cartController.subtotal}",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18.0,
@@ -251,7 +339,9 @@ class _cartPageState extends State<cartPage> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        "\$${cartController.subtotal+2}",
+                  "\RM ${(foodPrice[0]+foodPrice[1]+foodPrice[2]+2).toStringAsFixed(2)}",
+
+                        // "\$${cartController.subtotal+2}",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 26.0,

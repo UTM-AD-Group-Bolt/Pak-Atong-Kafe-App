@@ -52,14 +52,16 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.transparent,
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage(image),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage(image),
+                  ),
+                  borderRadius: BorderRadius.circular(10.0),
                 ),
-                borderRadius: BorderRadius.circular(10.0),
               ),
             ),
             Padding(
@@ -240,6 +242,7 @@ class HomePage extends StatelessWidget {
       body: Container(
         padding: EdgeInsets.only( left: 20.0 ),
         child: ListView(
+          // scrollDirection: Axis.horizontal,
           children: [
             Container(
               height: 800,
@@ -319,11 +322,11 @@ class HomePage extends StatelessWidget {
                     child: Container(
                       height: 300,
                       child: GridView.count(
+                        physics: NeverScrollableScrollPhysics(),
                         crossAxisCount: 2,
                         childAspectRatio: 1,
                         mainAxisSpacing: 20,
                         crossAxisSpacing: 20,
-                        scrollDirection: Axis.vertical,
                         children: [
                           _bottomCategories(
                             image: 'images/food/Ayam-Goreng.png',

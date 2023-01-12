@@ -1,0 +1,82 @@
+{
+  "Food": [
+    null,
+    {
+      "description": "Diperbuat daripada ayam goreng",
+      "image": "images/food/Ayam-Goreng.png",
+      "price": 4,
+      "quantity": 0,
+      "title": "Ayam Goreng"
+    },
+    {
+      "description": "Diperbuat daripada ayam kari",
+      "image": "images/food/Ayam-Kari.png",
+      "price": 2.5,
+      "quantity": 0,
+      "title": "Ayam Kari"
+    },
+    {
+      "description": "Diperbuat daripada ayam kunyit",
+      "image": "images/food/Ayam-Kunyit.png",
+      "price": 2,
+      "quantity": 0,
+      "title": "Ayam Kunyit"
+    },
+    {
+      "description": "Diperbuat daripada cendawan goreng",
+      "image": "images/food/Cendawan-Goreng.png",
+      "price": 2,
+      "quantity": 0,
+      "title": "Cendawan Goreng"
+    },
+    {
+      "description": "Diperbuat daripada daging kicap",
+      "image": "images/food/Daging-Kicap.png",
+      "price": 2,
+      "quantity": 0,
+      "title": "Daging Kicap"
+    },
+    {
+      "description": "Diperbuat daripada kuey teow",
+      "image": "images/food/Kuey-Teow.png",
+      "price": 2,
+      "quantity": 0,
+      "title": "Kuey Teow"
+    },
+    {
+      "description": "Diperbuat daripada mee goreng",
+      "image": "images/food/Mee-Goreng.png",
+      "price": 2,
+      "quantity": 0,
+      "title": "Mee Goreng"
+    },
+    {
+      "description": "Diperbuat daripada nasi goreng",
+      "image": "images/food/Nasi-Goreng.png",
+      "price": 2,
+      "quantity": 0,
+      "title": "Nasi Goreng"
+    },
+    {
+      "description": "Diperbuat daripada sambal goreng tempe",
+      "image": "images/food/Sambal-Goreng-Tempe.png",
+      "price": 2,
+      "quantity": 0,
+      "title": "Sambal Goreng Tempe"
+    },
+    {
+      "description": "Diperbuat daripada sayur taugeh",
+      "image": "images/food/Sayur-Taugeh.png",
+      "price": 2,
+      "quantity": 0,
+      "title": "Sayur Taugeh"
+    },
+    {
+      "description": "Diperbuat daripada tom yam",
+      "image": "images/food/Tom-Yam.png",
+      "price": 2,
+      "quantity": 0,
+      "title": "Tom Yam"
+    }
+  ]
+}

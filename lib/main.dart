@@ -14,7 +14,7 @@ import 'package:myapp/pages/cartPage.dart';
 import 'package:myapp/pages/faqPage.dart';
 import 'package:myapp/testing2/catalog_screen.dart';
 import 'package:myapp/testing2/cart_screen.dart';
-import 'package:myapp/pages/FetchingDataPage.dart';
+import 'package:myapp/aaaatest/FetchingDataPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:get/get.dart';

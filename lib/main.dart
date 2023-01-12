@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/pages/ForgotPasswordPage.dart';
 import 'package:myapp/pages/PaymentSuccessPage.dart';
 import 'package:myapp/pages/HomePage.dart';
 import 'package:myapp/pages/favoritePage.dart';
@@ -42,6 +43,7 @@ void main() async {
         home: Wrapper(),
         routes: {
           '/signin':  (context) => SignInPage(),
+          '/forgotpassword':  (context) => ForgotPassword(),
           '/register': (context) => RegisterPage(),
           '/home': (context) => HomePage(),
           '/favorites': (context) => FavoritePage(),

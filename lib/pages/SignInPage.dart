@@ -290,12 +290,13 @@ class _SignInPageState extends State<SignInPage> {
                           ),
                         )
                     ),
-                    SizedBox(height: 20.0),
+                    SizedBox(height: 10.0),
                     RichText(
+                      textAlign: TextAlign.center, //You can change it to any aligment style that you want.
                       text: TextSpan(
                         children: [
                           TextSpan(
-                            text: 'Don\'t have an account? ',
+                            text: 'Forgot your password or don\'t have an account? ',
                             style: TextStyle(
                               fontFamily: 'DMSans',
                               fontSize: 20.0,
@@ -315,29 +316,6 @@ class _SignInPageState extends State<SignInPage> {
                                   Feedback.forTap(context);
 
                                   // set up the buttons
-                                  Widget signUpButton = SizedBox(
-                                    width: double.infinity,
-                                    height: 50.0,
-                                    child: TextButton(
-                                      child: Text("Register"),
-                                      style: TextButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(15.0),
-                                        ),
-                                        foregroundColor: Palette.orange,
-                                        backgroundColor: Palette.beige[300],
-                                        textStyle: TextStyle(
-                                          fontFamily: 'DMSans',
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 20,
-                                        ),
-                                      ),
-                                      onPressed:  () {
-                                        Navigator.of(context, rootNavigator: true).pop('dialog');
-                                        Navigator.pushNamed(context, '/register');
-                                      },
-                                    ),
-                                  );
                                   Widget continueButton = SizedBox(
                                     width: double.infinity,
                                     height: 50.0,
@@ -366,6 +344,52 @@ class _SignInPageState extends State<SignInPage> {
                                         }
                                     ),
                                   );
+                                  Widget signUpButton = SizedBox(
+                                    width: double.infinity,
+                                    height: 50.0,
+                                    child: TextButton(
+                                      child: Text("Register Account"),
+                                      style: TextButton.styleFrom(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(15.0),
+                                        ),
+                                        foregroundColor: Palette.orange,
+                                        backgroundColor: Palette.beige[300],
+                                        textStyle: TextStyle(
+                                          fontFamily: 'DMSans',
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                      onPressed:  () {
+                                        Navigator.of(context, rootNavigator: true).pop('dialog');
+                                        Navigator.pushNamed(context, '/register');
+                                      },
+                                    ),
+                                  );
+                                  Widget forgotButton = SizedBox(
+                                    width: double.infinity,
+                                    height: 50.0,
+                                    child: TextButton(
+                                      child: Text("Forgot Password"),
+                                      style: TextButton.styleFrom(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(15.0),
+                                        ),
+                                        foregroundColor: Palette.orange,
+                                        backgroundColor: Palette.beige[300],
+                                        textStyle: TextStyle(
+                                          fontFamily: 'DMSans',
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                      onPressed:  () {
+                                        Navigator.of(context, rootNavigator: true).pop('dialog');
+                                        Navigator.pushNamed(context, '/forgotpassword');
+                                      },
+                                    ),
+                                  );
 
                                   // set up the AlertDialog
                                   AlertDialog alert = AlertDialog(
@@ -391,12 +415,13 @@ class _SignInPageState extends State<SignInPage> {
                                     ),
                                     content: SizedBox(
                                       width: double.maxFinite,
-                                      height: 120.0,
+                                      height: 180.0,
                                       child: Column(
                                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                                         children: [
-                                          signUpButton,
                                           continueButton,
+                                          signUpButton,
+                                          forgotButton,
                                         ],
                                       ),
                                     ),
@@ -417,7 +442,7 @@ class _SignInPageState extends State<SignInPage> {
                   ],
                 ),
               ),
-              SizedBox(height: 20.0),
+              SizedBox(height: 10.0),
               Row(
                   children: [
                     Expanded(
@@ -491,7 +516,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                   ]
               ),
-              SizedBox(height: 10.0),
+              SizedBox(height: 20.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: socmeds.map((socmed) => SocMedButton(

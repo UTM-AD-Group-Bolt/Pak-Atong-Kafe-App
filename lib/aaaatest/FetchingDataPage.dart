@@ -3,7 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 
-import 'package:myapp/aaaatest//addnote.dart';
+import 'package:myapp/aaaatest/addOrder.dart';
 
 class FetchingDataPage extends StatefulWidget {
   @override
@@ -20,7 +20,7 @@ class _FetchingDataPageState extends State<FetchingDataPage> {
   var k;
   @override
   Widget build(BuildContext context) {
-    final ref = fb.ref().child('todos');
+    final ref = fb.ref().child('orders');
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
@@ -29,7 +29,7 @@ class _FetchingDataPageState extends State<FetchingDataPage> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (_) => addnote(),
+              builder: (_) => addOrder(),
             ),
           );
         },
@@ -39,7 +39,7 @@ class _FetchingDataPageState extends State<FetchingDataPage> {
       ),
       appBar: AppBar(
         title: Text(
-          'Todos',
+          'Orders',
           style: TextStyle(
             fontSize: 30,
           ),
@@ -165,7 +165,7 @@ class _FetchingDataPageState extends State<FetchingDataPage> {
   }
 
   upd() async {
-    DatabaseReference ref1 = FirebaseDatabase.instance.ref("todos/$k");
+    DatabaseReference ref1 = FirebaseDatabase.instance.ref("orders/$k");
 
 // Only update the name, leave the age and address!
     await ref1.update({

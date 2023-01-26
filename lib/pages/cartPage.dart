@@ -10,46 +10,64 @@ class cartPage extends StatefulWidget {
 }
 
 class _cartPageState extends State<cartPage> {
+
+  Map initData(Map data) {
+    if (data['quantity'] == null) data['quantity'] = 0;
+    if (data['image'] == null) data['image'] = "images/broken_link.png";
+    if (data['name'] == null) data['name'] = "N/A";
+    if (data['description'] == null) data['description'] = "N/A";
+    if (data['indexNo'] == null) data['indexNo'] = 0;
+    if (data['deliveryFee'] == null) data['deliveryFee'] = "N/A";
+    if (data['time'] == null) data['time'] = "N/A";
+    if (data['availability'] == null) data['availability'] = "N/A";
+    if (data['itemCounts'] == null) data['quantity'] = 0;
+    return data;
+  }
+
+
+
+  Map? data = {};
+
   List<String> foodName = [
-    "Tom Yam",
-    "Sayur Taugeh",
-    "Sambal Goreng Tempe",
-    "Nasi Goreng",
-    "Mee Goreng",
-    "Kuey Teow",
-    "Daging Kicap",
-    "Cendawan Goreng",
-    "Ayam Kunyit",
-    "Ayam Kari",
     "Ayam Goreng",
+    "Ayam Kari",
+    "Ayam Kunyit",
+    "Cendawan Goreng",
+    "Daging Kicap",
+    "Kuey Teow",
+    "Mee Goreng",
+    "Nasi Goreng",
+    "Sambal Goreng Tempe",
+    "Sayur Taugeh",
+    "Tom Yam",
   ];
 
   List<String> foodImages = [
-    "images/food/Tom-Yam.png",
+    "images/food/Ayam-Goreng.png",
+    "images/food/Ayam-Kari.png",
+    "images/food/Ayam-Kunyit.png",
+    "images/food/Cendawan-Goreng.png",
+    "images/food/Daging-Kicap.png",
+    "images/food/Kuey-Teow.png",
+    "images/food/Mee-Goreng.png",
+    "images/food/Nasi-Goreng.png",
     "images/food/Sayur-Taugeh.png",
     "images/food/Sambal-Goreng-Tempe.png",
-    "images/food/Nasi-Goreng.png",
-    "images/food/Mee-Goreng.png",
-    "images/food/Kuey-Teow.png",
-    "images/food/Daging-Kicap.png",
-    "images/food/Cendawan-Goreng.png",
-    "images/food/Ayam-Kunyit.png",
-    "images/food/Ayam-Kari.png",
-    "images/food/Ayam-Goreng.png",
+    "images/food/Tom-Yam.png",
   ];
 
   List<String> foodDescription = [
-    "Diperbuat daripada tom yam",
-    "Diperbuat daripada sayur taugeh",
-    "Diperbuat daripada sambal goreng tempe",
-    "Diperbuat daripada nasi goreng",
-    "Diperbuat daripada mee goreng",
-    "Diperbuat daripada kuey teow",
-    "Diperbuat daripada daging kicap",
-    "Diperbuat daripada cendawan goreng",
-    "Diperbuat daripada ayam kunyit",
-    "Diperbuat daripada ayam kari",
     "Diperbuat daripada ayam goreng",
+    "Diperbuat daripada ayam kari",
+    "Diperbuat daripada ayam kunyit",
+    "Diperbuat daripada cendawan goreng",
+    "Diperbuat daripada daging kicap",
+    "Diperbuat daripada kuey teow",
+    "Diperbuat daripada mee goreng",
+    "Diperbuat daripada nasi goreng",
+    "Diperbuat daripada sambal goreng tempe",
+    "Diperbuat daripada sayur taugeh",
+    "Diperbuat daripada tom yam",
   ];
 
   List<double> foodPrice = [
@@ -85,6 +103,15 @@ class _cartPageState extends State<cartPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    data = ModalRoute.of(context)?.settings.arguments as Map<dynamic, dynamic>?;
+    int mmm = data!['indexNo'];
+
+    if (data == null)
+      data = initData(new Map());
+    else
+      data = initData(data!);
+
     return Scaffold(
       backgroundColor: Color(0xff3c3f40),
       appBar: _buildAppBar(),
@@ -107,7 +134,7 @@ class _cartPageState extends State<cartPage> {
                 top: 220,
                 child: ListView.builder(
                   shrinkWrap: true,
-                  itemCount: cartController.cartItems.length,
+                  itemCount: data!.values.where((element) => element = true).length,
                   padding: EdgeInsets.all(8),
                   itemBuilder: (context, index) => Card(
                     elevation: 1,
@@ -140,7 +167,7 @@ class _cartPageState extends State<cartPage> {
                                 children: [
 
                                   Text(
-                                    foodName[index],
+                                    foodName[mmm],
 
                                     // cartController.cartItems[index]["product"]
                                     //     ["title"],
@@ -152,8 +179,7 @@ class _cartPageState extends State<cartPage> {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      foodDescription[index],
-
+                                       foodDescription[mmm],
                                       // cartController.cartItems[index]["product"]
                                       //     ["description"],
                                       maxLines: 2,
@@ -182,7 +208,7 @@ class _cartPageState extends State<cartPage> {
                                   iconSize: 16.0,
                                     icon: Icon(Icons.remove),
                                         onPressed: () {
-                                      int.parse(cartController.cartItems[index]["quantity"]) - 1;
+                                      int.parse(cartController.cartItems[mmm]["quantity"]) - 1;
 
           }
                                 ),
@@ -192,7 +218,7 @@ class _cartPageState extends State<cartPage> {
                                 width: 32,
                                 padding: EdgeInsets.all(8.0),
                                 child: Text(
-                                  foodQuantity[index].toString(),
+                                  foodQuantity[mmm].toString(),
 
                                     // cartController.cartItems[index]
                                     //     ["quantity"]

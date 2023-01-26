@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/services/auth.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'dart:math';
+import 'package:myapp/pages/cartPage.dart';
 
 import '../models/palette.dart';
 
@@ -9,21 +12,33 @@ class MenuDetailsPage extends StatefulWidget {
 }
 
 class _MenuDetailsPageState extends State<MenuDetailsPage> {
+
+
   Map initData(Map data) {
     if (data['quantity'] == null) data['quantity'] = 0;
     if (data['image'] == null) data['image'] = "images/broken_link.png";
     if (data['name'] == null) data['name'] = "N/A";
     if (data['description'] == null) data['description'] = "N/A";
+    if (data['indexNo'] == null) data['indexNo'] = 0;
     if (data['deliveryFee'] == null) data['deliveryFee'] = "N/A";
     if (data['time'] == null) data['time'] = "N/A";
     if (data['availability'] == null) data['availability'] = "N/A";
+    if (data['itemCounts'] == null) data['quantity'] = 0;
     return data;
   }
 
   Map? data = {};
 
+  final fb = FirebaseDatabase.instance;
+
+
   @override
   Widget build(BuildContext context) {
+    var rng = Random();
+    var k = rng.nextInt(10000);
+
+    final ref = fb.ref().child('todos/$k');
+
     data = ModalRoute.of(context)?.settings.arguments as Map<dynamic, dynamic>?;
     if (data == null)
       data = initData(new Map());
@@ -229,7 +244,22 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                   SizedBox(height: 10.0),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, '/cart');
+                      int x = data!['itemCounts'];
+                      data!['itemCounts'] = x + 1;
+
+                      print(data!['indexNo']);
+
+                      Navigator.pushNamed(context, '/cart', arguments: {
+
+                        'itemCounts': data!['itemCounts'],
+                        'indexNo': data!['indexNo'],
+
+                        'image': data!['image'],
+                        'foodName': data!['foodName'],
+                        'price': data!['price'],
+                        'foodName': data!['foodName'],
+                        'quantity': data!['quantity'],
+                      });
 
 
                     },

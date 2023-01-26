@@ -4,12 +4,12 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/aaaatest/FetchingDataPage.dart';
 
-class addnote extends StatefulWidget {
+class addOrder extends StatefulWidget {
   @override
-  _addnoteState createState() => _addnoteState();
+  _addOrderState createState() => _addOrderState();
 }
 
-class _addnoteState extends State<addnote> {
+class _addOrderState extends State<addOrder> {
   TextEditingController second = TextEditingController();
 
   TextEditingController third = TextEditingController();
@@ -18,13 +18,15 @@ class _addnoteState extends State<addnote> {
   @override
   Widget build(BuildContext context) {
     var rng = Random();
+
+
     var k = rng.nextInt(10000);
 
-    final ref = fb.ref().child('todos/$k');
+    final ref = fb.ref().child('orders/$k');
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Todos"),
+        title: Text("Add Orders"),
         backgroundColor: Colors.indigo[900],
       ),
       body: Container(
@@ -38,7 +40,7 @@ class _addnoteState extends State<addnote> {
               child: TextField(
                 controller: second,
                 decoration: InputDecoration(
-                  hintText: 'title',
+                  hintText: 'food',
                 ),
               ),
             ),
@@ -50,7 +52,7 @@ class _addnoteState extends State<addnote> {
               child: TextField(
                 controller: third,
                 decoration: InputDecoration(
-                  hintText: 'sub title',
+                  hintText: 'quantity',
                 ),
               ),
             ),
@@ -62,7 +64,7 @@ class _addnoteState extends State<addnote> {
               onPressed: () {
                 ref.set({
                   "title": second.text,
-                  "subtitle": third.text,
+                  "quantity": third.text,
                 }).asStream();
                 Navigator.pushReplacement(
                     context, MaterialPageRoute(builder: (_) => FetchingDataPage()));

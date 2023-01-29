@@ -18,11 +18,9 @@ class _addOrderState extends State<addOrder> {
   @override
   Widget build(BuildContext context) {
     var rng = Random();
-
-
     var k = rng.nextInt(10000);
 
-    final ref = fb.ref().child('orders/$k');
+    final ref = fb.ref().child('ordersfoodpanda/$k');
 
     return Scaffold(
       appBar: AppBar(
@@ -62,6 +60,7 @@ class _addOrderState extends State<addOrder> {
             MaterialButton(
               color: Colors.indigo[900],
               onPressed: () {
+
                 ref.set({
                   "title": second.text,
                   "quantity": third.text,

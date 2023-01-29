@@ -13,11 +13,10 @@ class MenuDetailsPage extends StatefulWidget {
 
 class _MenuDetailsPageState extends State<MenuDetailsPage> {
 
-
   Map initData(Map data) {
     if (data['quantity'] == null) data['quantity'] = 0;
     if (data['image'] == null) data['image'] = "images/broken_link.png";
-    if (data['name'] == null) data['name'] = "N/A";
+    if (data['foodName'] == null) data['foodName'] = "N/A";
     if (data['description'] == null) data['description'] = "N/A";
     if (data['indexNo'] == null) data['indexNo'] = 0;
     if (data['deliveryFee'] == null) data['deliveryFee'] = "N/A";
@@ -34,16 +33,25 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
+
     var rng = Random();
     var k = rng.nextInt(10000);
 
-    final ref = fb.ref().child('todos/$k');
+    final ref = fb.ref().child('foodsnew/$k');
 
     data = ModalRoute.of(context)?.settings.arguments as Map<dynamic, dynamic>?;
     if (data == null)
       data = initData(new Map());
     else
       data = initData(data!);
+
+    String foodName = data!['foodName'];
+    String image = data!['image'];
+    String description = data!['description'];
+    double price = data!['price'];
+    int indexNo = data!['indexNo'];
+    int quantity = data!['quantity'];
+
 
     return Scaffold(
       appBar: AppBar(
@@ -90,7 +98,18 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                         backgroundColor: Colors.transparent,
                       ),
                       onPressed: () {
-                        Navigator.pushNamed(context, '/cart');
+                        Navigator.pushNamed(context, '/cart', arguments: {
+                          'quantity': 0,
+                          'image': image,
+                          'foodName': foodName,
+                          'description': description,
+                          'price': price,
+                          'indexNo': indexNo,
+                          'deliveryFee': 'Free',
+                          'time': '5 min',
+                          'availability': 'Available',
+                          'itemCounts': 0,
+                        });
                       },
                       child: Icon(
                         Icons.shopping_cart,
@@ -153,7 +172,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                     ),
                   ),
                   Text(
-                    data!['name'],
+                    data!['foodName'],
                     style: TextStyle(
                       fontFamily: "DMSans",
                       fontSize: 28.0,
@@ -242,50 +261,75 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                     ),
                   ),
                   SizedBox(height: 10.0),
-                  GestureDetector(
-                    onTap: () {
-                      int x = data!['itemCounts'];
-                      data!['itemCounts'] = x + 1;
-
-                      print(data!['indexNo']);
-
-                      Navigator.pushNamed(context, '/cart', arguments: {
-
-                        'itemCounts': data!['itemCounts'],
-                        'indexNo': data!['indexNo'],
-
-                        'image': data!['image'],
-                        'foodName': data!['foodName'],
-                        'price': data!['price'],
-                        'foodName': data!['foodName'],
-                        'quantity': data!['quantity'],
-                      });
 
 
-                    },
-                    child: Container(
-                      height: 40,
-                      width: 120,
-                      padding: EdgeInsets.all(4.0),
-                      decoration: BoxDecoration(
-                        color: Palette.yellow,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(2.0),
-                          topRight: Radius.circular(2.0),
-                        ),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Add to Cart',
-                          style: TextStyle(
-                            fontFamily: "DMSans",
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+
+              TextButton(
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.orange,
+                  padding: const EdgeInsets.all(16.0),
+                  textStyle: const TextStyle(fontSize: 20),
+                ),
+                  onPressed: () {
+                    setState(() {
+                      quantity++;
+                          price = price*quantity;
+                    });
+                    ref.set({
+
+                      "Food": foodName,
+                      "Quantity": quantity,
+                      "FoodImage": image,
+                    }).asStream();
+
+
+                  },
+                child: const Text('Add to Cart'),
+              ),
+
+                  // GestureDetector(
+                  //   onTap: () {
+                  //     int x = data!['itemCounts'];
+                  //     data!['itemCounts'] = x + 1;
+                  //
+                  //     print(data!['indexNo']);
+                  //
+                  //     Navigator.pushNamed(context, '/cart', arguments: {
+                  //
+                  //       'itemCounts': data!['itemCounts'],
+                  //       'indexNo': data!['indexNo'],
+                  //       'image': data!['image'],
+                  //       'foodName': data!['foodName'],
+                  //       'price': data!['price'],
+                  //       'foodName': data!['foodName'],
+                  //       'quantity': data!['quantity'],
+                  //     });
+                  //
+                  //
+                  //   },
+                  //   child: Container(
+                  //     height: 40,
+                  //     width: 120,
+                  //     padding: EdgeInsets.all(4.0),
+                  //     decoration: BoxDecoration(
+                  //       color: Palette.yellow,
+                  //       borderRadius: BorderRadius.only(
+                  //         topLeft: Radius.circular(2.0),
+                  //         topRight: Radius.circular(2.0),
+                  //       ),
+                  //     ),
+                  //     child: Center(
+                  //       child: Text(
+                  //         'Add to Cart',
+                  //         style: TextStyle(
+                  //           fontFamily: "DMSans",
+                  //           fontSize: 15.0,
+                  //           fontWeight: FontWeight.w700,
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ),

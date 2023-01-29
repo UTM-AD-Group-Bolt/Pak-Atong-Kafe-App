@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
   Widget _allCategories({required String image, required String foodName, required String description, required double price, required int indexNo, required BuildContext context}) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/menudetails',arguments: {
+        Navigator.pushNamed(context, '/menudetails', arguments: {
           'quantity': 0,
           'image': image,
           'foodName': foodName,

@@ -20,7 +20,6 @@ class _cartPageState extends State<cartPage> {
     if (data['deliveryFee'] == null) data['deliveryFee'] = "N/A";
     if (data['time'] == null) data['time'] = "N/A";
     if (data['availability'] == null) data['availability'] = "N/A";
-    if (data['itemCounts'] == null) data['quantity'] = 0;
     return data;
   }
 
@@ -389,7 +388,7 @@ class _cartPageState extends State<cartPage> {
                     children: [
                       Text(
                   // "\RM ${(foodPrice[0]+foodPrice[1]+foodPrice[2]+2).toStringAsFixed(2)}",
-                        "\RM ${price.toStringAsFixed(2)}",
+                        "\RM ${(price+2).toStringAsFixed(2)}",
 
                         // "\$${cartController.subtotal+2}",
                         style: TextStyle(
@@ -444,7 +443,9 @@ class _cartPageState extends State<cartPage> {
                 ),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              print(quantity);
+            },
             child: Text("Check out"),
           ),
         ),

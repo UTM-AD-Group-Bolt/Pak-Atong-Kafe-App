@@ -22,7 +22,6 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
     if (data['deliveryFee'] == null) data['deliveryFee'] = "N/A";
     if (data['time'] == null) data['time'] = "N/A";
     if (data['availability'] == null) data['availability'] = "N/A";
-    if (data['itemCounts'] == null) data['quantity'] = 0;
     return data;
   }
 
@@ -282,6 +281,18 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                       "FoodImage": image,
                     }).asStream();
 
+                    Navigator.pushNamed(
+                        context, '/cart', arguments: {
+                      'quantity': quantity,
+                      'image': image,
+                      'foodName': foodName,
+                      'description': description,
+                      'price': price,
+                      'indexNo': indexNo,
+                      'deliveryFee': 'Free',
+                      'time': '5 min',
+                      'availability': 'Available',
+                    });
 
                   },
                 child: const Text('Add to Cart'),

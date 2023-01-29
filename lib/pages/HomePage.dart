@@ -39,7 +39,6 @@ class HomePage extends StatelessWidget {
           'deliveryFee': 'Free',
           'time': '5 min',
           'availability': 'Available',
-          'itemCounts': 0,
         });
       },
       child: Container(
@@ -290,7 +289,7 @@ class HomePage extends StatelessWidget {
                           image: 'images/food/Ayam-Goreng.png',
                           foodName: 'Ayam Goreng',
                             description: 'Diperbuat daripada ayam goreng',
-                          price: 1.50,
+                          price: 2.3,
                           indexNo: 1,
 
                           context: context
@@ -299,7 +298,7 @@ class HomePage extends StatelessWidget {
                           image: 'images/food/Ayam-Kari.png',
                           foodName: 'Ayam Kari',
                             description: 'Diperbuat daripada ayam kari',
-                            price: 1.50,
+                            price: 2.4,
                             indexNo: 2,
                           context: context
                         ),
@@ -307,7 +306,7 @@ class HomePage extends StatelessWidget {
                           image: 'images/food/Ayam-Kunyit.png',
                           foodName: 'Ayam Kunyit',
                           description: 'Diperbuat daripada ayam kunyit',
-                            price: 1.50,
+                            price: 2.5,
                             indexNo: 3,
                           context: context
                         ),
@@ -315,7 +314,7 @@ class HomePage extends StatelessWidget {
                           image: 'images/food/Cendawan-Goreng.png',
                           foodName: 'Cendawan Goreng',
                             description: 'Diperbuat daripada cendawan goreng',
-                            price: 1.50,
+                            price: 2.6,
                             indexNo: 4,
                           context: context
                         ),
@@ -336,16 +335,16 @@ class HomePage extends StatelessWidget {
                     child: Container(
                       height: 300,
                       child: GridView.count(
-                        physics: NeverScrollableScrollPhysics(),
                         crossAxisCount: 2,
                         childAspectRatio: 1,
                         mainAxisSpacing: 20,
                         crossAxisSpacing: 20,
+                        scrollDirection: Axis.vertical,
                         children: [
                           _bottomCategories(
                             image: 'images/food/Ayam-Goreng.png',
                             foodName: 'Ayam Goreng',
-                            price: 2,
+                            price: 2.3,
                             description: 'Diperbuat daripada ayam goreng',
                             indexNo: 1,
                             context: context,
@@ -353,7 +352,7 @@ class HomePage extends StatelessWidget {
                           _bottomCategories(
                             image: 'images/food/Ayam-Kari.png',
                             foodName: 'Ayam Kari',
-                            price: 2,
+                            price: 2.4,
                             description: 'Diperbuat daripada ayam kari',
                             indexNo: 2,
                             context: context,
@@ -361,7 +360,7 @@ class HomePage extends StatelessWidget {
                           _bottomCategories(
                             image: 'images/food/Ayam-Kunyit.png',
                             foodName: 'Ayam Kunyit',
-                            price: 2,
+                            price: 2.5,
                             description: 'Diperbuat daripada ayam kunyit',
                             indexNo: 3,
                             context: context,
@@ -369,7 +368,7 @@ class HomePage extends StatelessWidget {
                           _bottomCategories(
                             image: 'images/food/Cendawan-Goreng.png',
                             foodName: 'Cendawan Goreng',
-                            price: 2,
+                            price: 2.6,
                             description: 'Diperbuat daripada cendawan goreng',
                             indexNo: 4,
                             context: context,
@@ -377,7 +376,7 @@ class HomePage extends StatelessWidget {
                           _bottomCategories(
                             image: 'images/food/Daging-Kicap.png',
                             foodName: 'Daging Kicap',
-                            price: 2,
+                            price: 2.7,
                             description: 'Diperbuat daripada daging kicap',
                             indexNo: 5,
                             context: context,
@@ -385,7 +384,7 @@ class HomePage extends StatelessWidget {
                           _bottomCategories(
                             image: 'images/food/Kuey-Teow.png',
                             foodName: 'Kuey Teow',
-                            price: 2,
+                            price: 2.8,
                             description: 'Diperbuat daripada kuey teow',
                             indexNo: 6,
                             context: context,
@@ -393,7 +392,7 @@ class HomePage extends StatelessWidget {
                           _bottomCategories(
                             image: 'images/food/Mee-Goreng.png',
                             foodName: 'Mee Goreng',
-                            price: 2,
+                            price: 2.9,
                             description: 'Diperbuat daripada mee goreng',
                             indexNo: 7,
                             context: context,
@@ -401,7 +400,7 @@ class HomePage extends StatelessWidget {
                           _bottomCategories(
                             image: 'images/food/Nasi-Goreng.png',
                             foodName: 'Nasi Goreng',
-                            price: 2,
+                            price: 3.0,
                             description: 'Diperbuat daripada nasi goreng',
                             indexNo: 8,
                             context: context,
@@ -409,7 +408,7 @@ class HomePage extends StatelessWidget {
                           _bottomCategories(
                             image: 'images/food/Sambal-Goreng-Tempe.png',
                             foodName: 'Sambal Goreng Tempe',
-                            price: 2,
+                            price: 3.1,
                             description: 'Diperbuat daripada sambal goreng tempe',
                             indexNo: 9,
                             context: context,
@@ -417,7 +416,7 @@ class HomePage extends StatelessWidget {
                           _bottomCategories(
                             image: 'images/food/Sayur-Taugeh.png',
                             foodName: 'Sayur Taugeh',
-                            price: 2,
+                            price: 3.2,
                             description: 'Diperbuat daripada sayur taugeh',
                             indexNo: 10,
                             context: context,
@@ -425,7 +424,7 @@ class HomePage extends StatelessWidget {
                           _bottomCategories(
                             image: 'images/food/Tom-Yam.png',
                             foodName: 'Tom Yam',
-                            price: 2,
+                            price: 3.3,
                             description: 'Diperbuat daripada tom yam',
                             indexNo: 11,
                             context: context,

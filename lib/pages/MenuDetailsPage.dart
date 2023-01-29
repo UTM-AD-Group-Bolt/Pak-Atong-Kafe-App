@@ -107,7 +107,6 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                           'deliveryFee': 'Free',
                           'time': '5 min',
                           'availability': 'Available',
-                          'itemCounts': 0,
                         });
                       },
                       child: Icon(

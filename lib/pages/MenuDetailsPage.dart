@@ -239,8 +239,6 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                   GestureDetector(
                     onTap: () {
                       Navigator.pushNamed(context, '/cart');
-
-
                     },
                     child: Container(
                       height: 40,

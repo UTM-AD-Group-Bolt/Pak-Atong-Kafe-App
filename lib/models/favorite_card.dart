@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/models/palette.dart';
 
 import 'favorite.dart';
 
@@ -15,7 +16,7 @@ class FavoriteCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
       ),
-      color: Color(0xff3c3f40),
+      color: Palette.black[400],
       margin: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
       child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -39,7 +40,7 @@ class FavoriteCard extends StatelessWidget {
                       style: TextStyle(
                         fontFamily: "DMSans",
                         fontSize: 15,
-                        color: Colors.white,
+                        color: Palette.white[300],
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -49,7 +50,7 @@ class FavoriteCard extends StatelessWidget {
                       style: TextStyle(
                         fontFamily: "DMSans",
                         fontSize: 14.0,
-                        color: Colors.white,
+                        color: Palette.white[300],
                       ),
                     ),
                     Row(
@@ -57,8 +58,7 @@ class FavoriteCard extends StatelessWidget {
                       children: [
                         TextButton.icon(
                           style: ButtonStyle(
-                            foregroundColor:
-                            MaterialStateProperty.all(Colors.pink),
+                            foregroundColor: MaterialStateProperty.all(Colors.pink),
                           ),
                           onPressed: delete,
                           label: Text(

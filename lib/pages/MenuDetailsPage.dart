@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/services/auth.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'dart:math';
+import 'package:myapp/pages/cartPage.dart';
 
 import '../models/palette.dart';
 
@@ -9,11 +12,13 @@ class MenuDetailsPage extends StatefulWidget {
 }
 
 class _MenuDetailsPageState extends State<MenuDetailsPage> {
+
   Map initData(Map data) {
     if (data['quantity'] == null) data['quantity'] = 0;
     if (data['image'] == null) data['image'] = "images/broken_link.png";
-    if (data['name'] == null) data['name'] = "N/A";
+    if (data['foodName'] == null) data['foodName'] = "N/A";
     if (data['description'] == null) data['description'] = "N/A";
+    if (data['indexNo'] == null) data['indexNo'] = 0;
     if (data['deliveryFee'] == null) data['deliveryFee'] = "N/A";
     if (data['time'] == null) data['time'] = "N/A";
     if (data['availability'] == null) data['availability'] = "N/A";
@@ -22,13 +27,30 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
 
   Map? data = {};
 
+  final fb = FirebaseDatabase.instance;
+
   @override
   Widget build(BuildContext context) {
+
+    var rng = Random();
+    var k = rng.nextInt(10000);
+    final ref = fb.ref().child('foodsnew/$k');
+
+
     data = ModalRoute.of(context)?.settings.arguments as Map<dynamic, dynamic>?;
     if (data == null)
       data = initData(new Map());
     else
       data = initData(data!);
+
+
+    String foodName = data!['foodName'];
+    String image = data!['image'];
+    String description = data!['description'];
+    double price = data!['price'];
+    int indexNo = data!['indexNo'];
+    int quantity = data!['quantity'];
+
 
     return Scaffold(
       appBar: AppBar(
@@ -84,6 +106,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                         elevation: 0.0,
                       ),
                       onPressed: () async {
+                        Navigator.pushNamed(context, '/cart');
 
                       },
                       icon: Icon(
@@ -236,34 +259,42 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                     ),
                   ),
                   SizedBox(height: 10.0),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/cart');
 
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      foregroundColor: Colors.orange,
+                      padding: const EdgeInsets.all(16.0),
+                      textStyle: const TextStyle(fontSize: 20),
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        quantity++;
+                        price = price*quantity;
+                      });
+                      ref.set({
+
+                        "Food": foodName,
+                        "Quantity": quantity,
+                        "FoodImage": image,
+                      }).asStream();
+
+                      Navigator.pushNamed(
+                          context, '/cart', arguments:
+
+                      {
+                        'quantity': quantity,
+                        'image': image,
+                        'foodName': foodName,
+                        'description': description,
+                        'price': price,
+                        'indexNo': indexNo,
+                        'deliveryFee': 'Free',
+                        'time': '5 min',
+                        'availability': 'Available',
+                      });
 
                     },
-                    child: Container(
-                      height: 40,
-                      width: 120,
-                      padding: EdgeInsets.all(4.0),
-                      decoration: BoxDecoration(
-                        color: Palette.yellow,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(2.0),
-                          topRight: Radius.circular(2.0),
-                        ),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Add to Cart',
-                          style: TextStyle(
-                            fontFamily: "DMSans",
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                    ),
+                    child: const Text('Add to Cart'),
                   ),
                 ],
               ),

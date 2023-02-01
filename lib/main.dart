@@ -14,6 +14,8 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:myapp/models/user.dart';
 import 'package:myapp/pages/cartPage.dart';
+import 'package:myapp/pages/FetchingDataPage.dart';
+import 'package:myapp/pages/PaymentSuccessPage.dart';
 
 import 'models/palette.dart';
 // import 'ReviewPage.dart';
@@ -50,6 +52,8 @@ void main() async {
           '/loading': (context) => LoadingScreen(),
           '/menudetails': (context) => MenuDetailsPage(),
           '/cart':  (context) => cartPage(),
+          '/fetchingdatapage': (context) => FetchingDataPage(),
+          '/paymentsuccess':  (context) => PaymentScreen(),
 
           // '/review':  (context) => ReviewPage(),
           // '/faq':  (context) => FaqPage(),
@@ -57,7 +61,7 @@ void main() async {
           // '/orderhistory':  (context) => OrderHistoryPage(),
           // '/checkout':  (context) => CheckoutPage(),
           // '/paymentmethod':  (context) => PaymentMethodPage(),
-          // '/paymentsuccess':  (context) => PaymentSuccessPage(),
+
           // '/profile':  (context) => ProfilePage(),
         },
       ),

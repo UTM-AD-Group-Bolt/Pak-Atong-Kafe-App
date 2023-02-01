@@ -2,14 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:myapp/pages/SideNavBarPage.dart';
 import 'package:myapp/services/auth.dart';
 import 'package:myapp/models/palette.dart';
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
+class HomePage extends StatelessWidget {
 
-class _HomePageState extends State<HomePage> {
   final AuthService _auth = AuthService();
 
   Widget _textformField() {
@@ -48,17 +43,19 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _allCategories({required String image, required String name, required String description, required double price, required String deliveryFee, required String time, required String availability, required BuildContext context}) {
+  Widget _allCategories({required String image, required String foodName, required String description, required double price, required int indexNo, required BuildContext context}) {
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, '/menudetails',arguments: {
-          'index': 1,
+          'quantity': 0,
           'image': image,
-          'name': name,
+          'foodName': foodName,
           'description': description,
-          'deliveryFee': deliveryFee,
-          'time': time,
-          'availability': availability,
+          'price': price,
+          'indexNo': indexNo,
+          'deliveryFee': 'Free',
+          'time': '5 min',
+          'availability': 'Available',
         });
       },
       child: Container(
@@ -89,7 +86,7 @@ class _HomePageState extends State<HomePage> {
             Padding(
               padding: EdgeInsets.only(top: 10.0),
               child: Text(
-                name,
+                foodName,
                 softWrap: false,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
@@ -107,17 +104,19 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _bottomCategories({required String image, required String name, required String description, required double price, required String deliveryFee, required String time, required String availability, required BuildContext context}) {
+  Widget _bottomCategories({required String image, required String foodName, required double price, required String description,  required int indexNo, required BuildContext context}) {
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, '/menudetails',arguments: {
-          'index': 1,
+          'quantity': 0,
           'image': image,
-          'name': name,
+          'foodName': foodName,
           'description': description,
-          'deliveryFee': deliveryFee,
-          'time': time,
-          'availability': availability,
+          'price': price,
+          'indexNo': indexNo,
+          'deliveryFee': 'Free',
+          'time': '5 min',
+          'availability': 'Available',
         });
       },
       child: Container(
@@ -155,7 +154,7 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Expanded(
                             child: Text(
-                              name,
+                              foodName,
                               softWrap: false,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
@@ -259,6 +258,7 @@ class _HomePageState extends State<HomePage> {
                         elevation: 0.0,
                       ),
                       onPressed: () async {
+                        Navigator.pushNamed(context, '/cart');
 
                       },
                       icon: Icon(
@@ -326,42 +326,36 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         _allCategories(
                             image: 'images/food/Ayam-Goreng.png',
-                            name: 'Ayam Goreng',
-                            description: 'Masakan ayam goreng',
-                            price: 2,
-                            time: "5 min",
-                            deliveryFee: "Free",
-                            availability: "Available",
+                            foodName: 'Ayam Goreng',
+                            description: 'Diperbuat daripada ayam goreng',
+                            price: 2.3,
+                            indexNo: 1,
+
                             context: context
                         ),
                         _allCategories(
                             image: 'images/food/Ayam-Kari.png',
-                            name: 'Ayam Kari',
-                            description: 'Masakan ayam kari',
-                            price: 2,
-                            time: "5 min",
-                            deliveryFee: "Free",
-                            availability: "Available",
+                            foodName: 'Ayam Kari',
+                            description: 'Diperbuat daripada ayam kari',
+                            price: 2.4,
+                            indexNo: 2,
+
                             context: context
                         ),
                         _allCategories(
                             image: 'images/food/Ayam-Kunyit.png',
-                            name: 'Ayam Kunyit',
-                            description: 'Masakan ayam kunyit',
-                            price: 2,
-                            time: "5 min",
-                            deliveryFee: "Free",
-                            availability: "Not Available",
+                            foodName: 'Ayam Kunyit',
+                            description: 'Diperbuat daripada ayam kunyit',
+                            price: 2.5,
+                            indexNo: 3,
                             context: context
                         ),
                         _allCategories(
                             image: 'images/food/Cendawan-Goreng.png',
-                            name: 'Cendawan Goreng',
-                            description: 'Masakan cendawan goreng',
-                            price: 2,
-                            time: "5 min",
-                            deliveryFee: "Free",
-                            availability: "Available",
+                            foodName: 'Cendawan Goreng',
+                            description: 'Diperbuat daripada cendawan goreng',
+                            price: 2.6,
+                            indexNo: 4,
                             context: context
                         ),
                       ],
@@ -389,112 +383,90 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           _bottomCategories(
                             image: 'images/food/Ayam-Goreng.png',
-                            name: 'Ayam Goreng',
-                            description: 'Masakan ayam goreng',
-                            price: 2,
-                            time: "5 min",
-                            deliveryFee: "Free",
-                            availability: "Available",
+                            foodName: 'Ayam Goreng',
+                            price: 2.3,
+                            description: 'Diperbuat daripada ayam goreng',
+                            indexNo: 1,
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Ayam-Kari.png',
-                            name: 'Ayam Kari',
-                            description: 'Masakan ayam kari',
-                            price: 2,
-                            time: "5 min",
-                            deliveryFee: "Free",
-                            availability: "Available",
+                            foodName: 'Ayam Kari',
+                            price: 2.4,
+                            description: 'Diperbuat daripada ayam kari',
+                            indexNo: 2,
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Ayam-Kunyit.png',
-                            name: 'Ayam Kunyit',
-                            description: 'Masakan ayam kunyit',
-                            price: 2,
-                            time: "5 min",
-                            deliveryFee: "Free",
-                            availability: "Not Available",
+                            foodName: 'Ayam Kunyit',
+                            price: 2.5,
+                            description: 'Diperbuat daripada ayam kunyit',
+                            indexNo: 3,
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Cendawan-Goreng.png',
-                            name: 'Cendawan Goreng',
-                            description: 'Masakan cendawan goreng',
-                            price: 2,
-                            time: "5 min",
-                            deliveryFee: "Free",
-                            availability: "Available",
+                            foodName: 'Cendawan Goreng',
+                            price: 2.6,
+                            description: 'Diperbuat daripada cendawan goreng',
+                            indexNo: 4,
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Daging-Kicap.png',
-                            name: 'Daging Kicap',
-                            description: 'Masakan daging kicap',
-                            price: 2,
-                            time: "5 min",
-                            deliveryFee: "Free",
-                            availability: "Available",
+                            foodName: 'Daging Kicap',
+                            price: 2.7,
+                            description: 'Diperbuat daripada daging kicap',
+                            indexNo: 5,
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Kuey-Teow.png',
-                            name: 'Kuey Teow',
-                            description: 'Masakan kuey teow',
-                            price: 2,
-                            time: "5 min",
-                            deliveryFee: "Free",
-                            availability: "Available",
+                            foodName: 'Kuey Teow',
+                            price: 2.8,
+                            description: 'Diperbuat daripada kuey teow',
+                            indexNo: 6,
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Mee-Goreng.png',
-                            name: 'Mee Goreng',
-                            description: 'Masakan mee goreng',
-                            price: 2,
-                            time: "5 min",
-                            deliveryFee: "Free",
-                            availability: "Available",
+                            foodName: 'Mee Goreng',
+                            price: 2.9,
+                            description: 'Diperbuat daripada mee goreng',
+                            indexNo: 7,
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Nasi-Goreng.png',
-                            name: 'Nasi Goreng',
-                            description: 'Masakan nasi goreng',
-                            price: 2,
-                            time: "5 min",
-                            deliveryFee: "Free",
-                            availability: "Available",
+                            foodName: 'Nasi Goreng',
+                            price: 3.0,
+                            description: 'Diperbuat daripada nasi goreng',
+                            indexNo: 8,
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Sambal-Goreng-Tempe.png',
-                            name: 'Sambal Goreng Tempe',
-                            description: 'Masakan sambal goreng tempe',
-                            price: 2,
-                            time: "5 min",
-                            deliveryFee: "Free",
-                            availability: "Available",
+                            foodName: 'Sambal Goreng Tempe',
+                            price: 3.1,
+                            description: 'Diperbuat daripada sambal goreng tempe',
+                            indexNo: 9,
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Sayur-Taugeh.png',
-                            name: 'Sayur Taugeh',
-                            description: 'Masakan sayur taugeh',
-                            price: 2,
-                            time: "5 min",
-                            deliveryFee: "Free",
-                            availability: "Available",
+                            foodName: 'Sayur Taugeh',
+                            price: 3.2,
+                            description: 'Diperbuat daripada sayur taugeh',
+                            indexNo: 10,
                             context: context,
                           ),
                           _bottomCategories(
                             image: 'images/food/Tom-Yam.png',
-                            name: 'Tom Yam',
-                            description: 'Masakan tom yam',
-                            price: 2,
-                            time: "5 min",
-                            deliveryFee: "Free",
-                            availability: "Available",
+                            foodName: 'Tom Yam',
+                            price: 3.3,
+                            description: 'Diperbuat daripada tom yam',
+                            indexNo: 11,
                             context: context,
                           ),
                         ],

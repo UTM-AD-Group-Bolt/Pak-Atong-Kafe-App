@@ -97,7 +97,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                         backgroundColor: Colors.transparent,
                       ),
                       onPressed: () {
-                        Navigator.pushNamed(context, '/cart', arguments: {
+                        Navigator.pushNamed(context, '/preintro', arguments: {
                           'quantity': 0,
                           'image': image,
                           'foodName': foodName,

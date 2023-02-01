@@ -258,7 +258,7 @@ class HomePage extends StatelessWidget {
                         elevation: 0.0,
                       ),
                       onPressed: () async {
-                        Navigator.pushNamed(context, '/cart');
+                        Navigator.pushNamed(context, '/preintro');
 
                       },
                       icon: Icon(

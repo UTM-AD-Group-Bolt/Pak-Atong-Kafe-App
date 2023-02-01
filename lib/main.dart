@@ -19,6 +19,7 @@ import 'package:myapp/pages/PaymentSuccessPage.dart';
 import 'package:myapp/pages/cartpage2.dart';
 import 'package:myapp/pages/homepage2.dart';
 import 'package:myapp/pages/intropage.dart';
+import 'package:myapp/pages/OrdersList.dart';
 
 import 'models/palette.dart';
 void main() async {
@@ -50,6 +51,7 @@ void main() async {
           '/paymentsuccess':  (context) => PaymentScreen(),
           '/menudetails2':  (context) => homepage2(),
           '/preintro': (context) => preintro(),
+          '/orderslist': (context) => OrdersList(),
 
         },
       ),

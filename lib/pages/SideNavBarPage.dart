@@ -222,9 +222,7 @@ class _SideNavBarState extends State<SideNavBar> {
             title: "Track Order",
             disabled: false,
             onTap: (){
-              Navigator.pop(context);
-              //Navigator.pushNamed(context, '/favorites');
-              print("User moved to Track Order page");
+              Navigator.pushNamed(context, '/orderslist');
             },
             trailing: (numOrders > 0) ?
             ClipOval( //if (numOrders > 0), then trailing = ClipOval()

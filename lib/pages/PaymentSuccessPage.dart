@@ -122,7 +122,7 @@ class PaymentScreen extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              "RM 35.0",
+                              "RM 8.90",
                               style: TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.bold),
                             ),
@@ -146,7 +146,7 @@ class PaymentScreen extends StatelessWidget {
                       ),
                       Center(
                         child: Text(
-                          "RM 35.0",
+                          "RM 8.90",
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),

@@ -4,6 +4,7 @@ import 'package:myapp/models/cartmodel2.dart';
 import 'package:myapp/pages/cartpage2.dart';
 import 'package:provider/provider.dart';
 import 'package:myapp/pages/homepage2.dart';
+import 'package:myapp/models/palette.dart';
 
 
 class preintro extends StatelessWidget {
@@ -26,7 +27,7 @@ class IntroScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
+      backgroundColor: Palette.black[700],
       body: SafeArea(
         child: Column(
           children: [
@@ -48,7 +49,8 @@ class IntroScreen extends StatelessWidget {
                 'We deliver',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.notoSerif(
-                    fontSize: 36, fontWeight: FontWeight.bold),
+                    color: Colors.white, fontSize: 36, fontWeight: FontWeight.bold),
+
               ),
             ),
 

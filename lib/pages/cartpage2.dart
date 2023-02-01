@@ -60,7 +60,7 @@ class cartpage2 extends StatelessWidget {
                               style: const TextStyle(fontSize: 18),
                             ),
                             subtitle: Text(
-                              '\$' + value.cartItems[index][1],
+                              '\RM' + value.cartItems[index][1],
                               style: const TextStyle(fontSize: 12),
                             ),
                             trailing: IconButton(
@@ -101,7 +101,7 @@ class cartpage2 extends StatelessWidget {
                           const SizedBox(height: 8),
                           // total price
                           Text(
-                            '\$${value.calculateTotal()}',
+                            '\RM${value.calculateTotal()}',
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -122,6 +122,12 @@ class cartpage2 extends StatelessWidget {
                           onTap: () {
                             // Navigator.pushNamed(context, '/paymentsuccess');
                             Navigator.of(context, rootNavigator: true).pushNamed("/paymentsuccess");
+
+                            // Navigator.pushNamed(context, '/paymentsuccess',arguments: {
+                            //   'totalPrice': value.calculateTotal(),
+                            // });
+
+
                           },
                           child: Row(
                             children: const [

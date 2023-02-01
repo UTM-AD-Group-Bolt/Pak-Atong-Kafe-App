@@ -269,16 +269,16 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                       textStyle: const TextStyle(fontSize: 20),
                     ),
                     onPressed: () {
-                      setState(() {
-                        quantity++;
-                        price = price*quantity;
-                      });
-                      ref.set({
-
-                        "Food": foodName,
-                        "Quantity": quantity,
-                        "FoodImage": image,
-                      }).asStream();
+                      // setState(() {
+                      //   quantity++;
+                      //   price = price*quantity;
+                      // });
+                      // ref.set({
+                      //
+                      //   "Food": foodName,
+                      //   "Quantity": quantity,
+                      //   "FoodImage": image,
+                      // }).asStream();
 
                       Navigator.pushNamed(
                           context, '/preintro', arguments: {

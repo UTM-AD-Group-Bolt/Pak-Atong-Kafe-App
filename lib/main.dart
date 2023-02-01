@@ -16,17 +16,11 @@ import 'package:myapp/models/user.dart';
 import 'package:myapp/pages/cartPage.dart';
 import 'package:myapp/pages/FetchingDataPage.dart';
 import 'package:myapp/pages/PaymentSuccessPage.dart';
+import 'package:myapp/pages/cartpage2.dart';
+import 'package:myapp/pages/homepage2.dart';
+import 'package:myapp/pages/intropage.dart';
 
 import 'models/palette.dart';
-// import 'ReviewPage.dart';
-// import 'FaqPage.dart';
-// import 'CustomerSupportPage.dart';
-// import 'OrderHistoryPage.dart';
-// import 'CheckoutPage.dart';
-// import 'PaymentMethodPage.dart';
-// import 'PaymentSuccessPage.dart';
-// import 'ProfilePage.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -51,20 +45,38 @@ void main() async {
           '/favorites': (context) => FavoritePage(),
           '/loading': (context) => LoadingScreen(),
           '/menudetails': (context) => MenuDetailsPage(),
-          '/cart':  (context) => cartPage(),
+          '/cart':  (context) => CartPage2(),
           '/fetchingdatapage': (context) => FetchingDataPage(),
           '/paymentsuccess':  (context) => PaymentScreen(),
+          '/menudetails2':  (context) => homepage2(),
+          '/preintro': (context) => preintro(),
 
-          // '/review':  (context) => ReviewPage(),
-          // '/faq':  (context) => FaqPage(),
-          // '/customersupport':  (context) => CustomerSupportPage(),
-          // '/orderhistory':  (context) => OrderHistoryPage(),
-          // '/checkout':  (context) => CheckoutPage(),
-          // '/paymentmethod':  (context) => PaymentMethodPage(),
-
-          // '/profile':  (context) => ProfilePage(),
         },
       ),
     ),
   );
 }
+
+// import 'package:flutter/material.dart';
+// import 'package:myapp/models/cartmodel2.dart';
+// import 'package:provider/provider.dart';
+// import 'package:myapp/pages/intropage.dart';
+//
+// void main() {
+//   runApp(const MyApp());
+// }
+//
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return ChangeNotifierProvider(
+//       create: (context) => cartmodel2(),
+//       child: MaterialApp(
+//         debugShowCheckedModeBanner: false,
+//         home: IntroScreen(),
+//       ),
+//     );
+//   }
+// }

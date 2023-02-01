@@ -29,20 +29,20 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
 
   final fb = FirebaseDatabase.instance;
 
+
   @override
   Widget build(BuildContext context) {
 
     var rng = Random();
     var k = rng.nextInt(10000);
-    final ref = fb.ref().child('foodsnew/$k');
 
+    final ref = fb.ref().child('foodsnew/$k');
 
     data = ModalRoute.of(context)?.settings.arguments as Map<dynamic, dynamic>?;
     if (data == null)
       data = initData(new Map());
     else
       data = initData(data!);
-
 
     String foodName = data!['foodName'];
     String image = data!['image'];
@@ -61,15 +61,13 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Palette.black[700],
-        elevation: 0.0,
-        leading: GestureDetector(
-          onTap: (){ Navigator.pop(context); },
-          child: Icon(
-            Icons.arrow_back,
-            size: 30,
-            color: Palette.yellow,
-          ),
+        backgroundColor: Color(0xff2b2b2b),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context,true);
+          },
+          icon: Icon(Icons.arrow_back),
+          color: Colors.amber,
         ),
         actions: [
           Padding(
@@ -78,18 +76,14 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
               child: Row(
                 children: [
                   Container(
-                    width: 50,
-                    child: IconButton(
-                      constraints: BoxConstraints(),
-                      padding: EdgeInsets.zero,
-                      style: IconButton.styleFrom(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.transparent,
-                        elevation: 0.0,
                       ),
                       onPressed: () {
                         Navigator.pushNamed(context, '/favorites');
                       },
-                      icon: Icon(
+                      child: Icon(
                         Icons.favorite,
                         size: 30,
                         color: Colors.pink,
@@ -98,31 +92,37 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                   ),
                   SizedBox(width: 10.0),
                   Container(
-                    child: IconButton(
-                      constraints: BoxConstraints(),
-                      padding: EdgeInsets.only(right: 10),
+                    child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.transparent,
-                        elevation: 0.0,
                       ),
-                      onPressed: () async {
-                        Navigator.pushNamed(context, '/cart');
-
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/cart', arguments: {
+                          'quantity': 0,
+                          'image': image,
+                          'foodName': foodName,
+                          'description': description,
+                          'price': price,
+                          'indexNo': indexNo,
+                          'deliveryFee': 'Free',
+                          'time': '5 min',
+                          'availability': 'Available',
+                        });
                       },
-                      icon: Icon(
+                      child: Icon(
                         Icons.shopping_cart,
                         size: 30,
-                        color: Palette.yellow,
+                        color: Colors.amber,
                       ),
                     ),
                   ),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
-      backgroundColor: Palette.black[700],
+      backgroundColor: Color(0xff2b2b2b),
       body: Column(
         children: [
           SizedBox(
@@ -152,7 +152,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
               height: 455.0,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                color: Palette.black[600],
+                color: Colors.grey[900],
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(50.0),
                   topRight: Radius.circular(50.0),
@@ -165,16 +165,16 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                     width: 28.0,
                     margin: EdgeInsets.only(bottom: 28.0),
                     decoration: BoxDecoration(
-                      color: Palette.black[700],
+                      color: Colors.black87,
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                   ),
                   Text(
-                    data!['name'],
+                    data!['foodName'],
                     style: TextStyle(
                       fontFamily: "DMSans",
                       fontSize: 28.0,
-                      color: Palette.white[300],
+                      color: Colors.white,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -194,7 +194,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                             style: TextStyle(
                               fontFamily: "DMSans",
                               fontSize: 16.0,
-                              color: Palette.white[300],
+                              color: Colors.white,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -212,7 +212,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                             style: TextStyle(
                               fontFamily: "DMSans",
                               fontSize: 16.0,
-                              color: Palette.white[300],
+                              color: Colors.white,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -230,7 +230,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                             style: TextStyle(
                               fontFamily: "DMSans",
                               fontSize: 16.0,
-                              color: Palette.white[300],
+                              color: Colors.white,
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -244,7 +244,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                     style: TextStyle(
                       fontFamily: "DMSans",
                       fontSize: 20.0,
-                      color: Palette.white[300],
+                      color: Colors.white,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -254,11 +254,13 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                     style: TextStyle(
                       fontFamily: "DMSans",
                       fontSize: 15.0,
-                      color: Palette.white[300],
+                      color: Colors.white,
                       fontWeight: FontWeight.w300,
                     ),
                   ),
                   SizedBox(height: 10.0),
+
+
 
                   TextButton(
                     style: TextButton.styleFrom(
@@ -279,9 +281,7 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                       }).asStream();
 
                       Navigator.pushNamed(
-                          context, '/cart', arguments:
-
-                      {
+                          context, '/preintro', arguments: {
                         'quantity': quantity,
                         'image': image,
                         'foodName': foodName,
@@ -294,8 +294,52 @@ class _MenuDetailsPageState extends State<MenuDetailsPage> {
                       });
 
                     },
-                    child: const Text('Add to Cart'),
+                    child: const Text('Order Now'),
                   ),
+
+                  // GestureDetector(
+                  //   onTap: () {
+                  //     int x = data!['itemCounts'];
+                  //     data!['itemCounts'] = x + 1;
+                  //
+                  //     print(data!['indexNo']);
+                  //
+                  //     Navigator.pushNamed(context, '/cart', arguments: {
+                  //
+                  //       'itemCounts': data!['itemCounts'],
+                  //       'indexNo': data!['indexNo'],
+                  //       'image': data!['image'],
+                  //       'foodName': data!['foodName'],
+                  //       'price': data!['price'],
+                  //       'foodName': data!['foodName'],
+                  //       'quantity': data!['quantity'],
+                  //     });
+                  //
+                  //
+                  //   },
+                  //   child: Container(
+                  //     height: 40,
+                  //     width: 120,
+                  //     padding: EdgeInsets.all(4.0),
+                  //     decoration: BoxDecoration(
+                  //       color: Palette.yellow,
+                  //       borderRadius: BorderRadius.only(
+                  //         topLeft: Radius.circular(2.0),
+                  //         topRight: Radius.circular(2.0),
+                  //       ),
+                  //     ),
+                  //     child: Center(
+                  //       child: Text(
+                  //         'Add to Cart',
+                  //         style: TextStyle(
+                  //           fontFamily: "DMSans",
+                  //           fontSize: 15.0,
+                  //           fontWeight: FontWeight.w700,
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ),

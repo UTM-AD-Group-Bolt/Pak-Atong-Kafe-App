@@ -115,6 +115,7 @@ class _cartPageState extends State<cartPage> {
     double price = data!['price'];
     int indexNo = data!['indexNo'];
     int quantity = data!['quantity'];
+    double totalprice = 0;
 
 
     return Scaffold(
@@ -158,13 +159,8 @@ class _cartPageState extends State<cartPage> {
                                 width: 100,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    // image: AssetImage(foodImages[index]),
                                     image: AssetImage(image),
 
-                                    // image: AssetImage('images/food/Ayam-Goreng.png'),
-
-                                    // image: NetworkImage(cartController
-                                    //     .cartItems[index]["product"]["image"])
                                   ),
                                 ),
                               ),
@@ -232,12 +228,9 @@ class _cartPageState extends State<cartPage> {
                                     width: 32,
                                     padding: EdgeInsets.all(8.0),
                                     child: Text(
-                                      // foodQuantity[mmm].toString(),
+
                                       quantity.toString(),
 
-                                      // cartController.cartItems[index]
-                                      //     ["quantity"]
-                                      // .toString()
                                     ),
                                   ),
                                   Container(

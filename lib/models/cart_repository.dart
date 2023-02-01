@@ -14,5 +14,17 @@ class CartRepository {
   Future getProductFromApi(productId) async {
     var response = await http.get(Uri.parse(purl + productId.toString()));
     return json.decode(response.body);
+
+
+    // String rawJson = '{"name":"Mary","age":30}';
+    //
+    // Map<String, dynamic> map = jsonDecode(rawJson);
+    //
+    // String name = map['name'];
+    // int age = map['age'];
+    //
+    // Person person = Person(name, age);
+
+
   }
 }

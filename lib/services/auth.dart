@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:myapp/models/user.dart';
 import 'package:myapp/services/database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+//
 class AuthService {
   Function() alertBoxError({required text, required BuildContext context}){
     return () {

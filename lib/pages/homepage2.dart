@@ -27,7 +27,7 @@ class _homepage2State extends State<homepage2> {
           ),
         ),
         title: Text(
-          'Pak Atong Kafe, Arked Angkasa',
+          'Sydney, Australia',
           style: TextStyle(
             fontSize: 16,
             color: Colors.grey[700],
@@ -57,7 +57,7 @@ class _homepage2State extends State<homepage2> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return CartPage2();
+              return cartpage2();
             },
           ),
         ),

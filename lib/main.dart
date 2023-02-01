@@ -45,7 +45,7 @@ void main() async {
           '/favorites': (context) => FavoritePage(),
           '/loading': (context) => LoadingScreen(),
           '/menudetails': (context) => MenuDetailsPage(),
-          '/cart':  (context) => CartPage2(),
+          '/cart':  (context) => cartpage2(),
           '/fetchingdatapage': (context) => FetchingDataPage(),
           '/paymentsuccess':  (context) => PaymentScreen(),
           '/menudetails2':  (context) => homepage2(),

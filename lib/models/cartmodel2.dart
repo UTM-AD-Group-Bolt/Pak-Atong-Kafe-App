@@ -7,14 +7,14 @@ class cartmodel2 with ChangeNotifier {
     ["Ayam Goreng", "2.3", "images/food/Ayam-Goreng.png", Colors.brown],
     ["Ayam Kari", "2.4", "images/food/Ayam-Kari.png", Colors.brown],
     ["Ayam Kunyit", "2.5", "images/food/Ayam-Kunyit.png", Colors.brown],
-    ["Cendawan Goreng", "2.6", "images/food/Cendawan-Goreng.png", Colors.brown],
-    ["Daging Kicap", "2.7", "images/food/Daging-Kicap.png", Colors.brown],
-    ["Kuey Teow", "2.8", "images/food/Kuey-Teow.png", Colors.brown],
-    ["Mee Goreng", "2.9", "images/food/Mee-Goreng.png", Colors.brown],
-    ["Nasi Goreng", "3.0", "images/food/Nasi-Goreng.png", Colors.brown],
-    ["Sambal Goreng Tempe", "3.1", "images/food/Sambal-Goreng-Tempe.png", Colors.brown],
-    ["Sayur Taugeh", "3.2", "images/food/Sayur-Taugeh.png", Colors.brown],
-    ["Tom Yam", "3.3", "images/food/Tom-Yam.png", Colors.brown],
+    // ["Cendawan Goreng", "2.6", "images/food/Cendawan-Goreng.png", Colors.brown],
+    // ["Daging Kicap", "2.7", "images/food/Daging-Kicap.png", Colors.brown],
+    // ["Kuey Teow", "2.8", "images/food/Kuey-Teow.png", Colors.brown],
+    // ["Mee Goreng", "2.9", "images/food/Mee-Goreng.png", Colors.brown],
+    // ["Nasi Goreng", "3.0", "images/food/Nasi-Goreng.png", Colors.brown],
+    // ["Sambal Goreng Tempe", "3.1", "images/food/Sambal-Goreng-Tempe.png", Colors.brown],
+    // ["Sayur Taugeh", "3.2", "images/food/Sayur-Taugeh.png", Colors.brown],
+    // ["Tom Yam", "3.3", "images/food/Tom-Yam.png", Colors.brown],
   ];
 
   // list of cart items

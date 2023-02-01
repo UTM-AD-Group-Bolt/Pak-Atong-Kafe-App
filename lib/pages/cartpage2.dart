@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 
 import 'package:myapp/models/cartmodel2.dart';
 
-class CartPage2 extends StatelessWidget {
-  const CartPage2({super.key});
+class cartpage2 extends StatelessWidget {
+  const cartpage2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class CartPage2 extends StatelessWidget {
           color: Colors.grey[800],
         ),
       ),
-      body: Consumer<cartmodel2>(
+      body: Consumer<cartmodel2 >(
         builder: (context, value, child) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,7 +39,6 @@ class CartPage2 extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
                     itemCount: value.cartItems.length,
                     padding: EdgeInsets.all(12),
                     itemBuilder: (context, index) {
@@ -65,7 +64,7 @@ class CartPage2 extends StatelessWidget {
                             trailing: IconButton(
                               icon: const Icon(Icons.cancel),
                               onPressed: () =>
-                                  Provider.of<cartmodel2>(context, listen: false)
+                                  Provider.of<cartmodel2 >(context, listen: false)
                                       .removeItemFromCart(index),
                             ),
                           ),

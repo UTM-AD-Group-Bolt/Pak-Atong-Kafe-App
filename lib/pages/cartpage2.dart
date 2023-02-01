@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
 import 'package:myapp/models/cartmodel2.dart';
+import 'package:myapp/models/palette.dart';
 
 class cartpage2 extends StatelessWidget {
   const cartpage2({super.key});
@@ -10,6 +10,7 @@ class cartpage2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Palette.black[700],
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -30,6 +31,7 @@ class cartpage2 extends StatelessWidget {
                   style: GoogleFonts.notoSerif(
                     fontSize: 36,
                     fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -46,7 +48,7 @@ class cartpage2 extends StatelessWidget {
                         padding: const EdgeInsets.all(12.0),
                         child: Container(
                           decoration: BoxDecoration(
-                              color: Colors.grey[200],
+                              color: Colors.orange[200],
                               borderRadius: BorderRadius.circular(8)),
                           child: ListTile(
                             leading: Image.asset(
@@ -116,18 +118,24 @@ class cartpage2 extends StatelessWidget {
                           borderRadius: BorderRadius.circular(28),
                         ),
                         padding: const EdgeInsets.all(12),
-                        child: Row(
-                          children: const [
-                            Text(
-                              'Pay Now',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              size: 16,
-                              color: Colors.white,
-                            ),
-                          ],
+                        child: GestureDetector(
+                          onTap: () {
+                            // Navigator.pushNamed(context, '/paymentsuccess');
+                            Navigator.of(context, rootNavigator: true).pushNamed("/paymentsuccess");
+                          },
+                          child: Row(
+                            children: const [
+                              Text(
+                                'Pay Now',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                size: 16,
+                                color: Colors.white,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],

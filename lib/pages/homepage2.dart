@@ -27,7 +27,7 @@ class _homepage2State extends State<homepage2> {
           ),
         ),
         title: Text(
-          'Sydney, Australia',
+          'Arked Angkasa',
           style: TextStyle(
             fontSize: 16,
             color: Colors.grey[700],
@@ -71,7 +71,7 @@ class _homepage2State extends State<homepage2> {
           // good morning bro
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.0),
-            child: Text('Good morning,'),
+            child: Text('Pak Atong Kafe'),
           ),
 
           const SizedBox(height: 4),
@@ -80,7 +80,7 @@ class _homepage2State extends State<homepage2> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
             child: Text(
-              "Let's order fresh items for you",
+              "Lunch today:",
               style: GoogleFonts.notoSerif(
                 fontSize: 36,
                 fontWeight: FontWeight.bold,
@@ -88,26 +88,17 @@ class _homepage2State extends State<homepage2> {
             ),
           ),
 
-          const SizedBox(height: 24),
+          const SizedBox(height: 6),
 
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.0),
             child: Divider(),
           ),
 
-          const SizedBox(height: 24),
+          const SizedBox(height: 6),
 
           // categories -> horizontal listview
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Text(
-              "Fresh Items",
-              style: GoogleFonts.notoSerif(
-                //fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-            ),
-          ),
+
 
           // recent orders -> show last 3
           Expanded(
@@ -115,7 +106,6 @@ class _homepage2State extends State<homepage2> {
               builder: (context, value, child) {
                 return GridView.builder(
                   padding: const EdgeInsets.all(12),
-                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: value.shopItems.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,

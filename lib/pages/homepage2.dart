@@ -35,14 +35,29 @@ class _homepage2State extends State<homepage2> {
 
     func2(value, index){
       ref.set({
-
         "Food": value.shopItems[index][0],
         "Price": value.shopItems[index][1],
         "FoodImage": value.shopItems[index][2],
       }).asStream();
     }
 
-    func3() {
+    func3(BuildContext context, cartmodel2 value, int index) {
+      final scaffold = ScaffoldMessenger.of(context);
+      scaffold.hideCurrentSnackBar();
+
+      scaffold.showSnackBar(
+        SnackBar(
+          content: Text(value.shopItems[index][0] + " added to cart"),
+          action: SnackBarAction(
+            label: 'UNDO',
+            onPressed:(){
+              value.removeLastItemFromCart();
+              scaffold.hideCurrentSnackBar();
+            }
+          ),
+        ),
+      );
+
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (_) => homepage2()));
     }
@@ -139,14 +154,11 @@ class _homepage2State extends State<homepage2> {
 
           // categories -> horizontal listview
 
-
           // recent orders -> show last 3
           Expanded(
             child: Consumer<cartmodel2>(
               builder: (context, value, child) {
-
                 return GridView.builder(
-
                   padding: const EdgeInsets.all(12),
                   itemCount: value.shopItems.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -156,7 +168,7 @@ class _homepage2State extends State<homepage2> {
                   itemBuilder: (context, index) {
                     return GroceryItemTile(
                       itemName: value.shopItems[index][0],
-                      itemPrice: value.shopItems[index][1],
+                      itemPrice: double.parse(value.shopItems[index][1]).toStringAsFixed(2),
                       imagePath: value.shopItems[index][2],
                       color: value.shopItems[index][3],
                       onPressed: () => [
@@ -172,10 +184,8 @@ class _homepage2State extends State<homepage2> {
                         func2(value, index),
                     //   Navigator.pushReplacement(
                     // context, MaterialPageRoute(builder: (_) => homepage2()));
-                        func3(),
+                        func3(context, value, index),
                     ],
-
-
                     );
                   },
                 );

@@ -36,6 +36,17 @@ class cartmodel2 with ChangeNotifier {
     notifyListeners();
   }
 
+  // remove last item from cart
+  void removeLastItemFromCart() {
+    _cartItems.removeLast();
+    notifyListeners();
+  }
+
+  // remove last item from cart
+  void removeAllItemFromCart() {
+    _cartItems.removeRange(0, cartItems.length);
+  }
+
   // calculate total price
   String calculateTotal() {
     double totalPrice = 0;

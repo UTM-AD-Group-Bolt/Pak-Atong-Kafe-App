@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:myapp/models/cartmodel2.dart';
 import 'package:myapp/models/palette.dart';
+import 'package:myapp/pages/PaymentSuccessPage.dart';
 
 class cartpage2 extends StatelessWidget {
   const cartpage2({super.key});
@@ -18,7 +19,7 @@ class cartpage2 extends StatelessWidget {
           color: Colors.grey[800],
         ),
       ),
-      body: Consumer<cartmodel2 >(
+      body: Consumer<cartmodel2>(
         builder: (context, value, child) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,13 +61,13 @@ class cartpage2 extends StatelessWidget {
                               style: const TextStyle(fontSize: 18),
                             ),
                             subtitle: Text(
-                              '\RM' + value.cartItems[index][1],
+                              '\RM ${double.parse(value.cartItems[index][1]).toStringAsFixed(2)}',
                               style: const TextStyle(fontSize: 12),
                             ),
                             trailing: IconButton(
                               icon: const Icon(Icons.cancel),
                               onPressed: () =>
-                                  Provider.of<cartmodel2 >(context, listen: false)
+                                  Provider.of<cartmodel2>(context, listen: false)
                                       .removeItemFromCart(index),
                             ),
                           ),
@@ -101,7 +102,7 @@ class cartpage2 extends StatelessWidget {
                           const SizedBox(height: 8),
                           // total price
                           Text(
-                            '\RM${value.calculateTotal()}',
+                            '\RM ${value.calculateTotal()}',
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -120,14 +121,15 @@ class cartpage2 extends StatelessWidget {
                         padding: const EdgeInsets.all(12),
                         child: GestureDetector(
                           onTap: () {
-                            // Navigator.pushNamed(context, '/paymentsuccess');
-                            Navigator.of(context, rootNavigator: true).pushNamed("/paymentsuccess");
+                            //Navigator.pushNamed(context, '/paymentsuccess');
+                            //Navigator.of(context, rootNavigator: true).pushNamed("/paymentsuccess");
 
                             // Navigator.pushNamed(context, '/paymentsuccess',arguments: {
                             //   'totalPrice': value.calculateTotal(),
                             // });
 
-
+                            Navigator.pushReplacement(
+                              context, MaterialPageRoute(builder: (_) => PaymentScreen(value: value)));
                           },
                           child: Row(
                             children: const [

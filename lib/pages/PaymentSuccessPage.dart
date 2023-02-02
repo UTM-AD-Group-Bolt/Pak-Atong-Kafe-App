@@ -1,8 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/models/cartmodel2.dart';
 
+//value.removeAllItemFromCart();
 class PaymentScreen extends StatelessWidget {
-  const PaymentScreen({Key? key}) : super(key: key);
+  final cartmodel2 value;
+  var total = "0.00";
+
+  PaymentScreen({required this.value, Key? key}) : super(key: key){
+    total = value.calculateTotal();
+    value.removeAllItemFromCart();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +22,9 @@ class PaymentScreen extends StatelessWidget {
             Row(
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
                   icon: Icon(
                     Icons.arrow_back,
                     color: Color(0xFFefaf43),
@@ -122,7 +132,7 @@ class PaymentScreen extends StatelessWidget {
                           ),
                           Expanded(
                             child: Text(
-                              "RM 8.90",
+                              "RM ${total}",
                               style: TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.bold),
                             ),
@@ -146,7 +156,7 @@ class PaymentScreen extends StatelessWidget {
                       ),
                       Center(
                         child: Text(
-                          "RM 8.90",
+                          "RM ${total}",
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),

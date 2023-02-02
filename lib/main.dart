@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/models/cartmodel2.dart';
 import 'package:myapp/pages/ForgotPasswordPage.dart';
 import 'package:myapp/pages/PaymentSuccessPage.dart';
 import 'package:myapp/pages/HomePage.dart';
@@ -15,7 +16,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:myapp/models/user.dart';
 import 'package:myapp/pages/cartPage.dart';
 import 'package:myapp/pages/FetchingDataPage.dart';
-import 'package:myapp/pages/PaymentSuccessPage.dart';
 import 'package:myapp/pages/cartpage2.dart';
 import 'package:myapp/pages/homepage2.dart';
 import 'package:myapp/pages/intropage.dart';
@@ -48,7 +48,7 @@ void main() async {
           '/menudetails': (context) => MenuDetailsPage(),
           '/cart':  (context) => cartpage2(),
           '/fetchingdatapage': (context) => FetchingDataPage(),
-          '/paymentsuccess':  (context) => PaymentScreen(),
+          '/paymentsuccess':  (context) => PaymentScreen(value: new cartmodel2()),
           '/menudetails2':  (context) => homepage2(),
           '/preintro': (context) => preintro(),
           '/orderslist': (context) => OrdersList(),
